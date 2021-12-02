@@ -1,0 +1,122 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Kapicua25.Pantallas.MainPage"
+             NavigationPage.HasNavigationBar="False">
+
+    <StackLayout BackgroundColor="#141631">
+
+        <StackLayout Margin="0,20,0,0" IsVisible="true" x:Name="StackLayoutEquipo1" BackgroundColor="#141631">
+            <StackLayout HorizontalOptions="CenterAndExpand">
+                <Image Margin="0,15,0,0" WidthRequest="80" Source="domino.png"></Image>
+                <Label FontFamily="ButterflyWinter" Text="Kapicúa25" TextColor="White" FontSize="60" FontAttributes="Bold"></Label>
+            </StackLayout>
+
+            <StackLayout Margin="40,0,40,0" HorizontalOptions="CenterAndExpand">
+                <Label Text="Bienvenido a" TextColor="White" FontSize="40" FontAttributes="Bold"></Label>
+                <Label Text="Kapicúa 25"  TextColor="White" FontSize="40" FontAttributes="Bold"></Label>
+                <Label Text="Por favor escoge el nombre de" TextColor="White" FontSize="16" ></Label>
+                <Label Text="tu equipo" TextColor="White" FontSize="16" ></Label>
+
+                <Frame
+                    Margin="0,10,0,0"
+                   Padding = "0"
+                   CornerRadius     ="20"
+                   IsClippedToBounds="true">
+                    <Entry x:Name="TxtEquipo1" FontFamily="GeosansLight" Placeholder="Equipo 1"></Entry>
+                </Frame>
+
+                <StackLayout  Margin="0,10,0,0" Orientation="Horizontal" >
+                    <Image WidthRequest="20" x:Name="BtnAdd" Source="add.png"></Image>
+
+                    <Image Source="Icon1.png"></Image>
+                    <Frame 
+                   HorizontalOptions="FillAndExpand"
+                   Padding = "0"
+                   CornerRadius     ="20"
+                   IsClippedToBounds="true">
+                        <Entry x:Name="TxtJugador1"  FontFamily="GeosansLight" Placeholder="Jugador 1"></Entry>
+                    </Frame>
+                </StackLayout>
+
+                <StackLayout  Margin="0,10,0,0" Orientation="Horizontal" >
+                    <Image WidthRequest="20" Source="add.png"></Image>
+
+                    <Image Source="Icon2.png"></Image>
+                    <Frame 
+                   HorizontalOptions="FillAndExpand"
+                   Padding = "0"
+                   CornerRadius     ="20"
+                   IsClippedToBounds="true">
+                        <Entry x:Name="TxtJugador2" FontFamily="GeosansLight" TextColor="Black" Placeholder="Jugador 2"></Entry>
+                    </Frame>
+                </StackLayout>
+
+            </StackLayout>
+
+            <StackLayout HorizontalOptions="CenterAndExpand">
+                <Button x:Name="BtnSiguiente" Clicked="BtnSiguiente_Clicked" CornerRadius="40" Text="SIGUIENTE" WidthRequest="300" Margin="0,30,0,0"></Button>
+            </StackLayout>
+
+        </StackLayout>
+
+        <StackLayout Margin="0,20,0,0" IsVisible="false" x:Name="StackLayoutEquipo2" BackgroundColor="#141631">
+            <StackLayout HorizontalOptions="CenterAndExpand">
+                <Image Margin="0,15,0,0" WidthRequest="80" Source="domino.png"></Image>
+                <Label FontFamily="ButterflyWinter" Text="Kapicúa25" TextColor="White" FontSize="60" FontAttributes="Bold"></Label>
+            </StackLayout>
+
+            <StackLayout Margin="40,0,40,0" HorizontalOptions="CenterAndExpand">
+                <Label Text="Bienvenido a" TextColor="White" FontSize="40" FontAttributes="Bold"></Label>
+                <Label Text="Kapicúa 25"  TextColor="White" FontSize="40" FontAttributes="Bold"></Label>
+                <Label Text="Por favor escoge el nombre de" TextColor="White" FontSize="16" ></Label>
+                <Label Text="tu equipo" TextColor="White" FontSize="16" ></Label>
+
+                <Frame
+                    Margin="0,10,0,0"
+                   Padding = "0"
+                   CornerRadius     ="20"
+                   IsClippedToBounds="true">
+                    <Entry x:Name="TxtEquipo2" FontFamily="GeosansLight" Placeholder="Equipo 2"></Entry>
+                </Frame>
+
+                <StackLayout  Margin="0,10,0,0" Orientation="Horizontal" >
+                    <Image x:Name="BtnAddEquipo2" WidthRequest="20" Source="add.png"></Image>
+
+                    <Image Source="Icon1.png"></Image>
+                    <Frame 
+                   HorizontalOptions="FillAndExpand"
+                   Padding = "0"
+                   CornerRadius     ="20"
+                   IsClippedToBounds="true">
+                        <Entry x:Name="TxtJugador1Equipo2" FontFamily="GeosansLight" Placeholder="Jugador 1"></Entry>
+                    </Frame>
+                </StackLayout>
+
+                <StackLayout  Margin="0,10,0,0" Orientation="Horizontal" >
+                    <Image WidthRequest="20" Source="add.png"></Image>
+
+                    <Image Source="Icon2.png"></Image>
+                    <Frame 
+                   HorizontalOptions="FillAndExpand"
+                   Padding = "0"
+                   CornerRadius     ="20"
+                   IsClippedToBounds="true">
+                        <Entry x:Name="TxtJugador2Equipo2" FontFamily="GeosansLight" TextColor="Black" Placeholder="Jugador 2"></Entry>
+                    </Frame>
+                </StackLayout>
+
+            </StackLayout>
+
+            <StackLayout HorizontalOptions="CenterAndExpand">
+                <Button x:Name="BtnSiguienteEquipo2" Clicked="BtnSiguienteEquipo2_Clicked" CornerRadius="40" Text="SIGUIENTE" WidthRequest="300" Margin="0,30,0,0"></Button>
+                <Button x:Name="BtnAtras" Clicked="BtnAtras_Clicked" CornerRadius="40" Text="ATRAS" WidthRequest="300" Margin="0,30,0,0"></Button>
+
+            </StackLayout>
+
+        </StackLayout>
+
+
+    </StackLayout>
+
+</ContentPage>

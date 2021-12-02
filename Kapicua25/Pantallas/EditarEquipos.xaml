@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Kapicua25.Pantallas.EditarEquipos">
+    <ContentPage.Content>
+        <Grid RowSpacing="0" BackgroundColor="White">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="60"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <StackLayout Grid.Row="0">
+                <Grid VerticalOptions="FillAndExpand">
+                    <StackLayout Orientation="Horizontal" BackgroundColor="#2196F3" Margin="0,0,0,0" HeightRequest="60" VerticalOptions="End" HorizontalOptions="FillAndExpand" x:Name="lytBackNav">
+                        <ImageButton Source="leftarrow.png" x:Name="BtnAtras" Clicked="BtnAtras_Clicked"  BackgroundColor="Transparent" HeightRequest="25" Margin="20,0,0,0" ></ImageButton>
+                        <Label TextColor="White"
+                               Text="VOLVER ATRAS"
+                               FontSize="18" 
+                               FontAttributes="Bold"
+                               VerticalOptions="CenterAndExpand"
+                               HorizontalOptions="StartAndExpand"
+                               Margin="10,0,0,0"/>
+                    </StackLayout>
+                </Grid>
+            </StackLayout>
+
+
+
+            <StackLayout BackgroundColor="#52b788" Grid.Row="1" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+
+                <StackLayout  Margin="0,10,0,0" HorizontalOptions="Center" Orientation="Vertical" >
+                    <Label Text="Editar Equipo 1" HorizontalOptions="Center" TextColor="White"  FontAttributes="Bold" FontSize="20"></Label>
+                    <!--<Entry x:Name="lblequipo" Text="Equipo1" FontAttributes="Bold" HorizontalOptions="Center" TextColor="White"></Entry>-->
+
+                    <StackLayout HorizontalOptions="CenterAndExpand" Margin="0,20,0,0" Orientation="Horizontal">
+                        <!--<Image WidthRequest="20" Source="add.png"></Image>-->
+                        <!--<Image Source="Icon2.png" Margin="0,0,0,0"></Image>-->
+                        <Entry x:Name="lbljugador1" MaxLength="9" TextColor="White" WidthRequest="150" Text="Jugador 1" VerticalOptions="Center"></Entry>
+                    </StackLayout>
+
+                    <StackLayout HorizontalOptions="CenterAndExpand" Margin="0,20,0,0" Orientation="Horizontal">
+                        <!--<Image WidthRequest="20" Source="add.png"></Image>-->
+                        <!--<Image Source="Icon2.png" Margin="0,0,0,0"></Image>-->
+                        <Entry x:Name="lbljugador2" MaxLength="9" TextColor="White" WidthRequest="150" Text="Jugador 2" VerticalOptions="Center"></Entry>
+                    </StackLayout>
+
+
+                </StackLayout>
+
+                <ActivityIndicator IsRunning="False" x:Name="IndicadorCargando"/>
+
+
+                <StackLayout  Margin="0,10,0,0" HorizontalOptions="Center" Orientation="Vertical" >
+                    <Label Text="Editar Equipo 2" HorizontalOptions="Center" TextColor="White"  FontAttributes="Bold" FontSize="20"></Label>
+                    <!--<Entry x:Name="lblequipo2" Text="Equipo1" FontAttributes="Bold" HorizontalOptions="Center" TextColor="White"></Entry>-->
+
+                    <StackLayout HorizontalOptions="CenterAndExpand" Margin="0,20,0,0" Orientation="Horizontal">
+                        <!--<Image WidthRequest="20" Source="add.png"></Image>-->
+                        <!--<Image Source="Icon2.png" Margin="0,0,0,0"></Image>-->
+                        <Entry x:Name="lbljugador1Equipo2" MaxLength="9" TextColor="White" WidthRequest="150" Text="Jugador 1" VerticalOptions="Center"></Entry>
+                    </StackLayout>
+
+                    <StackLayout HorizontalOptions="CenterAndExpand" Margin="0,20,0,0" Orientation="Horizontal">
+                        <!--<Image WidthRequest="20" Source="add.png"></Image>-->
+                        <!--<Image Source="Icon2.png" Margin="0,0,0,0"></Image>-->
+                        <Entry x:Name="lbljugador2Equipo2" MaxLength="9" TextColor="White" WidthRequest="150" Text="Jugador 2" VerticalOptions="Center"></Entry>
+                    </StackLayout>
+
+                    <Button  Scale="0.9" Padding="10" FontAttributes="Bold" FontSize="18" x:Name="BtnGuardarCambios" Clicked="BtnGuardarCambios_Clicked" CornerRadius="14" Text="GUARDAR CAMBIOS" Margin="0,30,0,0"/>
+
+
+                </StackLayout>
+            </StackLayout>
+
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
