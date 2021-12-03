@@ -16,8 +16,12 @@ namespace Kapicua25.Objetos
                 if (File.Exists(ObtenerRunta("datos")))
                 {
                     var fileDatos = File.ReadAllText(ObtenerRunta("datos"));
-                    var json = JsonConvert.SerializeObject(fileDatos);
-                    list = JsonConvert.DeserializeObject<List<EPuntos>>(json);
+                    var json = JsonConvert.SerializeObject(fileDatos).Replace("\\", "");
+                    if (json.Length > 4)
+                    {
+                        json = json.Substring(1, json.Length - 2);
+                        list = JsonConvert.DeserializeObject<List<EPuntos>>(json);
+                    }
                 }
             }
             catch (Exception ex)

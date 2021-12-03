@@ -18,6 +18,7 @@ namespace Kapicua25.Pantallas
         public List<EPuntos> ListPuntos { get; set; } = new List<EPuntos>();
 
         EditarEquipos editarEquipos = new EditarEquipos();
+        AcercaDe acercaDe = new AcercaDe();
         int puntosequipo1 = 0;
         int puntosequipos2 = 0;
         int Puntos1 = 0;
@@ -51,6 +52,30 @@ namespace Kapicua25.Pantallas
             //    }),
             //    NumberOfTapsRequired = 1
             //});
+
+            btnImgInicio.GestureRecognizers.Add(new TapGestureRecognizer
+            {
+                Command = new Command(async () =>
+                {
+                    StackLayoutPaginaPrincipal.IsVisible = true;
+                    StackLayoutAcercaDe.IsVisible = false;
+                    lytBackNav.IsVisible = true;
+                    //lytBackNav1.IsVisible = true;
+                }),
+                NumberOfTapsRequired = 1
+            });
+
+            btnImgInfo.GestureRecognizers.Add(new TapGestureRecognizer
+            {
+                Command = new Command(async () =>
+                {
+                    StackLayoutPaginaPrincipal.IsVisible = false;
+                    StackLayoutAcercaDe.IsVisible = true;
+                    lytBackNav.IsVisible = false;
+                    //lytBackNav1.IsVisible = true;
+                }),
+                NumberOfTapsRequired = 1
+            });
         }
 
         protected override void OnAppearing()
