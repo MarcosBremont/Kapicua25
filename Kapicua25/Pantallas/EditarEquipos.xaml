@@ -32,9 +32,9 @@
 
 
 
-            <StackLayout BackgroundColor="#52b788" Grid.Row="1"   Orientation="Horizontal" >
+            <StackLayout BackgroundColor="#52b788" Grid.Row="1"  Orientation="Horizontal" >
 
-                <StackLayout  Grid.Column="0" Margin="10,10,10,0" HorizontalOptions="Center" Orientation="Vertical" >
+                <StackLayout  Grid.Column="0" Margin="20,10,20,0" HorizontalOptions="Center" Orientation="Vertical" >
                     <Label Text="Editar Equipo 1" HorizontalOptions="Center" TextColor="White"  FontAttributes="Bold" FontSize="20"></Label>
                     <!--<Entry x:Name="lblequipo" Text="Equipo1" FontAttributes="Bold" HorizontalOptions="Center" TextColor="White"></Entry>-->
 
@@ -56,7 +56,7 @@
                 <ActivityIndicator IsRunning="False" x:Name="IndicadorCargando"/>
 
 
-                <StackLayout Grid.Column="1" Margin="10,10,10,0" HorizontalOptions="Center" Orientation="Vertical" >
+                <StackLayout Grid.Column="1" Margin="10,10,20,0" HorizontalOptions="Center" Orientation="Vertical" >
                     <Label Text="Editar Equipo 2" HorizontalOptions="Center" TextColor="White"  FontAttributes="Bold" FontSize="20"></Label>
                     <!--<Entry x:Name="lblequipo2" Text="Equipo1" FontAttributes="Bold" HorizontalOptions="Center" TextColor="White"></Entry>-->
 

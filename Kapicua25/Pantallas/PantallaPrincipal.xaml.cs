@@ -187,6 +187,9 @@ namespace Kapicua25.Pantallas
                 TxtPuntosEquipo2.Text = "0";
                 lsv_puntos.ItemsSource = null;
                 this.ListPuntos.Clear();
+                Configuraciones.Eliminar();
+
+
             }
         }
     }
