@@ -6,6 +6,7 @@ namespace Kapicua25
 {
     public partial class App : Application
     {
+        public static int TantosParaGanar { get; set; }
         public static string Equipo1 { get; set; }
         public static string Equipo2 { get; set; }
         public static string Jugador1Equipo1 { get; set; }

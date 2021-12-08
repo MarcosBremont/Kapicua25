@@ -3,10 +3,12 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Kapicua25.Pantallas.EditarEquipos">
     <ContentPage.Content>
-        <Grid RowSpacing="0" BackgroundColor="White">
+        <Grid RowSpacing="0" BackgroundColor="#52b788">
 
             <Grid.RowDefinitions>
                 <RowDefinition Height="60"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
 
@@ -71,13 +73,33 @@
                         <Entry x:Name="lbljugador2Equipo2" MaxLength="9" TextColor="White" WidthRequest="150" Text="Jugador 2" VerticalOptions="Center"></Entry>
                     </StackLayout>
 
-                    <Button  Scale="0.9" Padding="10" FontAttributes="Bold" FontSize="18" x:Name="BtnGuardarCambios" Clicked="BtnGuardarCambios_Clicked" CornerRadius="14" Text="GUARDAR CAMBIOS" Margin="0,30,0,0"/>
-
+                  
 
                 </StackLayout>
-             
+
+
+
+
             </StackLayout>
-          
+
+
+            <StackLayout Grid.Row="2" Margin="10,0,20,0" HorizontalOptions="Center" Orientation="Vertical" >
+                <Label Text="Tantos Para Ganar" HorizontalOptions="Center" TextColor="White"  FontAttributes="Bold" FontSize="20"></Label>
+                <!--<Entry x:Name="lblequipo2" Text="Equipo1" FontAttributes="Bold" HorizontalOptions="Center" TextColor="White"></Entry>-->
+
+                <StackLayout HorizontalOptions="CenterAndExpand" Margin="0,20,0,0" Orientation="Horizontal">
+                    <Picker SelectedIndexChanged="OnPickerSelectedIndexChanged" Title="ELIJA LOS TANTOS PARA GANAR" x:Name="PickerTantos" TitleColor="#333" FontAttributes="Bold" FontSize="16" HorizontalTextAlignment="Center"/>
+                </StackLayout>
+
+            </StackLayout>
+
+
+            <StackLayout Grid.Row="3" Margin="20,50,20,0" HorizontalOptions="Center" Orientation="Vertical" >
+
+                <Button  Padding="16" FontAttributes="Bold" FontSize="14" x:Name="BtnGuardarCambios" Clicked="BtnGuardarCambios_Clicked" CornerRadius="4" Text="GUARDAR CAMBIOS" Margin="0,30,0,0"/>
+            </StackLayout>
+
+
         </Grid>
         
     </ContentPage.Content>

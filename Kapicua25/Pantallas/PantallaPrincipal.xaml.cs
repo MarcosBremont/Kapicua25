@@ -24,11 +24,19 @@ namespace Kapicua25.Pantallas
         int Puntos2 = 0;
         int Puntos3 = 0;
         int Puntos4 = 0;
-        int PuntosParaTerminarMano = 50;
         public PantallaPrincipal()
         {
             InitializeComponent();
+
+            if (App.TantosParaGanar == 0)
+            {
+                App.TantosParaGanar = 100;
+            }
+
             gridInicio.BackgroundColor = Color.LightGray;
+
+
+
             //StackEquipo1.GestureRecognizers.Add(new TapGestureRecognizer
             //{
             //    Command = new Command(async () =>
@@ -75,7 +83,7 @@ namespace Kapicua25.Pantallas
                     StackLayoutAcercaDe.IsVisible = true;
                     lytBackNav.IsVisible = false;
                     gridInfo.BackgroundColor = Color.LightGray;
-                
+
                 }),
                 NumberOfTapsRequired = 1
             });
@@ -83,7 +91,10 @@ namespace Kapicua25.Pantallas
 
         protected override void OnAppearing()
         {
+
             base.OnAppearing();
+            LblTantos.Text = App.TantosParaGanar.ToString();
+
             Puntos = new Puntos();
             var result = Configuraciones.ObtenerDatosSesion();
             LLenarDatosAlmacenados();
@@ -94,6 +105,9 @@ namespace Kapicua25.Pantallas
                 LblJugador2.Text = "Jugador 2";
                 LblJugador1Equipo2.Text = "Jugador 1";
                 LblJugador2Equipo2.Text = "Jugador 2";
+                LblTantos.Text = "100";
+
+                Configuraciones.Grabar("", LblJugador1.Text, LblJugador2.Text, "", LblJugador1Equipo2.Text, LblJugador2Equipo2.Text, LblTantos.Text);
             }
             else
             {
@@ -104,6 +118,7 @@ namespace Kapicua25.Pantallas
                 //LblEquipo2.Text = result.Item4;
                 LblJugador1Equipo2.Text = result.Item5;
                 LblJugador2Equipo2.Text = result.Item6;
+                LblTantos.Text = result.Item7;
 
             }
         }
@@ -111,6 +126,8 @@ namespace Kapicua25.Pantallas
         {
             this.ListPuntos = Puntos.ObtenerPuntos();
             this.lsv_puntos.ItemsSource = this.ListPuntos;
+            lblPuntosEquipo1.Text = string.Format("{0}", ListPuntos.Sum(n => n.Punto1));
+            lblPuntosEquipo2.Text = string.Format("{0}", ListPuntos.Sum(n => n.Punto2));
         }
 
         private async void BtnAgregarRonda_Clicked(object sender, EventArgs e)
@@ -138,11 +155,11 @@ namespace Kapicua25.Pantallas
             this.lsv_puntos.ItemsSource = null;
             this.lsv_puntos.ItemsSource = this.ListPuntos;
 
-            if (puntosequipo1 >= PuntosParaTerminarMano)
+            if (puntosequipo1 >= App.TantosParaGanar)
             {
                 await DisplayAlert("Información", "¡El Equipo 1 ha ganado la partida!", "OK");
             }
-            else if (puntosequipos2 >= PuntosParaTerminarMano)
+            else if (puntosequipos2 >= App.TantosParaGanar)
             {
                 await DisplayAlert("Información", "¡El Equipo 2 ha ganado la partida!", "OK");
             }
@@ -152,7 +169,7 @@ namespace Kapicua25.Pantallas
         {
             if (await DisplayAlert("Información", "¿Desea terminar la partida?", "SI", "NO"))
             {
-                Configuraciones.Grabar("", "", "", "", "", "");
+                Configuraciones.Grabar("", "", "", "", "", "", "0");
                 MainPage mainpage = new MainPage();
                 await Navigation.PushModalAsync(mainpage);
                 Configuraciones.Eliminar();
@@ -165,7 +182,7 @@ namespace Kapicua25.Pantallas
         {
             return true;
 
-           
+
         }
 
         private async void BtnEditar_Clicked(object sender, EventArgs e)
@@ -188,6 +205,7 @@ namespace Kapicua25.Pantallas
                 lsv_puntos.ItemsSource = null;
                 this.ListPuntos.Clear();
                 Configuraciones.Eliminar();
+                Puntos.EliminarPuntos(this.ListPuntos);
 
 
             }

@@ -52,5 +52,26 @@ namespace Kapicua25.Objetos
             return result;
 
         }
+
+
+        public bool EliminarPuntos(List<EPuntos> puntos)
+        {
+            bool result = true;
+            try
+            {
+                var json = JsonConvert.SerializeObject(puntos);
+                if (File.Exists(ObtenerRunta("datos")))
+                    File.Delete(ObtenerRunta("datos"));
+
+                //File.WriteAllText(ObtenerRunta("datos"), json);
+            }
+            catch (Exception ex)
+            {
+                result = false;
+            }
+
+            return result;
+
+        }
     }
 }

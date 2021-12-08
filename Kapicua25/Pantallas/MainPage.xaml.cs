@@ -53,7 +53,7 @@ namespace Kapicua25.Pantallas
         private async void BtnSiguienteEquipo2_Clicked(object sender, EventArgs e)
         {
 
-            Configuraciones.Grabar(TxtEquipo1.Text, TxtJugador1.Text, TxtJugador2.Text, TxtEquipo2.Text, TxtJugador1Equipo2.Text, TxtJugador2Equipo2.Text);
+            Configuraciones.Grabar(TxtEquipo1.Text, TxtJugador1.Text, TxtJugador2.Text, TxtEquipo2.Text, TxtJugador1Equipo2.Text, TxtJugador2Equipo2.Text, "100");
 
             StackLayoutEquipo2.IsVisible = false;
             pantallaprincipal = new PantallaPrincipal();
