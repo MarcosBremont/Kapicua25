@@ -17,15 +17,15 @@ namespace Kapicua25.Pantallas
         public EditarEquipos()
         {
             InitializeComponent();
-
+            PickerTantos.Items.Add("100");
+            PickerTantos.Items.Add("200");
+            PickerTantos.Items.Add("300");
         }
 
         protected async override void OnAppearing()
         {
             var result = Configuraciones.ObtenerDatosSesion();
-            PickerTantos.Items.Add("100");
-            PickerTantos.Items.Add("200");
-            PickerTantos.Items.Add("300");
+          
 
             lbljugador1.Text = result.Item2;
             lbljugador2.Text = result.Item3;
@@ -80,12 +80,12 @@ namespace Kapicua25.Pantallas
             {
 
                 var result = Configuraciones.ObtenerDatosSesion();
-                if (PickerTantos.Title == "ELIJA LOS TANTOS PARA GANAR")
-                {
-                   tantos = "100";
-                }
+                //if (PickerTantos.Title == "ELIJA LOS TANTOS PARA GANAR")
+                //{
+                //   tantos = "100";
+                //}
 
-                Configuraciones.Grabar("", lbljugador1.Text, lbljugador2.Text, "", lbljugador1Equipo2.Text, lbljugador2Equipo2.Text, tantos);
+                Configuraciones.Grabar("", lbljugador1.Text, lbljugador2.Text, "", lbljugador1Equipo2.Text, lbljugador2Equipo2.Text, App.TantosParaGanar.ToString());
                 //Toast.MakeText(this, "¡Los datos se han guardado exitosamente!", 1, ToastLength.Long).Show();
                 Toast.MakeText(Android.App.Application.Context, "¡Los datos se han guardado exitosamente!", ToastLength.Long).Show();
 

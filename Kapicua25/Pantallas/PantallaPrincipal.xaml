@@ -4,13 +4,13 @@
              x:Class="Kapicua25.Pantallas.PantallaPrincipal"
              NavigationPage.HasNavigationBar="False">
     <ContentPage.Content>
-        <StackLayout IsVisible="true" x:Name="StackLayoutEquipo1" BackgroundColor="#52b788">
+        <StackLayout IsVisible="true" x:Name="StackLayoutEquipo1" BackgroundColor="#1d3557">
 
 
             <StackLayout Orientation="Horizontal" BackgroundColor="White" Margin="0,0,0,0" HeightRequest="60"  x:Name="lytBackNav">
                 <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
-                    <ImageButton Source="domino.png" x:Name="BtnHamburguermenu" BackgroundColor="Transparent" HorizontalOptions="CenterAndExpand" HeightRequest="30" Margin="16,0,0,0" ></ImageButton>
-                    <Label Text="Kapicúa25" VerticalOptions="CenterAndExpand" TextColor="#52b788" FontSize="18" FontAttributes="Bold"/>
+                    <!--<ImageButton Source="domino.png" x:Name="BtnHamburguermenu" BackgroundColor="Transparent" HorizontalOptions="CenterAndExpand" HeightRequest="30" Margin="16,0,0,0" ></ImageButton>-->
+                    <Label Text="Kapicúa25" VerticalOptions="CenterAndExpand" TextColor="#e63946" FontSize="18" FontAttributes="Bold"/>
                 </StackLayout>
                 <ImageButton Source="Pencil4.png" x:Name="BtnEditar" Clicked="BtnEditar_Clicked" HeightRequest="25" BackgroundColor="Transparent" HorizontalOptions="End" Margin="0,0,10,0" ></ImageButton>
             </StackLayout>
@@ -20,7 +20,7 @@
 
             <StackLayout VerticalOptions="StartAndExpand" x:Name="StackLayoutPaginaPrincipal">
 
-                <Grid  >
+                <Grid>
 
                     <Grid.RowDefinitions>
                         <RowDefinition Height="90"/>
@@ -35,63 +35,49 @@
                     </Grid.ColumnDefinitions>
 
                     <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
-                        <Label TextColor="White" HorizontalOptions="Center" Text="Tantos para ganar:"></Label>
-                        <Label x:Name="LblTantos" TextColor="White" HorizontalOptions="Center" Text="100"></Label>
+                        <Label TextColor="White" FontSize="15" HorizontalOptions="Center" Text="Tantos para ganar:"></Label>
+                        <Label x:Name="LblTantos" TextColor="White" FontSize="15" HorizontalOptions="Center"></Label>
                     </StackLayout>
 
 
                     <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Horizontal" Margin="20,30,20,0">
 
-                        <StackLayout x:Name="StackEquipo1" Orientation="Vertical" HorizontalOptions="StartAndExpand">
-
-                            <!--<StackLayout  Margin="0,10,0,0"  HorizontalOptions="Center" Orientation="Horizontal" >
-                            <Label FontSize="16" x:Name="LblEquipo1" TextColor="White"  Text="Equipo1"></Label>
-                        </StackLayout>-->
+                        <StackLayout x:Name="StackEquipo1" Orientation="Vertical" HorizontalOptions="Start">
 
                             <StackLayout  Margin="0,10,0,0" Orientation="Horizontal" >
-                                <Label FontSize="16" x:Name="LblJugador1" TextColor="White"  Text="Jugador 1"></Label>
-                                <Label FontSize="16" TextColor="White"  Text="Y"></Label>
-                                <Label FontSize="16" x:Name="LblJugador2" TextColor="White"  Text="Jugador 2"></Label>
+                                <Label FontSize="15" x:Name="LblJugador1" TextColor="White"  Text="Jugador 1"></Label>
+                                <Label FontSize="15" TextColor="White"  Text="Y"></Label>
+                                <Label FontSize="15" x:Name="LblJugador2" TextColor="White"  Text="Jugador 2"></Label>
                             </StackLayout>
 
-                            <StackLayout  Margin="0,10,0,0" Orientation="Horizontal" >
-
-
-                            </StackLayout>
 
                             <StackLayout x:Name="PartedelStackEquipo1" HorizontalOptions="CenterAndExpand" Margin="0,0,0,0" Orientation="Horizontal" >
-                                <Label FontSize="16" Text="Tantos" TextColor="White" VerticalOptions="Center" FontAttributes="Bold" ></Label>
-                                <Label FontSize="16" VerticalOptions="Center" x:Name="lblPuntosEquipo1" TextColor="White" FontAttributes="Bold"  Text="0"></Label>
+                                <Label FontSize="15" Text="Tantos" TextColor="White" VerticalOptions="Center" FontAttributes="Bold" ></Label>
+                                <Label FontSize="15" VerticalOptions="Center" x:Name="lblPuntosEquipo1" TextColor="White" FontAttributes="Bold"  Text="0"></Label>
                             </StackLayout>
 
 
 
                         </StackLayout>
 
-                        <StackLayout Grid.Row="1"  Margin="0,60,0,0" Orientation="Horizontal" >
-                            <Label TextColor="White" FontSize="18" Text="VS" FontAttributes="Bold"></Label>
+                        <StackLayout Grid.Row="1" HorizontalOptions="CenterAndExpand" Margin="0,25,0,0" Orientation="Horizontal" >
+                            <Label TextColor="#e63946" FontSize="18" Text="VS" FontAttributes="Bold"></Label>
                         </StackLayout>
 
 
-                        <StackLayout x:Name="StackEquipo2" Orientation="Vertical" Grid.Row="0" Grid.Column="1" HorizontalOptions="EndAndExpand">
-
-                            <!--<StackLayout  Margin="0,10,0,0"  HorizontalOptions="Center" Orientation="Horizontal" >
-                            <Label FontSize="16" x:Name="LblEquipo2" TextColor="White"  Text="Equipo2"></Label>
-                        </StackLayout>-->
+                        <StackLayout x:Name="StackEquipo2" Orientation="Vertical" Grid.Row="0" Grid.Column="1">
 
                             <StackLayout  Margin="0,10,0,0" Orientation="Horizontal" >
-                                <Label FontSize="16" x:Name="LblJugador1Equipo2" TextColor="White"  Text="Jugador 1" LineBreakMode="NoWrap"></Label>
-                                <Label FontSize="16" TextColor="White"  Text="Y"></Label>
-                                <Label FontSize="16" x:Name="LblJugador2Equipo2" TextColor="White"  Text="Jugador 2"></Label>
+                                <Label FontSize="15" x:Name="LblJugador1Equipo2" TextColor="White"  Text="Jugador 1" LineBreakMode="NoWrap"></Label>
+                                <Label FontSize="15" TextColor="White"  Text="Y"></Label>
+                                <Label FontSize="15" x:Name="LblJugador2Equipo2" TextColor="White"  Text="Jugador 2"></Label>
                             </StackLayout>
 
-                            <StackLayout  Margin="0,10,0,0" Orientation="Horizontal" >
-
-                            </StackLayout>
+               
 
                             <StackLayout x:Name="PartedelStackEquipo2" HorizontalOptions="CenterAndExpand"  Margin="0,0,0,0" Orientation="Horizontal" >
-                                <Label FontSize="16" Text="Tantos" TextColor="White" VerticalOptions="Center" FontAttributes="Bold" ></Label>
-                                <Label FontSize="16" x:Name="lblPuntosEquipo2" VerticalOptions="Center" TextColor="White" FontAttributes="Bold"  Text="0"></Label>
+                                <Label FontSize="15" Text="Tantos" TextColor="White" VerticalOptions="Center" FontAttributes="Bold" ></Label>
+                                <Label FontSize="15" x:Name="lblPuntosEquipo2" VerticalOptions="Center" TextColor="White" FontAttributes="Bold"  Text="0"></Label>
                             </StackLayout>
 
 
@@ -101,36 +87,28 @@
 
                     </StackLayout>
 
-                    <StackLayout Margin="0,0,0,0" Grid.Row="2" Orientation="Horizontal" >
+                    <StackLayout Margin="10,-20,10,0" Grid.Row="2" Orientation="Horizontal" >
 
 
-                        <StackLayout Grid.Column="0" Padding="19" Margin="0,20,0,0" HorizontalOptions="StartAndExpand" Orientation="Horizontal" >
+                        <Frame Grid.Column="0" Padding="5" Margin="20" HorizontalOptions="StartAndExpand" >
 
-                            <Entry TextColor="White" FontSize="16" Keyboard="Numeric" HorizontalTextAlignment="Center" Text="25" WidthRequest="115" x:Name="TxtPuntosEquipo1" ></Entry>
+                            <Entry TextColor="#333" FontAttributes="Bold" FontSize="15" Keyboard="Numeric" HorizontalTextAlignment="Center" Text="25" WidthRequest="115" x:Name="TxtPuntosEquipo1" ></Entry>
 
-                        </StackLayout>
+                        </Frame>
 
 
-                        <StackLayout Grid.Column="1" Padding="19" Margin="0,20,0,0" Orientation="Horizontal" >
+                        <Frame Grid.Column="1" Padding="5" Margin="20" >
 
-                            <Entry TextColor="White" FontSize="16"  Keyboard="Numeric" HorizontalTextAlignment="Center" Text="25" x:Name="TxtPuntosEquipo2" WidthRequest="115"></Entry>
+                            <Entry TextColor="#333" FontAttributes="Bold" FontSize="15"  Keyboard="Numeric" HorizontalTextAlignment="Center" Text="25" x:Name="TxtPuntosEquipo2" WidthRequest="115"></Entry>
 
-                        </StackLayout>
+                        </Frame>
 
                     </StackLayout>
 
-
-
-
-
-
-
-
-                    <!--<Button Grid.Row="4"  Scale="0.8" FontAttributes="Bold" FontSize="18" x:Name="BtnTerminarRonda" Clicked="BtnTerminarRonda_Clicked" CornerRadius="4" Text="TERMINAR RONDA" Margin="0,30,0,0"/>-->
 
                     <StackLayout Grid.Row="3" HorizontalOptions="CenterAndExpand" Margin="20,0,20,0">
 
-                        <ListView x:Name="lsv_puntos" HorizontalOptions="CenterAndExpand" SeparatorVisibility="Default"  SeparatorColor="#3E5569" HasUnevenRows="True" >
+                        <ListView x:Name="lsv_puntos" HorizontalOptions="CenterAndExpand" SeparatorVisibility="Default"  SeparatorColor="White" HasUnevenRows="True" >
                             <ListView.ItemTemplate>
 
                                 <DataTemplate>
@@ -138,20 +116,22 @@
                                     <ViewCell >
 
 
-                                        <Grid  HorizontalOptions="CenterAndExpand">
+                                        <Grid>
 
 
                                             <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="auto"/>
-                                                <ColumnDefinition Width="auto"/>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="*"/>
                                             </Grid.ColumnDefinitions>
 
 
 
-                                            <StackLayout Orientation="Horizontal">
-                                                <Label FontSize="18" Margin="0,0,170,0" HorizontalOptions="StartAndExpand" FontAttributes="Bold" Grid.Column="0" Text="{Binding Punto1}"/>
-                                                <Label FontSize="18"  Margin="50,0,0,0" HorizontalOptions="EndAndExpand" FontAttributes="Bold" Grid.Column="1" Text="{Binding Punto2}"/>
+                                            <StackLayout HorizontalOptions="StartAndExpand" Margin="60,0,0,0" Grid.Column="0">
+                                                <Label FontSize="18"  TextColor="White" FontAttributes="Bold"  Text="{Binding Punto1}"/>
+                                            </StackLayout>
 
+                                            <StackLayout HorizontalOptions="EndAndExpand" Margin="0,0,60,0" Grid.Column="1">
+                                                <Label FontSize="18"  TextColor="White"  FontAttributes="Bold"  Text="{Binding Punto2}"/>
                                             </StackLayout>
 
 
@@ -168,17 +148,18 @@
 
                 </Grid>
 
-                <Button Grid.Row="4" Scale="0.8" FontAttributes="Bold" FontSize="18" x:Name="BtnAgregarRonda" Clicked="BtnAgregarRonda_Clicked"  CornerRadius="40" Text="AGREGAR RONDA" Margin="0,30,0,0"/>
+                <Button Grid.Row="4" Scale="0.8" BackgroundColor="White"  FontSize="20" x:Name="BtnAgregarRonda" TextTransform="None" Clicked="BtnAgregarRonda_Clicked"  CornerRadius="4" Text="Agregar Ronda" Margin="0,30,0,0"/>
 
-                <Button Grid.Row="4" Scale="0.8" FontAttributes="Bold" FontSize="18" x:Name="BtnNuevaPartida" Clicked="BtnNuevaPartida_Clicked"  CornerRadius="40" Text="NUEVA PARTIDA" Margin="0,0,0,0"/>
+                <Button Grid.Row="4" Scale="0.8" BackgroundColor="#e63946" TextColor="White" FontSize="20" x:Name="BtnNuevaPartida" TextTransform="None" Clicked="BtnNuevaPartida_Clicked"  CornerRadius="4" 
+                  Text="Nueva Partida" Margin="0,0,0,0"/>
             </StackLayout>
 
 
             <!--Layout Acerca De-->
 
-            <StackLayout IsVisible="false" VerticalOptions="StartAndExpand" x:Name="StackLayoutAcercaDe" BackgroundColor="#52b788">
+            <StackLayout IsVisible="false" VerticalOptions="StartAndExpand" x:Name="StackLayoutAcercaDe" BackgroundColor="#1d3557">
 
-                <Grid RowSpacing="0" BackgroundColor="#52b788">
+                <Grid RowSpacing="0" BackgroundColor="#1d3557">
 
                     <Grid.RowDefinitions>
                         <RowDefinition>
@@ -209,7 +190,7 @@
                     <StackLayout Orientation="Horizontal" BackgroundColor="White" Margin="0,0,0,0" HeightRequest="60">
                         <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
                             <ImageButton Source="domino.png"  BackgroundColor="Transparent" HorizontalOptions="CenterAndExpand" HeightRequest="30" Margin="16,0,0,0" ></ImageButton>
-                            <Label Text="Acerca de la App" VerticalOptions="CenterAndExpand" TextColor="#52b788" FontSize="18" FontAttributes="Bold"/>
+                            <Label Text="Acerca de la App" VerticalOptions="CenterAndExpand" TextColor="#e63946" FontSize="18" FontAttributes="Bold"/>
                         </StackLayout>
                     </StackLayout>
 

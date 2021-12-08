@@ -31,6 +31,8 @@ namespace Kapicua25.Pantallas
             if (App.TantosParaGanar == 0)
             {
                 App.TantosParaGanar = 100;
+                Configuraciones.Grabar("", LblJugador1.Text, LblJugador2.Text, "", LblJugador1Equipo2.Text, LblJugador2Equipo2.Text, LblTantos.Text);
+
             }
 
             gridInicio.BackgroundColor = Color.LightGray;
@@ -121,7 +123,7 @@ namespace Kapicua25.Pantallas
                 LblTantos.Text = result.Item7;
 
             }
-        }
+          }
         private void LLenarDatosAlmacenados()
         {
             this.ListPuntos = Puntos.ObtenerPuntos();
