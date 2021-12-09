@@ -14,7 +14,7 @@ namespace Kapicua25.Objetos
         public static string Telefono { get; set; }
 
 
-        public static void Grabar(string Equipo1, string Equipo1Jugador1, string Equipo1Jugador2, string Equipo2, string Equipo2Jugador1, string Equipo2Jugador2, string tantosParaGanar)
+        public static void Grabar(string Equipo1, string Equipo1Jugador1, string Equipo1Jugador2, string Equipo2, string Equipo2Jugador1, string Equipo2Jugador2, string tantosParaGanar, string ganador)
         {
             string fileEquipo1 = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Equipo1");
             string fileEquipo1Jugador1 = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Equipo1Jugador1");
@@ -23,6 +23,7 @@ namespace Kapicua25.Objetos
             string fileEquipo2Jugador1 = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Equipo2Jugador1");
             string fileEquipo2Jugador2 = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Equipo2Jugador2");
             string TantosParaGanar = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "tantosParaGanar");
+            string fileGanador = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "ganador");
 
             File.WriteAllText(fileEquipo1, Equipo1);
             File.WriteAllText(fileEquipo1Jugador1, Equipo1Jugador1);
@@ -31,11 +32,13 @@ namespace Kapicua25.Objetos
             File.WriteAllText(fileEquipo2Jugador1, Equipo2Jugador1);
             File.WriteAllText(fileEquipo2Jugador2, Equipo2Jugador2);
             File.WriteAllText(TantosParaGanar, tantosParaGanar);
+            File.WriteAllText(fileGanador, ganador);
         }
 
-        public static Tuple<string, string, string, string, string, string, string> ObtenerDatosSesion()
+        public static EGlobal ObtenerDatosSesion()
         {
-            string Equipo1 = string.Empty, Equipo1Jugador1 = string.Empty, Equipo1Jugador2 = string.Empty, Equipo2 = string.Empty, Equipo2Jugador1 = string.Empty, Equipo2Jugador2 = string.Empty, Tantos = string.Empty;
+            EGlobal eGlobal = new EGlobal();
+            //string Equipo1 = string.Empty, Equipo1Jugador1 = string.Empty, Equipo1Jugador2 = string.Empty, Equipo2 = string.Empty, Equipo2Jugador1 = string.Empty, Equipo2Jugador2 = string.Empty, Tantos = string.Empty;
             try
             {
                 string fileEquipo1 = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Equipo1");
@@ -45,21 +48,24 @@ namespace Kapicua25.Objetos
                 string fileEquipo2Jugador1 = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Equipo2Jugador1");
                 string fileEquipo2Jugador2 = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Equipo2Jugador2");
                 string TantosParaGanar = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "tantosParaGanar");
-                Equipo1 = File.ReadAllText(fileEquipo1);
-                Equipo1Jugador1 = File.ReadAllText(fileEquipo1Jugador1);
-                Equipo1Jugador2 = File.ReadAllText(fileEquipo1Jugador2);
-                Equipo2 = File.ReadAllText(fileEquipo2);
-                Equipo2Jugador1 = File.ReadAllText(fileEquipo2Jugador1);
-                Equipo2Jugador2 = File.ReadAllText(fileEquipo2Jugador2);
-                Tantos = File.ReadAllText(TantosParaGanar);
+                string fileGanador = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "ganador");
+                eGlobal.Equipo1 = File.ReadAllText(fileEquipo1);
+                eGlobal.Equipo1Jugador1 = File.ReadAllText(fileEquipo1Jugador1);
+                eGlobal.Equipo1Jugador2 = File.ReadAllText(fileEquipo1Jugador2);
+                eGlobal.Equipo2 = File.ReadAllText(fileEquipo2);
+                eGlobal.Equipo2Jugador1 = File.ReadAllText(fileEquipo2Jugador1);
+                eGlobal.Equipo2Jugador2 = File.ReadAllText(fileEquipo2Jugador2);
+                eGlobal.Tantos = File.ReadAllText(TantosParaGanar);
+                eGlobal.Ganador = File.ReadAllText(fileGanador);
             }
             catch (Exception)
             {
 
             }
 
-            
-            return Tuple.Create(Equipo1, Equipo1Jugador1, Equipo1Jugador2, Equipo2, Equipo2Jugador1, Equipo2Jugador2, Tantos);
+
+            //return Tuple.Create(Equipo1, Equipo1Jugador1, Equipo1Jugador2, Equipo2, Equipo2Jugador1, Equipo2Jugador2, Tantos);
+            return eGlobal;
         }
 
 
@@ -72,6 +78,7 @@ namespace Kapicua25.Objetos
             string fileEquipo2Jugador1 = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Equipo2Jugador1");
             string fileEquipo2Jugador2 = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Equipo2Jugador2");
             string Tantos = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Equipo2Jugador2");
+            string fileGanador = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "ganador");
 
             File.Delete(fileEquipo1);
             File.Delete(fileEquipo1Jugador1);
@@ -80,6 +87,7 @@ namespace Kapicua25.Objetos
             File.Delete(fileEquipo2Jugador1);
             File.Delete(fileEquipo2Jugador2);
             File.Delete(Tantos);
+            File.Delete(fileGanador);
         }
 
     }

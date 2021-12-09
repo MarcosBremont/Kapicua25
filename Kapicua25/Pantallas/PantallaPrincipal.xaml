@@ -42,7 +42,7 @@
 
                     <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Horizontal" Margin="20,30,20,0">
 
-                        <StackLayout x:Name="StackEquipo1" Orientation="Vertical" HorizontalOptions="Start">
+                        <StackLayout x:Name="StackEquipo1"  Orientation="Vertical" HorizontalOptions="CenterAndExpand">
 
                             <StackLayout  Margin="0,10,0,0" Orientation="Horizontal" >
                                 <Label FontSize="15" x:Name="LblJugador1" TextColor="White"  Text="Jugador 1"></Label>
@@ -61,11 +61,11 @@
                         </StackLayout>
 
                         <StackLayout Grid.Row="1" HorizontalOptions="CenterAndExpand" Margin="0,25,0,0" Orientation="Horizontal" >
-                            <Label TextColor="#e63946" FontSize="18" Text="VS" FontAttributes="Bold"></Label>
+                            <Label TextColor="#e63946" FontSize="25" Text="VS" FontAttributes="Bold"></Label>
                         </StackLayout>
 
 
-                        <StackLayout x:Name="StackEquipo2" Orientation="Vertical" Grid.Row="0" Grid.Column="1">
+                        <StackLayout x:Name="StackEquipo2" Orientation="Vertical" Grid.Row="0" Grid.Column="1" HorizontalOptions="CenterAndExpand">
 
                             <StackLayout  Margin="0,10,0,0" Orientation="Horizontal" >
                                 <Label FontSize="15" x:Name="LblJugador1Equipo2" TextColor="White"  Text="Jugador 1" LineBreakMode="NoWrap"></Label>
@@ -92,22 +92,22 @@
 
                         <Frame Grid.Column="0" Padding="5" Margin="20" HorizontalOptions="StartAndExpand" >
 
-                            <Entry TextColor="#333" FontAttributes="Bold" FontSize="15" Keyboard="Numeric" HorizontalTextAlignment="Center" Text="25" WidthRequest="115" x:Name="TxtPuntosEquipo1" ></Entry>
+                            <Entry TextColor="#333" FontAttributes="Bold" FontSize="16" Keyboard="Numeric" HorizontalTextAlignment="Center" Text="0" WidthRequest="115" x:Name="TxtPuntosEquipo1" ></Entry>
 
                         </Frame>
 
 
                         <Frame Grid.Column="1" Padding="5" Margin="20" >
 
-                            <Entry TextColor="#333" FontAttributes="Bold" FontSize="15"  Keyboard="Numeric" HorizontalTextAlignment="Center" Text="25" x:Name="TxtPuntosEquipo2" WidthRequest="115"></Entry>
+                            <Entry TextColor="#333" FontAttributes="Bold" FontSize="16"  Keyboard="Numeric" HorizontalTextAlignment="Center" Text="0" x:Name="TxtPuntosEquipo2" WidthRequest="115"></Entry>
 
                         </Frame>
 
                     </StackLayout>
 
 
-                    <StackLayout Grid.Row="3" HorizontalOptions="CenterAndExpand" Margin="20,0,20,0">
-
+                        <Frame Grid.Row="3" HasShadow="True" HorizontalOptions="CenterAndExpand" BackgroundColor="#1d3557" Margin="0,0,0,0">
+                            
                         <ListView x:Name="lsv_puntos" HorizontalOptions="CenterAndExpand" SeparatorVisibility="Default"  SeparatorColor="White" HasUnevenRows="True" >
                             <ListView.ItemTemplate>
 
@@ -143,7 +143,8 @@
 
                             </ListView.ItemTemplate>
                         </ListView>
-                    </StackLayout>
+                        </Frame>
+
 
 
                 </Grid>
@@ -202,7 +203,7 @@
                         <ScrollView VerticalOptions="FillAndExpand">
                             <StackLayout Padding="30,5,30,30" Spacing="0" VerticalOptions="FillAndExpand">
 
-                                <Image Source="LogoOfiTec.png" WidthRequest="100"></Image>
+                                <Image Source="LogoKapicua.png" WidthRequest="100"></Image>
                                 <StackLayout>
                                     <Label TextColor="White"
                                    Text="..."
@@ -274,6 +275,89 @@
 
                 </Grid>
             </StackLayout>
+
+
+            <!--Layout Principal-->
+
+            <StackLayout IsVisible="False" VerticalOptions="StartAndExpand" x:Name="StackLayoutHistorialPartidas">
+
+                <Grid>
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="60"/>
+                        <RowDefinition Height="0"/>
+                        <RowDefinition />
+                        <RowDefinition Height="320"/>
+                    </Grid.RowDefinitions>
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="auto"/>
+                    </Grid.ColumnDefinitions>
+
+
+                    <StackLayout Orientation="Horizontal" BackgroundColor="White" Margin="0,0,0,0" HeightRequest="60">
+                        <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                            <Label Text="Historial Partidas Jugadas" VerticalOptions="CenterAndExpand" TextColor="#e63946" FontSize="18" FontAttributes="Bold"/>
+                        </StackLayout>
+                    </StackLayout>
+
+
+
+                    <Frame Grid.Row="3" HasShadow="True" HorizontalOptions="CenterAndExpand" BackgroundColor="White" Margin="0,0,0,0">
+
+                        <ListView x:Name="Lsv_HistorialPartidas" IsVisible="True" HorizontalOptions="CenterAndExpand" SeparatorVisibility="Default"  SeparatorColor="White" HasUnevenRows="True" >
+                            <ListView.ItemTemplate>
+
+                                <DataTemplate>
+
+                                    <ViewCell >
+
+
+                                        <Grid>
+
+
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="*"/>
+                                            </Grid.ColumnDefinitions>
+
+
+
+                                            <StackLayout HorizontalOptions="StartAndExpand" Margin="60,0,0,0" Grid.Column="0">
+                                                <Label FontSize="18"  TextColor="Black" FontAttributes="Bold"  Text="{Binding Ganador1}"/>
+                                            </StackLayout>
+
+                                            <StackLayout HorizontalOptions="EndAndExpand" Margin="0,0,60,0" Grid.Column="1">
+                                                <Label FontSize="18"  TextColor="Black"  FontAttributes="Bold"  Text="{Binding Ganador2}"/>
+                                            </StackLayout>
+
+                                            <StackLayout HorizontalOptions="EndAndExpand" Margin="0,0,60,0" Grid.Column="2">
+                                                <Label FontSize="18"  TextColor="Black"  FontAttributes="Bold"  Text="{Binding Juego}"/>
+                                            </StackLayout>
+
+
+                                        </Grid>
+
+                                    </ViewCell>
+                                </DataTemplate>
+
+
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </Frame>
+
+
+
+                </Grid>
+
+                <Button Grid.Row="4" Scale="0.8" BackgroundColor="White"  FontSize="20" TextTransform="None" Clicked="BtnAgregarRonda_Clicked"  CornerRadius="4" Text="Agregar Ronda" Margin="0,30,0,0"/>
+
+                <Button Grid.Row="4" Scale="0.8" BackgroundColor="#e63946" TextColor="White" FontSize="20" TextTransform="None" Clicked="BtnNuevaPartida_Clicked"  CornerRadius="4" 
+                  Text="Nueva Partida" Margin="0,0,0,0"/>
+            </StackLayout>
+
 
 
             <!--Layout Editar-->
@@ -368,7 +452,6 @@
             </StackLayout>
 
 
-
             <!--Apartado del menu de abajo-->
             <StackLayout  Spacing="0" VerticalOptions="End" HeightRequest="60"  Margin="0,0,0,0" BackgroundColor="White">
 
@@ -388,14 +471,14 @@
 
                     <BoxView HeightRequest="40" WidthRequest="1" BackgroundColor="#818285" VerticalOptions="Center" Opacity="0.7"/>
 
-                    <StackLayout BackgroundColor="White" x:Name="gridRecargas">
-                        <Image Source="home2.png" Margin="30,0,30,0" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" HeightRequest="25" x:Name="btnImgRecargas"/>
+                    <StackLayout BackgroundColor="White" x:Name="gridHistorialPartidas">
+                        <Image Source="Document.png" Margin="30,0,30,0" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" HeightRequest="25" x:Name="btnImgHistorial"/>
                     </StackLayout>
 
                     <BoxView HeightRequest="40" WidthRequest="1" BackgroundColor="#818285" VerticalOptions="Center" Opacity="0.7"/>
 
                     <StackLayout BackgroundColor="White" x:Name="gridEstadoDeCuenta">
-                        <Image Source="settings.png" Margin="30,0,30,0" VerticalOptions="CenterAndExpand"  HorizontalOptions="CenterAndExpand" HeightRequest="25" x:Name="btnImgHistorial"/>
+                        <Image Source="interrogacion.png" Margin="30,0,30,0" VerticalOptions="CenterAndExpand"  HorizontalOptions="CenterAndExpand" HeightRequest="25" x:Name="btnImgHistorial2"/>
                     </StackLayout>
 
                     <BoxView HeightRequest="40" WidthRequest="1" BackgroundColor="#818285" VerticalOptions="Center" Opacity="0.7"/>

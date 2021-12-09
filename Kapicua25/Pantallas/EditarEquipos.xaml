@@ -87,7 +87,7 @@
                 <Label Text="Tantos Para Ganar" HorizontalOptions="Center" TextColor="White"  FontAttributes="Bold" FontSize="20"></Label>
                 <!--<Entry x:Name="lblequipo2" Text="Equipo1" FontAttributes="Bold" HorizontalOptions="Center" TextColor="White"></Entry>-->
                 <Frame BackgroundColor="White" HorizontalOptions="CenterAndExpand" Padding="2" CornerRadius="4" Margin="0,20,0,0">
-                    <Picker SelectedIndexChanged="OnPickerSelectedIndexChanged" WidthRequest="200" x:Name="PickerTantos" TitleColor="#333" FontAttributes="Bold" FontSize="16" HorizontalTextAlignment="Center"/>
+                    <Picker SelectedIndexChanged="OnPickerSelectedIndexChanged" Title="ELIJA LOS TANTOS PARA GANAR" WidthRequest="200" x:Name="PickerTantos" TitleColor="#333" FontAttributes="Bold" FontSize="16" HorizontalTextAlignment="Center"/>
                 </Frame>
 
             </StackLayout>

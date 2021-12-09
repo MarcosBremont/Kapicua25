@@ -33,12 +33,12 @@ namespace Kapicua25.Pantallas
         protected async override void OnAppearing()
         {
             var result = Configuraciones.ObtenerDatosSesion();
-            TxtEquipo1.Text = result.Item1;
-            TxtJugador1.Text = result.Item2;
-            TxtJugador2.Text = result.Item3;
-            TxtEquipo2.Text = result.Item4;
-            TxtJugador1Equipo2.Text = result.Item5;
-            TxtJugador2Equipo2.Text = result.Item6;
+            TxtEquipo1.Text = result.Equipo1;
+            TxtJugador1.Text = result.Equipo1Jugador1;
+            TxtJugador2.Text = result.Equipo1Jugador2;
+            TxtEquipo2.Text = result.Equipo2;
+            TxtJugador1Equipo2.Text = result.Equipo2Jugador1;
+            TxtJugador2Equipo2.Text = result.Equipo2Jugador2;
             base.OnAppearing();
         }
 
@@ -53,7 +53,7 @@ namespace Kapicua25.Pantallas
         private async void BtnSiguienteEquipo2_Clicked(object sender, EventArgs e)
         {
 
-            Configuraciones.Grabar(TxtEquipo1.Text, TxtJugador1.Text, TxtJugador2.Text, TxtEquipo2.Text, TxtJugador1Equipo2.Text, TxtJugador2Equipo2.Text, "100");
+            Configuraciones.Grabar(TxtEquipo1.Text, TxtJugador1.Text, TxtJugador2.Text, TxtEquipo2.Text, TxtJugador1Equipo2.Text, TxtJugador2Equipo2.Text, "100", "");
 
             StackLayoutEquipo2.IsVisible = false;
             pantallaprincipal = new PantallaPrincipal();

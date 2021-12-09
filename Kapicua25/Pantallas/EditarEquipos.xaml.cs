@@ -27,11 +27,11 @@ namespace Kapicua25.Pantallas
             var result = Configuraciones.ObtenerDatosSesion();
           
 
-            lbljugador1.Text = result.Item2;
-            lbljugador2.Text = result.Item3;
+            lbljugador1.Text = result.Equipo1Jugador1;
+            lbljugador2.Text = result.Equipo1Jugador2;
 
-            lbljugador1Equipo2.Text = result.Item5;
-            lbljugador2Equipo2.Text = result.Item6;
+            lbljugador1Equipo2.Text = result.Equipo2Jugador1;
+            lbljugador2Equipo2.Text = result.Equipo2Jugador2;
             PickerTantos.Title = App.TantosParaGanar.ToString();
             //if (!string.IsNullOrEmpty(App.Equipo1))
             //{
@@ -85,7 +85,7 @@ namespace Kapicua25.Pantallas
                 //   tantos = "100";
                 //}
 
-                Configuraciones.Grabar("", lbljugador1.Text, lbljugador2.Text, "", lbljugador1Equipo2.Text, lbljugador2Equipo2.Text, App.TantosParaGanar.ToString());
+                Configuraciones.Grabar("", lbljugador1.Text, lbljugador2.Text, "", lbljugador1Equipo2.Text, lbljugador2Equipo2.Text, App.TantosParaGanar.ToString(), "");
                 //Toast.MakeText(this, "¡Los datos se han guardado exitosamente!", 1, ToastLength.Long).Show();
                 Toast.MakeText(Android.App.Application.Context, "¡Los datos se han guardado exitosamente!", ToastLength.Long).Show();
 
