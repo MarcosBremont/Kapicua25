@@ -1,4 +1,5 @@
-﻿using Kapicua25.Objetos;
+﻿using Android.Widget;
+using Kapicua25.Objetos;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,11 +29,18 @@ namespace Kapicua25.Pantallas
         {
             InitializeComponent();
 
-            if (App.TantosParaGanar == 0)
-            {
-                App.TantosParaGanar = 100;
-                Configuraciones.Grabar("", LblJugador1.Text, LblJugador2.Text, "", LblJugador1Equipo2.Text, LblJugador2Equipo2.Text, LblTantos.Text);
+            #region gridconfig
+            PickerTantos.Items.Add("100");
+            PickerTantos.Items.Add("200");
+            PickerTantos.Items.Add("300");
+            #endregion
+            var result2 = Configuraciones.ObtenerDatosSesion();
 
+
+            if (Convert.ToInt32(result2.Item7) == 0)
+            {
+                Configuraciones.Grabar("", LblJugador1.Text, LblJugador2.Text, "", LblJugador1Equipo2.Text, LblJugador2Equipo2.Text, "100");
+                LblTantos.Text = result2.Item7;
             }
 
             gridInicio.BackgroundColor = Color.LightGray;
@@ -69,8 +77,16 @@ namespace Kapicua25.Pantallas
                     gridInicio.BackgroundColor = Color.LightGray;
                     StackLayoutPaginaPrincipal.IsVisible = true;
                     StackLayoutAcercaDe.IsVisible = false;
+                    StackLayoutConfig.IsVisible = false;
                     lytBackNav.IsVisible = true;
+                    gridconfig.BackgroundColor = Color.White;
                     gridInfo.BackgroundColor = Color.White;
+                    var result = Configuraciones.ObtenerDatosSesion();
+                    LblTantos.Text = result.Item7;
+                    LblJugador1.Text = result.Item2;
+                    LblJugador2.Text = result.Item3;
+                    LblJugador1Equipo2.Text = result.Item5;
+                    LblJugador2Equipo2.Text = result.Item6;
                     //lytBackNav1.IsVisible = true;
                 }),
                 NumberOfTapsRequired = 1
@@ -81,14 +97,45 @@ namespace Kapicua25.Pantallas
                 Command = new Command(async () =>
                 {
                     gridInicio.BackgroundColor = Color.White;
+                    gridconfig.BackgroundColor = Color.White;
                     StackLayoutPaginaPrincipal.IsVisible = false;
                     StackLayoutAcercaDe.IsVisible = true;
+                    StackLayoutConfig.IsVisible = false;
                     lytBackNav.IsVisible = false;
                     gridInfo.BackgroundColor = Color.LightGray;
 
                 }),
                 NumberOfTapsRequired = 1
             });
+
+
+            gridconfig.GestureRecognizers.Add(new TapGestureRecognizer
+            {
+                Command = new Command(async () =>
+                {
+                    gridInicio.BackgroundColor = Color.White;
+                    gridInfo.BackgroundColor = Color.White;
+                    StackLayoutPaginaPrincipal.IsVisible = false;
+                    StackLayoutAcercaDe.IsVisible = false;
+                    StackLayoutConfig.IsVisible = true;
+                    lytBackNav.IsVisible = false;
+                    gridconfig.BackgroundColor = Color.LightGray;
+
+                }),
+                NumberOfTapsRequired = 1
+            });
+        }
+
+        void OnPickerSelectedIndexChanged(object sender, EventArgs e)
+        {
+            var picker = (Picker)sender;
+            int selectedIndex = picker.SelectedIndex;
+
+            if (selectedIndex != -1)
+            {
+                App.TantosParaGanar = Convert.ToInt32(picker.Items[selectedIndex]);
+
+            }
         }
 
         protected override void OnAppearing()
@@ -99,6 +146,16 @@ namespace Kapicua25.Pantallas
 
             Puntos = new Puntos();
             var result = Configuraciones.ObtenerDatosSesion();
+            PickerTantos.Title = App.TantosParaGanar.ToString();
+
+
+            lbljugador1Editar.Text = result.Item2;
+            lbljugador2Editar.Text = result.Item3;
+
+            lbljugador1Equipo2Editar.Text = result.Item5;
+            lbljugador2Equipo2Editar.Text = result.Item6;
+            PickerTantos.Title = App.TantosParaGanar.ToString();
+
             LLenarDatosAlmacenados();
 
             if (string.IsNullOrEmpty(result.Item1) && string.IsNullOrEmpty(result.Item2) && string.IsNullOrEmpty(result.Item3) && string.IsNullOrEmpty(result.Item4) && string.IsNullOrEmpty(result.Item5) && string.IsNullOrEmpty(result.Item6))
@@ -193,6 +250,7 @@ namespace Kapicua25.Pantallas
             App.Jugador2Equipo1 = LblJugador2.Text;
             App.Jugador1Equipo2 = LblJugador1Equipo2.Text;
             App.Jugador2Equipo2 = LblJugador2Equipo2.Text;
+
             await Navigation.PushModalAsync(editarEquipos);
         }
 
@@ -211,6 +269,38 @@ namespace Kapicua25.Pantallas
 
 
             }
+        }
+
+        public void BtnGuardarCambios_Clicked(System.Object sender, System.EventArgs e)
+        {
+            string tantos = "";
+            //IndicadorCargando.IsRunning = true;
+            try
+            {
+
+                var result = Configuraciones.ObtenerDatosSesion();
+                //if (PickerTantos.Title == "ELIJA LOS TANTOS PARA GANAR")
+                //{
+                //   tantos = "100";
+                //}
+
+                Configuraciones.Grabar("", lbljugador1Editar.Text, lbljugador2Editar.Text, "", lbljugador1Equipo2Editar.Text, lbljugador2Equipo2Editar.Text, App.TantosParaGanar.ToString());
+                //Toast.MakeText(this, "¡Los datos se han guardado exitosamente!", 1, ToastLength.Long).Show();
+                Toast.MakeText(Android.App.Application.Context, "¡Los datos se han guardado exitosamente!", ToastLength.Long).Show();
+
+
+            }
+            catch (Exception ex)
+            {
+                Toast.MakeText(Android.App.Application.Context, "¡Los datos no se han guardado, intente mas tarde!", ToastLength.Long).Show();
+
+
+            }
+
+            //IndicadorCargando.IsRunning = false;
+
+
+
         }
     }
 }
