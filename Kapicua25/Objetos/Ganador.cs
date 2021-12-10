@@ -33,16 +33,26 @@ namespace Kapicua25.Objetos
         {
             return Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), nombreArchivo);
         }
-        public bool GrabarGanadores(List<EGanador> Ganador)
+        public bool GrabarGanadores(EGanador Ganador)
         {
             bool result = true;
             try
             {
-                var json = JsonConvert.SerializeObject(Ganador);
-                if (File.Exists(ObtenerRuta("ganador")))
-                    File.Delete(ObtenerRuta("ganador"));
+                List<EGanador> listadoAlm = new List<EGanador>();
 
-                File.WriteAllText(ObtenerRuta("ganador"), json);
+                if (File.Exists(ObtenerRuta("ganador")))
+                {
+                    var datosAlm = File.ReadAllText(ObtenerRuta("ganador"));
+                    var jsonGrabado = JsonConvert.SerializeObject(datosAlm).Replace("\\", "");
+                    if (jsonGrabado.Length > 4)
+                    {
+                        jsonGrabado = jsonGrabado.Substring(1, jsonGrabado.Length - 2);
+                        listadoAlm = JsonConvert.DeserializeObject<List<EGanador>>(jsonGrabado);
+                       
+                    }
+                }
+                listadoAlm.Add(Ganador);
+                File.WriteAllText(ObtenerRuta("ganador"), JsonConvert.SerializeObject(listadoAlm));
             }
             catch (Exception ex)
             {

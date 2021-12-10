@@ -19,9 +19,9 @@ namespace Kapicua25.Pantallas
         Ganador ganador = new Ganador();
         public List<EPuntos> ListPuntos { get; set; } = new List<EPuntos>();
         public List<EGanador> ListGanador { get; set; } = new List<EGanador>();
+        public event EventHandler<SwipedEventArgs> Swipe;
 
 
-        EditarEquipos editarEquipos = new EditarEquipos();
         int puntosequipo1 = 0;
         int puntosequipos2 = 0;
         int Puntos1 = 0;
@@ -32,6 +32,13 @@ namespace Kapicua25.Pantallas
         public PantallaPrincipal()
         {
             InitializeComponent();
+
+            //GestureRecognizers.Add(GetSwipeGestureRecognizer(SwipeDirection.Left));
+            //GestureRecognizers.Add(GetSwipeGestureRecognizer(SwipeDirection.Right));
+            //GestureRecognizers.Add(GetSwipeGestureRecognizer(SwipeDirection.Up));
+            //GestureRecognizers.Add(GetSwipeGestureRecognizer(SwipeDirection.Down));
+
+            lsv_puntos.ItemSelected += Lsv_puntos_ItemSelected; ;
 
             #region gridconfig
             PickerTantos.Items.Add("100");
@@ -78,11 +85,14 @@ namespace Kapicua25.Pantallas
             {
                 Command = new Command(async () =>
                 {
+                    gridComoUsarLaApp.BackgroundColor = Color.White;
                     gridInicio.BackgroundColor = Color.LightGray;
                     StackLayoutPaginaPrincipal.IsVisible = true;
                     StackLayoutAcercaDe.IsVisible = false;
                     StackLayoutConfig.IsVisible = false;
                     lytBackNav.IsVisible = true;
+                    StackLayoutComoUsarLaApp.IsVisible = false;
+
                     StackLayoutHistorialPartidas.IsVisible = false;
                     gridHistorialPartidas.BackgroundColor = Color.White;
 
@@ -103,6 +113,7 @@ namespace Kapicua25.Pantallas
             {
                 Command = new Command(async () =>
                 {
+                    gridComoUsarLaApp.BackgroundColor = Color.White;
                     gridInicio.BackgroundColor = Color.White;
                     gridconfig.BackgroundColor = Color.White;
                     gridInfo.BackgroundColor = Color.White;
@@ -110,8 +121,31 @@ namespace Kapicua25.Pantallas
                     StackLayoutAcercaDe.IsVisible = false;
                     StackLayoutConfig.IsVisible = false;
                     StackLayoutHistorialPartidas.IsVisible = true;
+                    StackLayoutComoUsarLaApp.IsVisible = false;
+
                     lytBackNav.IsVisible = false;
                     gridHistorialPartidas.BackgroundColor = Color.LightGray;
+                    this.ListGanador = ganador.ObtenerGanadores();
+                    this.Lsv_HistorialPartidas.ItemsSource = this.ListGanador;
+                }),
+                NumberOfTapsRequired = 1
+            });
+
+            gridComoUsarLaApp.GestureRecognizers.Add(new TapGestureRecognizer
+            {
+                Command = new Command(async () =>
+                {
+                    gridComoUsarLaApp.BackgroundColor = Color.LightGray;
+                    gridconfig.BackgroundColor = Color.White;
+                    gridInfo.BackgroundColor = Color.White;
+                    gridInicio.BackgroundColor = Color.White;
+                    gridHistorialPartidas.BackgroundColor = Color.White;
+                    StackLayoutPaginaPrincipal.IsVisible = false;
+                    StackLayoutAcercaDe.IsVisible = false;
+                    StackLayoutConfig.IsVisible = false;
+                    StackLayoutHistorialPartidas.IsVisible = false;
+                    StackLayoutComoUsarLaApp.IsVisible = true;
+                    lytBackNav.IsVisible = false;
                     this.ListGanador = ganador.ObtenerGanadores();
                     this.Lsv_HistorialPartidas.ItemsSource = this.ListGanador;
                 }),
@@ -123,6 +157,7 @@ namespace Kapicua25.Pantallas
             {
                 Command = new Command(async () =>
                 {
+                    gridComoUsarLaApp.BackgroundColor = Color.White;
                     gridInicio.BackgroundColor = Color.White;
                     StackLayoutHistorialPartidas.IsVisible = false;
                     gridHistorialPartidas.BackgroundColor = Color.White;
@@ -130,6 +165,8 @@ namespace Kapicua25.Pantallas
                     gridconfig.BackgroundColor = Color.White;
                     StackLayoutPaginaPrincipal.IsVisible = false;
                     StackLayoutAcercaDe.IsVisible = true;
+                    StackLayoutComoUsarLaApp.IsVisible = false;
+
                     StackLayoutConfig.IsVisible = false;
                     lytBackNav.IsVisible = false;
                     gridInfo.BackgroundColor = Color.LightGray;
@@ -138,14 +175,27 @@ namespace Kapicua25.Pantallas
                 NumberOfTapsRequired = 1
             });
 
+            lblemail.GestureRecognizers.Add(new TapGestureRecognizer
+            {
+                Command = new Command(async () =>
+                {
+                    Device.OpenUri(new Uri ($"mailto:{lblemail.Text}?subject={"Sugerencia Kapicúa 25"}"));
+                }),
+                NumberOfTapsRequired = 1
+            }); 
+
+
+
 
             gridconfig.GestureRecognizers.Add(new TapGestureRecognizer
             {
                 Command = new Command(async () =>
                 {
+                    gridComoUsarLaApp.BackgroundColor = Color.White;
                     gridInicio.BackgroundColor = Color.White;
                     gridInfo.BackgroundColor = Color.White;
                     gridHistorialPartidas.BackgroundColor = Color.White;
+                    StackLayoutComoUsarLaApp.IsVisible = false;
 
                     StackLayoutHistorialPartidas.IsVisible = false;
 
@@ -160,6 +210,25 @@ namespace Kapicua25.Pantallas
             });
         }
 
+        private void Lsv_puntos_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+        {
+            if (IsBusy)
+                return;
+            IsBusy = true;
+
+            if (e.SelectedItem != null)
+            {
+                var element = lsv_puntos.SelectedItem;
+               
+            }
+        }
+
+        void OnSwiped(object sender, SwipedEventArgs e)
+        {
+
+            //lblNombreCompañia.Text = $"You swiped: {e.Direction.ToString()}";
+        }
+
         void OnPickerSelectedIndexChanged(object sender, EventArgs e)
         {
             var picker = (Picker)sender;
@@ -171,6 +240,8 @@ namespace Kapicua25.Pantallas
 
             }
         }
+
+
 
         protected override void OnAppearing()
         {
@@ -223,7 +294,7 @@ namespace Kapicua25.Pantallas
         }
         private void LLenarDatosAlmacenados()
         {
-         
+
             this.ListPuntos = Puntos.ObtenerPuntos();
             this.lsv_puntos.ItemsSource = this.ListPuntos;
             lblPuntosEquipo1.Text = string.Format("{0}", ListPuntos.Sum(n => n.Punto1));
@@ -265,16 +336,14 @@ namespace Kapicua25.Pantallas
 
                 if (puntosequipo1 >= App.TantosParaGanar)
                 {
-                    //string EquipoGanador1 = result.Equipo1Jugador1 + " Y " + result.Equipo1Jugador2;
-                    this.ListGanador.Add(new EGanador() { Ganador1 = result.Equipo1Jugador1, Ganador2 = result.Equipo2Jugador1, Juego = "G" });
-                    ganador.GrabarGanadores(this.ListGanador);
+                    //this.ListGanador.Add(new EGanador() { Ganador1 = result.Equipo1Jugador1, Ganador2 = result.Equipo2Jugador1, Juego = "G" });
+                    ganador.GrabarGanadores(new EGanador() { Ganador1 = result.Equipo1Jugador1, Ganador2 = result.Equipo1Jugador2, Juego = "G" });
                     await DisplayAlert("Información", "¡El Equipo 1 ha ganado la partida!", "OK");
 
                 }
                 else if (puntosequipos2 >= App.TantosParaGanar)
                 {
-                    string EquipoGanador2 = eGlobal.Equipo2Jugador1 + " Y " + eGlobal.Equipo2Jugador2;
-                    Configuraciones.Grabar("", result.Equipo1Jugador1, result.Equipo1Jugador2, "", result.Equipo2Jugador1, result.Equipo2Jugador2, result.Tantos, EquipoGanador2);
+                    ganador.GrabarGanadores(new EGanador() { Ganador1 = result.Equipo2Jugador1, Ganador2 = result.Equipo2Jugador2, Juego = "G" });
                     await DisplayAlert("Información", "¡El Equipo 2 ha ganado la partida!", "OK");
 
                 }
@@ -305,12 +374,7 @@ namespace Kapicua25.Pantallas
 
         private async void BtnEditar_Clicked(object sender, EventArgs e)
         {
-            App.Jugador1Equipo1 = LblJugador1.Text;
-            App.Jugador2Equipo1 = LblJugador2.Text;
-            App.Jugador1Equipo2 = LblJugador1Equipo2.Text;
-            App.Jugador2Equipo2 = LblJugador2Equipo2.Text;
-
-            await Navigation.PushModalAsync(editarEquipos);
+          
         }
 
         private async void BtnNuevaPartida_Clicked(object sender, EventArgs e)
@@ -323,7 +387,7 @@ namespace Kapicua25.Pantallas
                 TxtPuntosEquipo2.Text = "0";
                 lsv_puntos.ItemsSource = null;
                 this.ListPuntos.Clear();
-                Configuraciones.Eliminar();
+                //Configuraciones.Eliminar();
                 Puntos.EliminarPuntos(this.ListPuntos);
 
 
@@ -357,6 +421,27 @@ namespace Kapicua25.Pantallas
             }
 
             //IndicadorCargando.IsRunning = false;
+
+
+
+        }
+
+        private async void BtnBorrarHistorial_Clicked(object sender, EventArgs e)
+        {
+            if (await DisplayAlert("Información", "¿Desea eliminar el historial de partidas?", "SI", "NO"))
+            {
+                ganador.EliminarGanadores(this.ListGanador);
+                this.ListGanador = ganador.ObtenerGanadores();
+                this.Lsv_HistorialPartidas.ItemsSource = this.ListGanador;
+
+            }
+
+        }
+
+        private void BtnEliminar_Clicked(object sender, EventArgs e)
+        {
+            var btn = sender as Android.Widget.ImageButton;
+            var id = btn.Class;
 
 
 
