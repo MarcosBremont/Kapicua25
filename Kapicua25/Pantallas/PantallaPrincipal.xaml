@@ -128,7 +128,12 @@
 
                                             <StackLayout Orientation="Horizontal" HorizontalOptions="EndAndExpand" Margin="0,0,40,0" Grid.Column="1">
                                                 <Label FontSize="18"  TextColor="White"  FontAttributes="Bold"  Text="{Binding Punto2}"/>
-                                                <ImageButton x:Name="BtnEliminar" Clicked="BtnEliminar_Clicked" BackgroundColor="Transparent" HeightRequest="20" Margin="0,0,0,0" Source="delete.png"/>
+                                                <!--<ImageButton x:Name="BtnEliminar" Clicked="BtnEliminar_Clicked" BackgroundColor="Transparent" HeightRequest="20" Margin="0,0,0,0" Source="delete.png"/>-->
+                                                <!--<Button Text="Remove" Clicked="Delete" CommandParameter="{Binding ID}" />-->
+                                                <Button x:Name="btnOne" Text="Xamarin Forms" CommandParameter="{Binding ID}" 
+                Clicked="Button_Clicked" Margin="5"/>
+
+
                                             </StackLayout>
 
                                           

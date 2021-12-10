@@ -179,10 +179,10 @@ namespace Kapicua25.Pantallas
             {
                 Command = new Command(async () =>
                 {
-                    Device.OpenUri(new Uri ($"mailto:{lblemail.Text}?subject={"Sugerencia Kapicúa 25"}"));
+                    Device.OpenUri(new Uri($"mailto:{lblemail.Text}?subject={"Sugerencia Kapicúa 25"}"));
                 }),
                 NumberOfTapsRequired = 1
-            }); 
+            });
 
 
 
@@ -219,7 +219,6 @@ namespace Kapicua25.Pantallas
             if (e.SelectedItem != null)
             {
                 var element = lsv_puntos.SelectedItem;
-               
             }
         }
 
@@ -374,7 +373,7 @@ namespace Kapicua25.Pantallas
 
         private async void BtnEditar_Clicked(object sender, EventArgs e)
         {
-          
+
         }
 
         private async void BtnNuevaPartida_Clicked(object sender, EventArgs e)
@@ -438,6 +437,36 @@ namespace Kapicua25.Pantallas
 
         }
 
+        public void Delete(Object Sender, EventArgs args)
+        {
+            try
+            {
+                Xamarin.Forms.Button button = (Xamarin.Forms.Button)Sender;
+                string ID = button.CommandParameter.ToString();
+                // Do your Stuff.....
+            }
+            catch (Exception ex)
+            {
+
+            }
+
+        }
+
+        private async void Button_Clicked(object sender, EventArgs e)
+        {
+            try
+            {
+                Xamarin.Forms.Button button1 = (Xamarin.Forms.Button)sender;
+                string commandParameter = button1.CommandParameter.ToString();
+                await DisplayAlert("Info", "You selected " + commandParameter, "Ok");
+            }
+            catch (Exception ex)
+            {
+                await DisplayAlert("Error occurred", ex.Message.ToString(), "Ok");
+            }
+        }
+
+      
         private void BtnEliminar_Clicked(object sender, EventArgs e)
         {
             var btn = sender as Android.Widget.ImageButton;
