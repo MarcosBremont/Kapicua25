@@ -102,9 +102,9 @@
                     </StackLayout>
 
 
-                    <Frame Grid.Row="3" HasShadow="True" HorizontalOptions="CenterAndExpand" BackgroundColor="#1d3557" Margin="0,0,0,0">
+                    <!--<Frame Grid.Row="3" HasShadow="True" HorizontalOptions="CenterAndExpand" BackgroundColor="#1d3557" Margin="0,0,0,0">-->
 
-                        <ListView x:Name="lsv_puntos" HorizontalOptions="CenterAndExpand" SeparatorVisibility="Default"  SeparatorColor="White" HasUnevenRows="True" >
+                        <ListView Margin="20" x:Name="lsv_puntos" Grid.Row="3" ItemSelected="lsv_puntos_ItemSelected" HorizontalOptions="CenterAndExpand" SeparatorVisibility="Default"  SeparatorColor="White" HasUnevenRows="True" >
                             <ListView.ItemTemplate>
 
                                 <DataTemplate>
@@ -126,17 +126,11 @@
                                                 <Label FontSize="18"  TextColor="White" FontAttributes="Bold"  Text="{Binding Punto1}"/>
                                             </StackLayout>
 
-                                            <StackLayout Orientation="Horizontal" HorizontalOptions="EndAndExpand" Margin="0,0,40,0" Grid.Column="1">
+                                            <StackLayout Orientation="Horizontal" HorizontalOptions="EndAndExpand" Margin="0,0,60,0" Grid.Column="1">
                                                 <Label FontSize="18"  TextColor="White"  FontAttributes="Bold"  Text="{Binding Punto2}"/>
-                                                <!--<ImageButton x:Name="BtnEliminar" Clicked="BtnEliminar_Clicked" BackgroundColor="Transparent" HeightRequest="20" Margin="0,0,0,0" Source="delete.png"/>-->
-                                                <!--<Button Text="Remove" Clicked="Delete" CommandParameter="{Binding ID}" />-->
-                                                <Button x:Name="btnOne" Text="Xamarin Forms" CommandParameter="{Binding ID}" 
-                Clicked="Button_Clicked" Margin="5"/>
-
-
                                             </StackLayout>
 
-                                          
+
 
                                         </Grid>
 
@@ -146,7 +140,7 @@
 
                             </ListView.ItemTemplate>
                         </ListView>
-                    </Frame>
+                    <!--</Frame>-->
 
 
 
@@ -405,11 +399,10 @@
 
 
                     <StackLayout Grid.Row="1" Spacing="0">
-                        <ScrollView VerticalOptions="FillAndExpand">
                             <StackLayout Padding="30,10,30,30" Spacing="0" VerticalOptions="FillAndExpand">
 
 
-                                <ListView Margin="0" Grid.Row="1" x:Name="Lsv_HistorialPartidas" IsVisible="True" HorizontalOptions="CenterAndExpand" SeparatorVisibility="Default"  SeparatorColor="White" HasUnevenRows="True" >
+                                <ListView Margin="0" Grid.Row="1" x:Name="Lsv_HistorialPartidas" IsVisible="True" HorizontalOptions="CenterAndExpand" SeparatorVisibility="Default" VerticalOptions="FillAndExpand"  SeparatorColor="White" HasUnevenRows="True" >
                                     <ListView.ItemTemplate>
 
                                         <DataTemplate>
@@ -457,7 +450,6 @@
 
 
                             </StackLayout>
-                        </ScrollView>
                     </StackLayout>
 
                 </Grid>
@@ -604,7 +596,7 @@
                     <BoxView HeightRequest="40" WidthRequest="1" BackgroundColor="#818285" VerticalOptions="Center" Opacity="0.7"/>
 
                     <StackLayout Orientation="Horizontal" BackgroundColor="White" HorizontalOptions="FillAndExpand" x:Name="gridInfo" Spacing="0">
-                        <Image Source="info.png" Margin="30,0,30,0" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" HeightRequest="25" x:Name="btnImgInfo"/>
+                        <Image Source="exclamacion.png" Margin="30,0,30,0" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" HeightRequest="25" x:Name="btnImgInfo"/>
                     </StackLayout>
 
                 </StackLayout>

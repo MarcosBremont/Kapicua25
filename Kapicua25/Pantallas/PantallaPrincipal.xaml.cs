@@ -37,9 +37,7 @@ namespace Kapicua25.Pantallas
             //GestureRecognizers.Add(GetSwipeGestureRecognizer(SwipeDirection.Right));
             //GestureRecognizers.Add(GetSwipeGestureRecognizer(SwipeDirection.Up));
             //GestureRecognizers.Add(GetSwipeGestureRecognizer(SwipeDirection.Down));
-
-            lsv_puntos.ItemSelected += Lsv_puntos_ItemSelected; ;
-
+            btnImgInicio.Source = "homeRojo";
             #region gridconfig
             PickerTantos.Items.Add("100");
             PickerTantos.Items.Add("200");
@@ -85,6 +83,7 @@ namespace Kapicua25.Pantallas
             {
                 Command = new Command(async () =>
                 {
+                    btnImgInicio.Source = "homeRojo.png";
                     gridComoUsarLaApp.BackgroundColor = Color.White;
                     gridInicio.BackgroundColor = Color.LightGray;
                     StackLayoutPaginaPrincipal.IsVisible = true;
@@ -104,6 +103,12 @@ namespace Kapicua25.Pantallas
                     LblJugador2.Text = result.Equipo1Jugador2;
                     LblJugador1Equipo2.Text = result.Equipo2Jugador1;
                     LblJugador2Equipo2.Text = result.Equipo2Jugador2;
+                    btnImgConfiguracion.Source = "settings";
+                    btnImgHistorial.Source = "Document";
+                    btnImgComoUsarLaApp.Source = "interrogacion";
+                    btnImgInfo.Source = "exclamacion";
+
+
                     //lytBackNav1.IsVisible = true;
                 }),
                 NumberOfTapsRequired = 1
@@ -113,6 +118,7 @@ namespace Kapicua25.Pantallas
             {
                 Command = new Command(async () =>
                 {
+                    btnImgHistorial.Source = "documentRojo.png";
                     gridComoUsarLaApp.BackgroundColor = Color.White;
                     gridInicio.BackgroundColor = Color.White;
                     gridconfig.BackgroundColor = Color.White;
@@ -127,6 +133,11 @@ namespace Kapicua25.Pantallas
                     gridHistorialPartidas.BackgroundColor = Color.LightGray;
                     this.ListGanador = ganador.ObtenerGanadores();
                     this.Lsv_HistorialPartidas.ItemsSource = this.ListGanador;
+
+                    btnImgConfiguracion.Source = "settings";
+                    btnImgInicio.Source = "home2";
+                    btnImgComoUsarLaApp.Source = "interrogacion";
+                    btnImgInfo.Source = "exclamacion";
                 }),
                 NumberOfTapsRequired = 1
             });
@@ -135,6 +146,7 @@ namespace Kapicua25.Pantallas
             {
                 Command = new Command(async () =>
                 {
+                    btnImgComoUsarLaApp.Source = "interrogacionRojo.png";
                     gridComoUsarLaApp.BackgroundColor = Color.LightGray;
                     gridconfig.BackgroundColor = Color.White;
                     gridInfo.BackgroundColor = Color.White;
@@ -148,6 +160,11 @@ namespace Kapicua25.Pantallas
                     lytBackNav.IsVisible = false;
                     this.ListGanador = ganador.ObtenerGanadores();
                     this.Lsv_HistorialPartidas.ItemsSource = this.ListGanador;
+
+                    btnImgConfiguracion.Source = "settings";
+                    btnImgInicio.Source = "home2";
+                    btnImgHistorial.Source = "Document";
+                    btnImgInfo.Source = "exclamacion";
                 }),
                 NumberOfTapsRequired = 1
             });
@@ -157,6 +174,7 @@ namespace Kapicua25.Pantallas
             {
                 Command = new Command(async () =>
                 {
+                    btnImgInfo.Source = "exclamacionRojo.png";
                     gridComoUsarLaApp.BackgroundColor = Color.White;
                     gridInicio.BackgroundColor = Color.White;
                     StackLayoutHistorialPartidas.IsVisible = false;
@@ -170,6 +188,11 @@ namespace Kapicua25.Pantallas
                     StackLayoutConfig.IsVisible = false;
                     lytBackNav.IsVisible = false;
                     gridInfo.BackgroundColor = Color.LightGray;
+
+                    btnImgConfiguracion.Source = "settings";
+                    btnImgInicio.Source = "home2";
+                    btnImgHistorial.Source = "Document";
+                    btnImgComoUsarLaApp.Source = "interrogacion";
 
                 }),
                 NumberOfTapsRequired = 1
@@ -191,6 +214,8 @@ namespace Kapicua25.Pantallas
             {
                 Command = new Command(async () =>
                 {
+                    btnImgConfiguracion.Source = "settingsRojo.png";
+
                     gridComoUsarLaApp.BackgroundColor = Color.White;
                     gridInicio.BackgroundColor = Color.White;
                     gridInfo.BackgroundColor = Color.White;
@@ -204,21 +229,26 @@ namespace Kapicua25.Pantallas
                     StackLayoutConfig.IsVisible = true;
                     lytBackNav.IsVisible = false;
                     gridconfig.BackgroundColor = Color.LightGray;
-
+                    btnImgInfo.Source = "info";
+                    btnImgInicio.Source = "home2";
+                    btnImgHistorial.Source = "Document";
+                    btnImgComoUsarLaApp.Source = "interrogacion";
                 }),
                 NumberOfTapsRequired = 1
             });
         }
 
-        private void Lsv_puntos_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+        async private void lsv_puntos_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
-            if (IsBusy)
-                return;
-            IsBusy = true;
-
-            if (e.SelectedItem != null)
+            var result = await DisplayAlert("Pregunta", "¿Desea quitar la jugada?", "SI", "NO");
+            if (result)
             {
-                var element = lsv_puntos.SelectedItem;
+                this.ListPuntos.Remove((EPuntos)lsv_puntos.SelectedItem);
+                Puntos.GrabarPuntos(this.ListPuntos);
+                this.lsv_puntos.ItemsSource = null;
+                this.lsv_puntos.ItemsSource = this.ListPuntos;
+                lblPuntosEquipo1.Text = string.Format("{0}", ListPuntos.Sum(n => n.Punto1));
+                lblPuntosEquipo2.Text = string.Format("{0}", ListPuntos.Sum(n => n.Punto2));
             }
         }
 
@@ -315,7 +345,7 @@ namespace Kapicua25.Pantallas
                     Puntos2 = Convert.ToInt32(TxtPuntosEquipo1.Text);
                     puntosequipo1 = Puntos1 + Puntos2;
                     lblPuntosEquipo1.Text = puntosequipo1.ToString();
-                    TxtPuntosEquipo1.Text = "0";
+                    TxtPuntosEquipo1.Text = "";
                 }
 
                 if (TxtPuntosEquipo2.Text != "")
@@ -324,7 +354,7 @@ namespace Kapicua25.Pantallas
                     Puntos4 = Convert.ToInt32(TxtPuntosEquipo2.Text);
                     puntosequipos2 = Puntos3 + Puntos4;
                     lblPuntosEquipo2.Text = puntosequipos2.ToString();
-                    TxtPuntosEquipo2.Text = "0";
+                    TxtPuntosEquipo2.Text = "";
                 }
 
                 this.ListPuntos.Add(new EPuntos() { Punto1 = Puntos2, Punto2 = Puntos4 });
@@ -382,8 +412,8 @@ namespace Kapicua25.Pantallas
             {
                 lblPuntosEquipo1.Text = "0";
                 lblPuntosEquipo2.Text = "0";
-                TxtPuntosEquipo1.Text = "0";
-                TxtPuntosEquipo2.Text = "0";
+                TxtPuntosEquipo1.Text = "";
+                TxtPuntosEquipo2.Text = "";
                 lsv_puntos.ItemsSource = null;
                 this.ListPuntos.Clear();
                 //Configuraciones.Eliminar();
@@ -436,44 +466,6 @@ namespace Kapicua25.Pantallas
             }
 
         }
-
-        public void Delete(Object Sender, EventArgs args)
-        {
-            try
-            {
-                Xamarin.Forms.Button button = (Xamarin.Forms.Button)Sender;
-                string ID = button.CommandParameter.ToString();
-                // Do your Stuff.....
-            }
-            catch (Exception ex)
-            {
-
-            }
-
-        }
-
-        private async void Button_Clicked(object sender, EventArgs e)
-        {
-            try
-            {
-                Xamarin.Forms.Button button1 = (Xamarin.Forms.Button)sender;
-                string commandParameter = button1.CommandParameter.ToString();
-                await DisplayAlert("Info", "You selected " + commandParameter, "Ok");
-            }
-            catch (Exception ex)
-            {
-                await DisplayAlert("Error occurred", ex.Message.ToString(), "Ok");
-            }
-        }
-
       
-        private void BtnEliminar_Clicked(object sender, EventArgs e)
-        {
-            var btn = sender as Android.Widget.ImageButton;
-            var id = btn.Class;
-
-
-
-        }
     }
 }
