@@ -363,16 +363,33 @@ namespace Kapicua25.Pantallas
                 this.lsv_puntos.ItemsSource = this.ListPuntos;
                 var result = Configuraciones.ObtenerDatosSesion();
 
-                if (puntosequipo1 >= App.TantosParaGanar)
+                if (TxtPuntosEquipo1.Text == "")
                 {
-                    //this.ListGanador.Add(new EGanador() { Ganador1 = result.Equipo1Jugador1, Ganador2 = result.Equipo2Jugador1, Juego = "G" });
-                    ganador.GrabarGanadores(new EGanador() { Ganador1 = result.Equipo1Jugador1, Ganador2 = result.Equipo1Jugador2, Juego = "G" });
-                    await DisplayAlert("Información", "¡El Equipo 1 ha ganado la partida!", "OK");
+                    puntosequipo1 = 0;
+                    Puntos2 = 0;
 
                 }
-                else if (puntosequipos2 >= App.TantosParaGanar)
+
+                if (TxtPuntosEquipo2.Text == "")
                 {
-                    ganador.GrabarGanadores(new EGanador() { Ganador1 = result.Equipo2Jugador1, Ganador2 = result.Equipo2Jugador2, Juego = "G" });
+                    puntosequipos2 = 0;
+                    Puntos4 = 0;
+                }
+
+                string PuntosEquipo1 = lblPuntosEquipo1.Text;
+                string PuntosEquipo2 = lblPuntosEquipo2.Text;
+                PuntosEquipo1.Replace("Tantos ", "");
+                PuntosEquipo2.Replace("Tantos ", "");
+                
+                if (Convert.ToInt32(PuntosEquipo1) >= App.TantosParaGanar)
+                {
+                    //this.ListGanador.Add(new EGanador() { Ganador1 = result.Equipo1Jugador1, Ganador2 = result.Equipo2Jugador1, Juego = "G" });
+                    ganador.GrabarGanadores(new EGanador() { Ganador1 = result.Equipo1Jugador1, Ganador2 = result.Equipo1Jugador2, Juego = "Ganadores" });
+                    await DisplayAlert("Información", "¡El Equipo 1 ha ganado la partida!", "OK");
+                }
+                else if (Convert.ToInt32(PuntosEquipo2) >= App.TantosParaGanar)
+                {
+                    ganador.GrabarGanadores(new EGanador() { Ganador1 = result.Equipo2Jugador1, Ganador2 = result.Equipo2Jugador2, Juego = "Ganadores" });
                     await DisplayAlert("Información", "¡El Equipo 2 ha ganado la partida!", "OK");
 
                 }
@@ -436,7 +453,7 @@ namespace Kapicua25.Pantallas
                 //   tantos = "100";
                 //}
 
-                Configuraciones.Grabar("", lbljugador1Editar.Text, lbljugador2Editar.Text, "", lbljugador1Equipo2Editar.Text, lbljugador2Equipo2Editar.Text, App.TantosParaGanar.ToString(), "");
+                Configuraciones.Grabar("", lbljugador1Editar.Text, lbljugador2Editar.Text, "", lbljugador1Equipo2Editar.Text, lbljugador2Equipo2Editar.Text, App.TantosParaGanar.ToString(), result.Ganador);
                 //Toast.MakeText(this, "¡Los datos se han guardado exitosamente!", 1, ToastLength.Long).Show();
                 Toast.MakeText(Android.App.Application.Context, "¡Los datos se han guardado exitosamente!", ToastLength.Long).Show();
 

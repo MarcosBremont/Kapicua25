@@ -30,7 +30,7 @@
                     </Grid.RowDefinitions>
 
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="auto"/>
                     </Grid.ColumnDefinitions>
 
@@ -40,7 +40,13 @@
                     </StackLayout>
 
 
-                    <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Horizontal" Margin="20,30,20,0">
+                    <StackLayout  HorizontalOptions="CenterAndExpand" Margin="0,30,0,0" Orientation="Horizontal" >
+                        <Label TextColor="#e63946" FontSize="25" Text="VS" FontAttributes="Bold"></Label>
+                    </StackLayout>
+
+
+
+                    <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Horizontal" Margin="0,60,0,0">
 
                         <StackLayout x:Name="StackEquipo1"  Orientation="Vertical" HorizontalOptions="CenterAndExpand">
 
@@ -60,9 +66,7 @@
 
                         </StackLayout>
 
-                        <StackLayout Grid.Row="1" HorizontalOptions="CenterAndExpand" Margin="0,25,0,0" Orientation="Horizontal" >
-                            <Label TextColor="#e63946" FontSize="25" Text="VS" FontAttributes="Bold"></Label>
-                        </StackLayout>
+                     
 
 
                         <StackLayout x:Name="StackEquipo2" Orientation="Vertical" Grid.Row="0" Grid.Column="1" HorizontalOptions="CenterAndExpand">
@@ -86,9 +90,10 @@
 
 
                     </StackLayout>
+                    
+                    
 
-                    <StackLayout Margin="10,-20,10,0" Grid.Row="2" Orientation="Horizontal" >
-
+                    <StackLayout Margin="10,10,10,0" Grid.Row="2" Orientation="Horizontal" >
 
                         <Frame Grid.Column="0" Padding="5" Margin="20" HorizontalOptions="StartAndExpand" >
                             <Entry TextColor="#333" FontAttributes="Bold" FontSize="16" Keyboard="Numeric" Placeholder="0" HorizontalTextAlignment="Center" WidthRequest="115" x:Name="TxtPuntosEquipo1" ></Entry>
@@ -100,7 +105,7 @@
                         </Frame>
 
                     </StackLayout>
-
+              
 
                     <!--<Frame Grid.Row="3" HasShadow="True" HorizontalOptions="CenterAndExpand" BackgroundColor="#1d3557" Margin="0,0,0,0">-->
 
@@ -304,22 +309,29 @@
 
                     <StackLayout Grid.Row="1" Spacing="0">
                         <ScrollView VerticalOptions="FillAndExpand">
-                            <StackLayout Padding="30,10,30,30" Spacing="0" VerticalOptions="FillAndExpand">
+                            <StackLayout Padding="20,10,20,30" Spacing="0" VerticalOptions="FillAndExpand">
 
                                 <StackLayout>
-                                    <Label TextColor="White"
+                                    <!--<Label TextColor="White"
                                    Text="..."
                                    FontSize="15"
                                    Opacity="0.8"
                                    FontAttributes="Bold"
                                    VerticalOptions="Start"
                                    HorizontalOptions="CenterAndExpand"
-                                   Margin="0,10,0,0"/>
+                                   Margin="0,10,0,0"/>-->
 
                                     <Frame BorderColor="White" BackgroundColor="Transparent" >
                                         <StackLayout>
                                             <Label Text="¿Como iniciar una partida?" FontSize="16" TextColor="White" HorizontalOptions="Center"></Label>
-                                            <Label Text="Para iniciar una partida solo tienes que dirigirte a la pagina de inicio de la aplicacion (La que tiene el icono de la casa), luego veras dos equipos conformados por dos jugadores y sus tantos, mas abajo encontraras dos campos en los cuales vas a poner los tantos que haces en cada partida, por ultimo le das al boton de agregar ronda para que se anoten los puntos" TextColor="White" HorizontalOptions="Center"></Label>
+                                            <Label Text="Para iniciar una partida solo tienes que dirigirte a la pagina de inicio de la aplicacion (La que tiene el icono de la casa), luego veras dos equipos conformados por dos jugadores y sus tantos, mas abajo encontraras dos campos en los cuales vas a poner los tantos que haces en cada partida, por ultimo le das al boton de agregar ronda para que se anoten los puntos." TextColor="White" HorizontalOptions="Center"></Label>
+                                        </StackLayout>
+                                    </Frame>
+
+                                    <Frame BorderColor="White" BackgroundColor="Transparent" >
+                                        <StackLayout>
+                                            <Label Text="¿Como eliminar los puntos de una ronda?" FontSize="16" TextColor="White" HorizontalOptions="Center"></Label>
+                                            <Label Text="Para eliminar los puntos de una ronda solo tienes que dirigirte a la pagina de inicio y tocar la jugada que quieres eliminar, cuando la toques te saldrá un aviso verificando que en si en realidad quieres eliminar los puntos, tocas el boton SI y listo." TextColor="White" HorizontalOptions="Center"></Label>
                                         </StackLayout>
                                     </Frame>
 
@@ -333,7 +345,7 @@
                                     <Frame BorderColor="White" BackgroundColor="Transparent" >
                                         <StackLayout>
                                             <Label Text="¿Como editar los nombres de los jugadores?" FontSize="16" TextColor="White" HorizontalOptions="Center"></Label>
-                                            <Label Text="Para editar los nombres de los jugadores solo tienes que dirigirte a la pantalla de Configuracion con el icono de un engranaje, luego de que estes ahí podras ver los campos con los nombres de los jugadores de cada equipo y de esta manera lo podras cambiar y luego darle al boton de Guardar Cambios de color rojo" TextColor="White" HorizontalOptions="Center"></Label>
+                                            <Label Text="Para editar los nombres de los jugadores solo tienes que dirigirte a la pantalla de Configuracion con el icono de un engranaje, luego de que estes ahí podras ver los campos con los nombres de los jugadores de cada equipo y de esta manera lo podras cambiar y luego darle al boton de Guardar Cambios de color rojo." TextColor="White" HorizontalOptions="Center"></Label>
                                         </StackLayout>
                                     </Frame>
 
@@ -379,7 +391,7 @@
 
             <StackLayout IsVisible="false" VerticalOptions="StartAndExpand" x:Name="StackLayoutHistorialPartidas" BackgroundColor="#1d3557">
 
-                <Grid RowSpacing="0" BackgroundColor="#1d3557">
+                <Grid RowSpacing="0" HorizontalOptions="CenterAndExpand" BackgroundColor="#1d3557">
 
                     <Grid.RowDefinitions>
                         <RowDefinition>
@@ -398,11 +410,11 @@
                     </StackLayout>
 
 
-                    <StackLayout Grid.Row="1" Spacing="0">
-                            <StackLayout Padding="30,10,30,30" Spacing="0" VerticalOptions="FillAndExpand">
+                    <StackLayout Grid.Row="1" Spacing="0" HorizontalOptions="CenterAndExpand">
+                            <StackLayout Padding="30,10,30,30" Spacing="0" VerticalOptions="CenterAndExpand">
 
 
-                                <ListView Margin="0" Grid.Row="1" x:Name="Lsv_HistorialPartidas" IsVisible="True" HorizontalOptions="CenterAndExpand" SeparatorVisibility="Default" VerticalOptions="FillAndExpand"  SeparatorColor="White" HasUnevenRows="True" >
+                            <ListView Margin="0" Grid.Row="1" x:Name="Lsv_HistorialPartidas" IsVisible="True" HorizontalOptions="CenterAndExpand" SeparatorVisibility="Default" VerticalOptions="CenterAndExpand"  SeparatorColor="White" HasUnevenRows="True" >
                                     <ListView.ItemTemplate>
 
                                         <DataTemplate>
@@ -410,12 +422,12 @@
                                             <ViewCell>
 
 
-                                                <Grid>
+                                            <Grid HorizontalOptions="Center">
 
 
                                                     <Grid.ColumnDefinitions>
-                                                        <ColumnDefinition Width="*"/>
-                                                        <ColumnDefinition Width="*"/>
+                                                        <ColumnDefinition Width="90"/>
+                                                        <ColumnDefinition Width="20"/>
                                                         <ColumnDefinition Width="*"/>
                                                         <ColumnDefinition Width="*"/>
                                                     </Grid.ColumnDefinitions>
@@ -430,11 +442,11 @@
                                                         <Label FontSize="18"  TextColor="White"  FontAttributes="Bold"  Text="Y"/>
                                                     </StackLayout>
 
-                                                    <StackLayout Margin="-70,0,0,0" Grid.Column="2">
+                                                    <StackLayout Margin="0,0,0,0" Grid.Column="2">
                                                         <Label FontSize="18"  TextColor="White"  FontAttributes="Bold"  Text="{Binding Ganador2}"/>
                                                     </StackLayout>
 
-                                                    <StackLayout Margin="20,0,0,0" Grid.Column="3">
+                                                    <StackLayout Margin="0,0,0,0" Grid.Column="3">
                                                         <Label FontSize="18"  TextColor="White"  FontAttributes="Bold"  Text="{Binding Juego}"/>
                                                     </StackLayout>
 
