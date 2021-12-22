@@ -1,5 +1,4 @@
-﻿using Android.Widget;
-using Kapicua25.Objetos;
+﻿using Kapicua25.Objetos;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,6 +19,12 @@ namespace Kapicua25.Pantallas
         public List<EPuntos> ListPuntos { get; set; } = new List<EPuntos>();
         public List<EGanador> ListGanador { get; set; } = new List<EGanador>();
         public event EventHandler<SwipedEventArgs> Swipe;
+        string equipoOno = "";
+        string conPremioOno = "";
+        string PrimeraRonda = "";
+        string SegundaRonda = "";
+        string TerceraRonda = "";
+        string CuartaRonda = "";
 
 
         int puntosequipo1 = 0;
@@ -28,6 +33,8 @@ namespace Kapicua25.Pantallas
         int Puntos2 = 0;
         int Puntos3 = 0;
         int Puntos4 = 0;
+        int PuntosPremio1 = 0;
+        int PuntosPremio2 = 0;
 
         public PantallaPrincipal()
         {
@@ -42,18 +49,35 @@ namespace Kapicua25.Pantallas
             PickerTantos.Items.Add("100");
             PickerTantos.Items.Add("200");
             PickerTantos.Items.Add("300");
+            PickerTantos.Items.Add("400");
+            PickerTantos.Items.Add("500");
+            PickerTantos.Items.Add("500 + Premio");
             #endregion
             var result2 = Configuraciones.ObtenerDatosSesion();
 
+            if (result2.equipoOno == "Si")
+            {
+                lblY1.IsVisible = true;
+                lblY2.IsVisible = true;
+                LblJugador2Equipo2.IsVisible = true;
+                LblJugador2.IsVisible = true;
+            }
+            else
+            {
+                lblY1.IsVisible = false;
+                lblY2.IsVisible = false;
+                LblJugador2Equipo2.IsVisible = false;
+                LblJugador2.IsVisible = false;
+            }
 
             if (Convert.ToInt32(result2.Tantos) == 0)
             {
-                Configuraciones.Grabar("", LblJugador1.Text, LblJugador2.Text, "", LblJugador1Equipo2.Text, LblJugador2Equipo2.Text, "100", "");
+                Configuraciones.Grabar("", LblJugador1.Text, LblJugador2.Text, "", LblJugador1Equipo2.Text, LblJugador2Equipo2.Text, "100", "", result2.equipoOno, result2.conPremioOno);
                 LblTantos.Text = result2.Tantos;
             }
 
-            gridInicio.BackgroundColor = Color.LightGray;
-
+            gridInicio.BackgroundColor = Color.WhiteSmoke;
+            radioEquipo.IsChecked = true;
 
 
             //StackEquipo1.GestureRecognizers.Add(new TapGestureRecognizer
@@ -83,13 +107,30 @@ namespace Kapicua25.Pantallas
             {
                 Command = new Command(async () =>
                 {
+                    var result = Configuraciones.ObtenerDatosSesion();
+
+                    if (result.equipoOno == "Si")
+                    {
+                        lblY1.IsVisible = true;
+                        lblY2.IsVisible = true;
+                        LblJugador2Equipo2.IsVisible = true;
+                        LblJugador2.IsVisible = true;
+                    }
+                    else
+                    {
+                        lblY1.IsVisible = false;
+                        lblY2.IsVisible = false;
+                        LblJugador2Equipo2.IsVisible = false;
+                        LblJugador2.IsVisible = false;
+                    }
+
                     btnImgInicio.Source = "homeRojo.png";
                     gridComoUsarLaApp.BackgroundColor = Color.White;
-                    gridInicio.BackgroundColor = Color.LightGray;
+                    gridInicio.BackgroundColor = Color.WhiteSmoke;
                     StackLayoutPaginaPrincipal.IsVisible = true;
                     StackLayoutAcercaDe.IsVisible = false;
                     StackLayoutConfig.IsVisible = false;
-                    lytBackNav.IsVisible = true;
+                    //lytBackNav.IsVisible = true;
                     StackLayoutComoUsarLaApp.IsVisible = false;
 
                     StackLayoutHistorialPartidas.IsVisible = false;
@@ -97,7 +138,7 @@ namespace Kapicua25.Pantallas
 
                     gridconfig.BackgroundColor = Color.White;
                     gridInfo.BackgroundColor = Color.White;
-                    var result = Configuraciones.ObtenerDatosSesion();
+
                     LblTantos.Text = result.Tantos;
                     LblJugador1.Text = result.Equipo1Jugador1;
                     LblJugador2.Text = result.Equipo1Jugador2;
@@ -129,11 +170,10 @@ namespace Kapicua25.Pantallas
                     StackLayoutHistorialPartidas.IsVisible = true;
                     StackLayoutComoUsarLaApp.IsVisible = false;
 
-                    lytBackNav.IsVisible = false;
-                    gridHistorialPartidas.BackgroundColor = Color.LightGray;
+                    //lytBackNav.IsVisible = false;
+                    gridHistorialPartidas.BackgroundColor = Color.WhiteSmoke;
                     this.ListGanador = ganador.ObtenerGanadores();
                     this.Lsv_HistorialPartidas.ItemsSource = this.ListGanador;
-
                     btnImgConfiguracion.Source = "settings";
                     btnImgInicio.Source = "home2";
                     btnImgComoUsarLaApp.Source = "interrogacion";
@@ -147,7 +187,7 @@ namespace Kapicua25.Pantallas
                 Command = new Command(async () =>
                 {
                     btnImgComoUsarLaApp.Source = "interrogacionRojo.png";
-                    gridComoUsarLaApp.BackgroundColor = Color.LightGray;
+                    gridComoUsarLaApp.BackgroundColor = Color.WhiteSmoke;
                     gridconfig.BackgroundColor = Color.White;
                     gridInfo.BackgroundColor = Color.White;
                     gridInicio.BackgroundColor = Color.White;
@@ -157,7 +197,7 @@ namespace Kapicua25.Pantallas
                     StackLayoutConfig.IsVisible = false;
                     StackLayoutHistorialPartidas.IsVisible = false;
                     StackLayoutComoUsarLaApp.IsVisible = true;
-                    lytBackNav.IsVisible = false;
+                    //lytBackNav.IsVisible = false;
                     this.ListGanador = ganador.ObtenerGanadores();
                     this.Lsv_HistorialPartidas.ItemsSource = this.ListGanador;
 
@@ -186,8 +226,8 @@ namespace Kapicua25.Pantallas
                     StackLayoutComoUsarLaApp.IsVisible = false;
 
                     StackLayoutConfig.IsVisible = false;
-                    lytBackNav.IsVisible = false;
-                    gridInfo.BackgroundColor = Color.LightGray;
+                    //lytBackNav.IsVisible = false;
+                    gridInfo.BackgroundColor = Color.WhiteSmoke;
 
                     btnImgConfiguracion.Source = "settings";
                     btnImgInicio.Source = "home2";
@@ -207,13 +247,27 @@ namespace Kapicua25.Pantallas
                 NumberOfTapsRequired = 1
             });
 
-
-
-
             gridconfig.GestureRecognizers.Add(new TapGestureRecognizer
             {
                 Command = new Command(async () =>
                 {
+                    var result = Configuraciones.ObtenerDatosSesion();
+
+                    if (App.TantosParaGanar == 500 && result.conPremioOno == "Si")
+                    {
+                        PickerTantos.SelectedItem = "500 + Premio";
+                    }
+                    if (result.equipoOno == "No")
+                    {
+                        Framelbljugador2Editar.IsVisible = false;
+                        Framelbljugador2Equipo2Editar.IsVisible = false;
+                        radioSinEquipo.IsChecked = true;
+                    }
+                    else
+                    {
+                        radioEquipo.IsChecked = true;
+                    }
+
                     btnImgConfiguracion.Source = "settingsRojo.png";
 
                     gridComoUsarLaApp.BackgroundColor = Color.White;
@@ -227,9 +281,9 @@ namespace Kapicua25.Pantallas
                     StackLayoutPaginaPrincipal.IsVisible = false;
                     StackLayoutAcercaDe.IsVisible = false;
                     StackLayoutConfig.IsVisible = true;
-                    lytBackNav.IsVisible = false;
-                    gridconfig.BackgroundColor = Color.LightGray;
-                    btnImgInfo.Source = "info";
+                    //lytBackNav.IsVisible = false;
+                    gridconfig.BackgroundColor = Color.WhiteSmoke;
+                    btnImgInfo.Source = "exclamacion";
                     btnImgInicio.Source = "home2";
                     btnImgHistorial.Source = "Document";
                     btnImgComoUsarLaApp.Source = "interrogacion";
@@ -240,7 +294,7 @@ namespace Kapicua25.Pantallas
 
         async private void lsv_puntos_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
-            var result = await DisplayAlert("Pregunta", "¿Desea quitar la jugada?", "SI", "NO");
+            var result = await DisplayAlert("Aviso", "¿Desea quitar la jugada?", "SI", "NO");
             if (result)
             {
                 this.ListPuntos.Remove((EPuntos)lsv_puntos.SelectedItem);
@@ -252,21 +306,32 @@ namespace Kapicua25.Pantallas
             }
         }
 
-        void OnSwiped(object sender, SwipedEventArgs e)
-        {
+        //void OnSwiped(object sender, SwipedEventArgs e)
+        //{
 
-            //lblNombreCompañia.Text = $"You swiped: {e.Direction.ToString()}";
-        }
+        //    //lblNombreCompañia.Text = $"You swiped: {e.Direction.ToString()}";
+        //}
 
-        void OnPickerSelectedIndexChanged(object sender, EventArgs e)
+        public void OnPickerSelectedIndexChanged(object sender, EventArgs e)
         {
             var picker = (Picker)sender;
             int selectedIndex = picker.SelectedIndex;
+            string DatoDelPicker = "";
 
-            if (selectedIndex != -1)
+            if (picker.SelectedItem == "500 + Premio")
             {
-                App.TantosParaGanar = Convert.ToInt32(picker.Items[selectedIndex]);
+                App.TantosParaGanar = 500;
+                App.EsConPremio = "Si";
+            }
+            else
+            {
+                App.EsConPremio = "No";
 
+                if (selectedIndex != -1)
+                {
+                    App.TantosParaGanar = Convert.ToInt32(picker.Items[selectedIndex]);
+
+                }
             }
         }
 
@@ -280,14 +345,7 @@ namespace Kapicua25.Pantallas
 
             Puntos = new Puntos();
             var result = Configuraciones.ObtenerDatosSesion();
-            //if (result.Item7 == "0" || result.Item7 == null || result.Item7 == "")
-            //{
-            //    PickerTantos.Title = "ELIJA LOS TANTOS PARA GANAR";
-            //}
-            //else
-            //{
-            //    PickerTantos.SelectedItem = result.Item7;
-            //}
+
 
             PickerTantos.SelectedItem = result.Tantos;
             lbljugador1Editar.Text = result.Equipo1Jugador1;
@@ -306,7 +364,7 @@ namespace Kapicua25.Pantallas
                 LblJugador2Equipo2.Text = "Jugador 2";
                 LblTantos.Text = "100";
 
-                Configuraciones.Grabar("", LblJugador1.Text, LblJugador2.Text, "", LblJugador1Equipo2.Text, LblJugador2Equipo2.Text, LblTantos.Text, "");
+                Configuraciones.Grabar("", LblJugador1.Text, LblJugador2.Text, "", LblJugador1Equipo2.Text, LblJugador2Equipo2.Text, LblTantos.Text, "", result.equipoOno, result.conPremioOno);
             }
             else
             {
@@ -321,6 +379,7 @@ namespace Kapicua25.Pantallas
 
             }
         }
+
         private void LLenarDatosAlmacenados()
         {
 
@@ -332,6 +391,11 @@ namespace Kapicua25.Pantallas
 
         private async void BtnAgregarRonda_Clicked(object sender, EventArgs e)
         {
+            PuntosPremio1 = 0;
+            PuntosPremio2 = 0;
+
+            var resultagregarronda = Configuraciones.ObtenerDatosSesion();
+
             if (TxtPuntosEquipo1.Text == "0" && TxtPuntosEquipo2.Text == "0")
             {
                 await DisplayAlert("Información", "Los puntos de ambos equipos no pueden estar en 0.", "OK");
@@ -339,25 +403,101 @@ namespace Kapicua25.Pantallas
             }
             else
             {
-                if (TxtPuntosEquipo1.Text != "")
+                if (!string.IsNullOrEmpty(TxtPuntosEquipo1.Text))
                 {
-                    Puntos1 = Convert.ToInt32(lblPuntosEquipo1.Text);
-                    Puntos2 = Convert.ToInt32(TxtPuntosEquipo1.Text);
-                    puntosequipo1 = Puntos1 + Puntos2;
-                    lblPuntosEquipo1.Text = puntosequipo1.ToString();
-                    TxtPuntosEquipo1.Text = "";
+                    if (App.EsConPremio == "Si")
+                    {
+
+
+                        if (PrimeraRonda != "Reclamado")
+                        {
+                            PuntosPremio1 = 100;
+                            PrimeraRonda = "Reclamado";
+                        }
+                        else if (SegundaRonda != "Reclamado")
+                        {
+                            PuntosPremio1 = 75;
+                            SegundaRonda = "Reclamado";
+                        }
+                        else if (TerceraRonda != "Reclamado")
+                        {
+                            PuntosPremio1 = 50;
+                            TerceraRonda = "Reclamado";
+                        }
+                        else if (CuartaRonda != "Reclamado")
+                        {
+                            PuntosPremio1 = 25;
+                            CuartaRonda = "Reclamado";
+                        }
+                        else
+                        {
+                            PuntosPremio1 = 0;
+                        }
+
+
+                    }
+                    try
+                    {
+                        Puntos1 = Convert.ToInt32(lblPuntosEquipo1.Text);
+                        Puntos2 = Convert.ToInt32(TxtPuntosEquipo1.Text);
+                        puntosequipo1 = Puntos1 + Puntos2 + PuntosPremio1;
+                        lblPuntosEquipo1.Text = puntosequipo1.ToString();
+                        TxtPuntosEquipo1.Text = "";
+                    }
+                    catch (Exception ex)
+                    {
+
+                    }
+                   
                 }
 
-                if (TxtPuntosEquipo2.Text != "")
+                if (!string.IsNullOrEmpty(TxtPuntosEquipo2.Text))
                 {
-                    Puntos3 = Convert.ToInt32(lblPuntosEquipo2.Text);
-                    Puntos4 = Convert.ToInt32(TxtPuntosEquipo2.Text);
-                    puntosequipos2 = Puntos3 + Puntos4;
-                    lblPuntosEquipo2.Text = puntosequipos2.ToString();
-                    TxtPuntosEquipo2.Text = "";
+                    if (App.EsConPremio == "Si")
+                    {
+                        if (PrimeraRonda != "Reclamado")
+                        {
+                            PuntosPremio2 = 100;
+                            PrimeraRonda = "Reclamado";
+                        }
+                        else if (SegundaRonda != "Reclamado")
+                        {
+                            PuntosPremio2 = 75;
+                            SegundaRonda = "Reclamado";
+                        }
+                        else if (TerceraRonda != "Reclamado")
+                        {
+                            PuntosPremio2 = 50;
+                            TerceraRonda = "Reclamado";
+                        }
+                        else if (CuartaRonda != "Reclamado")
+                        {
+                            PuntosPremio2 = 25;
+                            CuartaRonda = "Reclamado";
+                        }
+                        else
+                        {
+                            PuntosPremio2 = 0;
+                        }
+                    }
+
+
+                    try
+                    {
+                        Puntos3 = Convert.ToInt32(lblPuntosEquipo2.Text);
+                        Puntos4 = Convert.ToInt32(TxtPuntosEquipo2.Text);
+                        puntosequipos2 = Puntos3 + Puntos4 + PuntosPremio2;
+                        lblPuntosEquipo2.Text = puntosequipos2.ToString();
+                        TxtPuntosEquipo2.Text = "";
+                    }
+                    catch (Exception ex)
+                    {
+
+                    }
+                   
                 }
 
-                this.ListPuntos.Add(new EPuntos() { Punto1 = Puntos2, Punto2 = Puntos4 });
+                this.ListPuntos.Add(new EPuntos() { Punto1 = Puntos2 + PuntosPremio1, Punto2 = Puntos4 + PuntosPremio2 });
                 Puntos.GrabarPuntos(this.ListPuntos);
                 this.lsv_puntos.ItemsSource = null;
                 this.lsv_puntos.ItemsSource = this.ListPuntos;
@@ -380,29 +520,46 @@ namespace Kapicua25.Pantallas
                 string PuntosEquipo2 = lblPuntosEquipo2.Text;
                 PuntosEquipo1.Replace("Tantos ", "");
                 PuntosEquipo2.Replace("Tantos ", "");
-                
+
                 if (Convert.ToInt32(PuntosEquipo1) >= App.TantosParaGanar)
                 {
-                    //this.ListGanador.Add(new EGanador() { Ganador1 = result.Equipo1Jugador1, Ganador2 = result.Equipo2Jugador1, Juego = "G" });
-                    ganador.GrabarGanadores(new EGanador() { Ganador1 = result.Equipo1Jugador1, Ganador2 = result.Equipo1Jugador2, Juego = "Ganadores" });
-                    await DisplayAlert("Información", "¡El Equipo 1 ha ganado la partida!", "OK");
+                    if (result.equipoOno == "Si")
+                    {
+                        ganador.GrabarGanadores(new EGanador() { Ganador1 = result.Equipo1Jugador1, Ganador2 = result.Equipo1Jugador2, Juego = "Ganadores" });
+                        await DisplayAlert("Información", "¡El Equipo 1 ha ganado la partida!", "OK");
+                    }
+                    else
+                    {
+                        ganador.GrabarGanadores(new EGanador() { Ganador1 = result.Equipo1Jugador1, Ganador2 = "", Juego = "Ganador" });
+                        await DisplayAlert($"Información", "¡Felicidades " + result.Equipo1Jugador1 + ", has ganado la partida!", "OK");
+                    }
+
+
                 }
                 else if (Convert.ToInt32(PuntosEquipo2) >= App.TantosParaGanar)
                 {
-                    ganador.GrabarGanadores(new EGanador() { Ganador1 = result.Equipo2Jugador1, Ganador2 = result.Equipo2Jugador2, Juego = "Ganadores" });
-                    await DisplayAlert("Información", "¡El Equipo 2 ha ganado la partida!", "OK");
+                    if (result.equipoOno == "Si")
+                    {
+                        ganador.GrabarGanadores(new EGanador() { Ganador1 = result.Equipo2Jugador1, Ganador2 = result.Equipo2Jugador2, Juego = "Ganadores" });
+                        await DisplayAlert("Información", "¡El Equipo 2 ha ganado la partida!", "OK");
+                    }
+                    else
+                    {
+                        ganador.GrabarGanadores(new EGanador() { Ganador1 = result.Equipo2Jugador1, Ganador2 = "", Juego = "Ganador" });
+                        await DisplayAlert($"Información", "¡Felicidades " + result.Equipo2Jugador1 + ", has ganado la partida!", "OK");
+                    }
 
                 }
+
             }
-
-
         }
 
         async void BtnTerminarRonda_Clicked(System.Object sender, System.EventArgs e)
         {
             if (await DisplayAlert("Información", "¿Desea terminar la partida?", "SI", "NO"))
             {
-                Configuraciones.Grabar("", "", "", "", "", "", "0", "");
+                var result = Configuraciones.ObtenerDatosSesion();
+                Configuraciones.Grabar("", "", "", "", "", "", "0", "", result.equipoOno, result.conPremioOno);
                 MainPage mainpage = new MainPage();
                 await Navigation.PushModalAsync(mainpage);
                 Configuraciones.Eliminar();
@@ -414,13 +571,6 @@ namespace Kapicua25.Pantallas
         protected override bool OnBackButtonPressed()
         {
             return true;
-
-
-        }
-
-        private async void BtnEditar_Clicked(object sender, EventArgs e)
-        {
-
         }
 
         private async void BtnNuevaPartida_Clicked(object sender, EventArgs e)
@@ -442,34 +592,48 @@ namespace Kapicua25.Pantallas
 
         public void BtnGuardarCambios_Clicked(System.Object sender, System.EventArgs e)
         {
-            string tantos = "";
             //IndicadorCargando.IsRunning = true;
             try
             {
+                Configuraciones.EliminarFileEquipoOno();
 
                 var result = Configuraciones.ObtenerDatosSesion();
-                //if (PickerTantos.Title == "ELIJA LOS TANTOS PARA GANAR")
-                //{
-                //   tantos = "100";
-                //}
 
-                Configuraciones.Grabar("", lbljugador1Editar.Text, lbljugador2Editar.Text, "", lbljugador1Equipo2Editar.Text, lbljugador2Equipo2Editar.Text, App.TantosParaGanar.ToString(), result.Ganador);
+                if (PickerTantos.SelectedIndex == 5)
+                {
+                    App.EsConPremio = "Si";
+                }
+                else
+                {
+                    App.EsConPremio = "No";
+                }
+
+                if (radioEquipo.IsChecked == true)
+                {
+                    equipoOno = "Si";
+                }
+                else
+                {
+                    equipoOno = "No";
+                }
+
+                Configuraciones.Grabar("", lbljugador1Editar.Text, lbljugador2Editar.Text, "", lbljugador1Equipo2Editar.Text, lbljugador2Equipo2Editar.Text, App.TantosParaGanar.ToString(), result.Ganador, equipoOno, App.EsConPremio);
+                Acr.UserDialogs.UserDialogs.Instance.Toast("¡Los datos se han guardado exitosamente!");
                 //Toast.MakeText(this, "¡Los datos se han guardado exitosamente!", 1, ToastLength.Long).Show();
-                Toast.MakeText(Android.App.Application.Context, "¡Los datos se han guardado exitosamente!", ToastLength.Long).Show();
+                //Toast.MakeText(Android.App.Application.Context, "¡Los datos se han guardado exitosamente!", ToastLength.Long).Show();
 
 
             }
             catch (Exception ex)
             {
-                Toast.MakeText(Android.App.Application.Context, "¡Los datos no se han guardado, intente mas tarde!", ToastLength.Long).Show();
+                Acr.UserDialogs.UserDialogs.Instance.Toast("Los datos no se han guardado, intente mas tarde.");
+
+                //Toast.MakeText(Android.App.Application.Context, "¡Los datos no se han guardado, intente mas tarde!", ToastLength.Long).Show();
 
 
             }
 
             //IndicadorCargando.IsRunning = false;
-
-
-
         }
 
         private async void BtnBorrarHistorial_Clicked(object sender, EventArgs e)
@@ -479,10 +643,28 @@ namespace Kapicua25.Pantallas
                 ganador.EliminarGanadores(this.ListGanador);
                 this.ListGanador = ganador.ObtenerGanadores();
                 this.Lsv_HistorialPartidas.ItemsSource = this.ListGanador;
-
             }
 
         }
-      
+
+        void Btninstagram_Clicked(System.Object sender, System.EventArgs e)
+        {
+            Device.OpenUri(new Uri("instagram://user?username=marcosbremont"));
+        }
+
+        void radioEquipo_CheckedChanged(System.Object sender, Xamarin.Forms.CheckedChangedEventArgs e)
+        {
+            Framelbljugador2Editar.IsVisible = true;
+            Framelbljugador2Equipo2Editar.IsVisible = true;
+            equipoOno = "Si";
+        }
+
+        void radioSinEquipo_CheckedChanged(System.Object sender, Xamarin.Forms.CheckedChangedEventArgs e)
+        {
+            Framelbljugador2Editar.IsVisible = false;
+            Framelbljugador2Equipo2Editar.IsVisible = false;
+            equipoOno = "No";
+
+        }
     }
 }

@@ -68,51 +68,31 @@
     <None Include="Entitlements.plist" />
     <None Include="Info.plist" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="BorderlessEntryRendererWithDoneButton.cs" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json">
       <Visible>false</Visible>
     </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon1024.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon180.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon167.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon152.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon120.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon87.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon80.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon76.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon60.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon58.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon40.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon29.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon20.png">
-      <Visible>false</Visible>
-    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\40.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\60.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\58.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\87.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\80.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\120.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\120-1.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\180.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\20.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\40-1.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\29.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\58-1.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\40-2.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\80-1.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\76.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\152.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\167.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\1024.png" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -125,12 +105,70 @@
   <ItemGroup>
     <PackageReference Include="Xamarin.Forms" Version="5.0.0.2012" />
     <PackageReference Include="Xamarin.Essentials" Version="1.6.1" />
+    <PackageReference Include="Acr.UserDialogs">
+      <Version>7.2.0.561</Version>
+    </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>
     <ProjectReference Include="..\Kapicua25\Kapicua25.csproj">
-      <Project>{31AF304D-6699-4F76-9F1C-E606701E610D}</Project>
+      <Project>{64B762DD-F619-41C7-88A3-9CD606D1803A}</Project>
       <Name>Kapicua25</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\add.png" />
+    <BundleResource Include="Resources\Ajustes.png" />
+    <BundleResource Include="Resources\Ajustes24.png" />
+    <BundleResource Include="Resources\arrow.png" />
+    <BundleResource Include="Resources\Ayuda24.png" />
+    <BundleResource Include="Resources\Borrar.png" />
+    <BundleResource Include="Resources\delete.png" />
+    <BundleResource Include="Resources\Document.png" />
+    <BundleResource Include="Resources\documento.png" />
+    <BundleResource Include="Resources\documentos.png" />
+    <BundleResource Include="Resources\documentRojo.png" />
+    <BundleResource Include="Resources\domino.png" />
+    <BundleResource Include="Resources\Equipo1.png" />
+    <BundleResource Include="Resources\Equipo2.png" />
+    <BundleResource Include="Resources\exclamacion.png" />
+    <BundleResource Include="Resources\exclamacionRojo.png" />
+    <BundleResource Include="Resources\home.png" />
+    <BundleResource Include="Resources\home1.png" />
+    <BundleResource Include="Resources\home2.png" />
+    <BundleResource Include="Resources\HOMEICON.png" />
+    <BundleResource Include="Resources\homeRojo.png" />
+    <BundleResource Include="Resources\Icon1.png" />
+    <BundleResource Include="Resources\Icon2.png" />
+    <BundleResource Include="Resources\info.png" />
+    <BundleResource Include="Resources\INFOICON.png" />
+    <BundleResource Include="Resources\interrogacion.png" />
+    <BundleResource Include="Resources\interrogacionRojo.png" />
+    <BundleResource Include="Resources\leftarrow.png" />
+    <BundleResource Include="Resources\Logo1024.png" />
+    <BundleResource Include="Resources\LogoKapicua.png" />
+    <BundleResource Include="Resources\LogoKapicua2014.png" />
+    <BundleResource Include="Resources\LogoKapicua2014Redondo.png" />
+    <BundleResource Include="Resources\pencil.png" />
+    <BundleResource Include="Resources\pencil2.png" />
+    <BundleResource Include="Resources\pencil3.png" />
+    <BundleResource Include="Resources\pencil4.png" />
+    <BundleResource Include="Resources\pencil5.png" />
+    <BundleResource Include="Resources\refresh24.png" />
+    <BundleResource Include="Resources\settings.png" />
+    <BundleResource Include="Resources\settingsRojo.png" />
+    <BundleResource Include="Resources\Trofeo24.png" />
+    <BundleResource Include="Resources\Winner.jpg" />
+    <BundleResource Include="Resources\IOSSplash.png" />
+    <BundleResource Include="Resources\IOSSplash1.png" />
+    <BundleResource Include="Resources\IOSSplash2.png" />
+    <BundleResource Include="Resources\IOSSplash3.png" />
+    <BundleResource Include="Resources\IOSSplash4.png" />
+    <BundleResource Include="Resources\IOSSplash5.png" />
+    <BundleResource Include="Resources\IOSSplash6.png" />
+    <BundleResource Include="Resources\IOSSplash7.png" />
+    <BundleResource Include="Resources\instagram.png" />
+    <BundleResource Include="Resources\Logophoto.png" />
+    <BundleResource Include="Resources\Splash.png" />
   </ItemGroup>
 </Project>
