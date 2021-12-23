@@ -1,4 +1,5 @@
-﻿using Kapicua25.Objetos;
+﻿using Acr.UserDialogs;
+using Kapicua25.Objetos;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,10 +22,8 @@ namespace Kapicua25.Pantallas
         public event EventHandler<SwipedEventArgs> Swipe;
         string equipoOno = "";
         string conPremioOno = "";
-        string PrimeraRonda = "";
-        string SegundaRonda = "";
-        string TerceraRonda = "";
-        string CuartaRonda = "";
+
+        ToastConfigClass toastConfigClass = new ToastConfigClass();
 
 
         int puntosequipo1 = 0;
@@ -72,7 +71,7 @@ namespace Kapicua25.Pantallas
 
             if (Convert.ToInt32(result2.Tantos) == 0)
             {
-                Configuraciones.Grabar("", LblJugador1.Text, LblJugador2.Text, "", LblJugador1Equipo2.Text, LblJugador2Equipo2.Text, "100", "", result2.equipoOno, result2.conPremioOno);
+                Configuraciones.Grabar("", LblJugador1.Text, LblJugador2.Text, "", LblJugador1Equipo2.Text, LblJugador2Equipo2.Text, "100", "", result2.equipoOno);
                 LblTantos.Text = result2.Tantos;
             }
 
@@ -341,11 +340,20 @@ namespace Kapicua25.Pantallas
         {
 
             base.OnAppearing();
+            var result = Configuraciones.ObtenerDatosSesion();
+
+            if (result.conPremioOno == "Si")
+            {
+                PickerTantos.SelectedIndex = 5;
+            }
+            else
+            {
+                PickerTantos.SelectedItem = result.Tantos;
+            }
+
             LblTantos.Text = App.TantosParaGanar.ToString();
 
             Puntos = new Puntos();
-            var result = Configuraciones.ObtenerDatosSesion();
-
 
             PickerTantos.SelectedItem = result.Tantos;
             lbljugador1Editar.Text = result.Equipo1Jugador1;
@@ -364,7 +372,7 @@ namespace Kapicua25.Pantallas
                 LblJugador2Equipo2.Text = "Jugador 2";
                 LblTantos.Text = "100";
 
-                Configuraciones.Grabar("", LblJugador1.Text, LblJugador2.Text, "", LblJugador1Equipo2.Text, LblJugador2Equipo2.Text, LblTantos.Text, "", result.equipoOno, result.conPremioOno);
+                Configuraciones.Grabar("", LblJugador1.Text, LblJugador2.Text, "", LblJugador1Equipo2.Text, LblJugador2Equipo2.Text, LblTantos.Text, "", result.equipoOno);
             }
             else
             {
@@ -405,29 +413,29 @@ namespace Kapicua25.Pantallas
             {
                 if (!string.IsNullOrEmpty(TxtPuntosEquipo1.Text))
                 {
-                    if (App.EsConPremio == "Si")
+                    if (resultagregarronda.conPremioOno == "Si")
                     {
 
 
-                        if (PrimeraRonda != "Reclamado")
+                        if (resultagregarronda.primeraRonda != "Reclamado")
                         {
                             PuntosPremio1 = 100;
-                            PrimeraRonda = "Reclamado";
+                            Configuraciones.GrabarRondas("Reclamado", "", "", "");
                         }
-                        else if (SegundaRonda != "Reclamado")
+                        else if (resultagregarronda.segundaRonda != "Reclamado")
                         {
                             PuntosPremio1 = 75;
-                            SegundaRonda = "Reclamado";
+                            Configuraciones.GrabarRondas("Reclamado", "Reclamado", "", "");
                         }
-                        else if (TerceraRonda != "Reclamado")
+                        else if (resultagregarronda.terceraRonda != "Reclamado")
                         {
                             PuntosPremio1 = 50;
-                            TerceraRonda = "Reclamado";
+                            Configuraciones.GrabarRondas("Reclamado", "Reclamado", "Reclamado", "");
                         }
-                        else if (CuartaRonda != "Reclamado")
+                        else if (resultagregarronda.cuartaRonda != "Reclamado")
                         {
                             PuntosPremio1 = 25;
-                            CuartaRonda = "Reclamado";
+                            Configuraciones.GrabarRondas("Reclamado", "Reclamado", "Reclamado", "Reclamado");
                         }
                         else
                         {
@@ -453,27 +461,27 @@ namespace Kapicua25.Pantallas
 
                 if (!string.IsNullOrEmpty(TxtPuntosEquipo2.Text))
                 {
-                    if (App.EsConPremio == "Si")
+                    if (resultagregarronda.conPremioOno == "Si")
                     {
-                        if (PrimeraRonda != "Reclamado")
+                        if (resultagregarronda.primeraRonda != "Reclamado")
                         {
                             PuntosPremio2 = 100;
-                            PrimeraRonda = "Reclamado";
+                            Configuraciones.GrabarRondas("Reclamado", "", "", "");
                         }
-                        else if (SegundaRonda != "Reclamado")
+                        else if (resultagregarronda.segundaRonda != "Reclamado")
                         {
                             PuntosPremio2 = 75;
-                            SegundaRonda = "Reclamado";
+                            Configuraciones.GrabarRondas("Reclamado", "Reclamado", "", "");
                         }
-                        else if (TerceraRonda != "Reclamado")
+                        else if (resultagregarronda.terceraRonda != "Reclamado")
                         {
                             PuntosPremio2 = 50;
-                            TerceraRonda = "Reclamado";
+                            Configuraciones.GrabarRondas("Reclamado", "Reclamado", "Reclamado", "");
                         }
-                        else if (CuartaRonda != "Reclamado")
+                        else if (resultagregarronda.cuartaRonda != "Reclamado")
                         {
                             PuntosPremio2 = 25;
-                            CuartaRonda = "Reclamado";
+                            Configuraciones.GrabarRondas("Reclamado", "Reclamado", "Reclamado", "Reclamado");
                         }
                         else
                         {
@@ -559,10 +567,12 @@ namespace Kapicua25.Pantallas
             if (await DisplayAlert("Información", "¿Desea terminar la partida?", "SI", "NO"))
             {
                 var result = Configuraciones.ObtenerDatosSesion();
-                Configuraciones.Grabar("", "", "", "", "", "", "0", "", result.equipoOno, result.conPremioOno);
+                Configuraciones.Grabar("", "", "", "", "", "", "0", "", result.equipoOno);
                 MainPage mainpage = new MainPage();
                 await Navigation.PushModalAsync(mainpage);
                 Configuraciones.Eliminar();
+                Configuraciones.EliminarFileRondas();
+
 
 
             }
@@ -585,6 +595,8 @@ namespace Kapicua25.Pantallas
                 this.ListPuntos.Clear();
                 //Configuraciones.Eliminar();
                 Puntos.EliminarPuntos(this.ListPuntos);
+                Configuraciones.EliminarFileRondas();
+
 
 
             }
@@ -601,11 +613,11 @@ namespace Kapicua25.Pantallas
 
                 if (PickerTantos.SelectedIndex == 5)
                 {
-                    App.EsConPremio = "Si";
+                    Configuraciones.GrabarConPremioOno("Si");
                 }
                 else
                 {
-                    App.EsConPremio = "No";
+                    Configuraciones.GrabarConPremioOno("No");
                 }
 
                 if (radioEquipo.IsChecked == true)
@@ -617,20 +629,14 @@ namespace Kapicua25.Pantallas
                     equipoOno = "No";
                 }
 
-                Configuraciones.Grabar("", lbljugador1Editar.Text, lbljugador2Editar.Text, "", lbljugador1Equipo2Editar.Text, lbljugador2Equipo2Editar.Text, App.TantosParaGanar.ToString(), result.Ganador, equipoOno, App.EsConPremio);
-                Acr.UserDialogs.UserDialogs.Instance.Toast("¡Los datos se han guardado exitosamente!");
-                //Toast.MakeText(this, "¡Los datos se han guardado exitosamente!", 1, ToastLength.Long).Show();
-                //Toast.MakeText(Android.App.Application.Context, "¡Los datos se han guardado exitosamente!", ToastLength.Long).Show();
 
+                Configuraciones.Grabar("", lbljugador1Editar.Text, lbljugador2Editar.Text, "", lbljugador1Equipo2Editar.Text, lbljugador2Equipo2Editar.Text, App.TantosParaGanar.ToString(), result.Ganador, equipoOno);
+                toastConfigClass.MostrarNotificacion($"¡Los datos se han guardado exitosamente!", ToastPosition.Top, 3, "#51C560");
 
             }
             catch (Exception ex)
             {
-                Acr.UserDialogs.UserDialogs.Instance.Toast("Los datos no se han guardado, intente mas tarde.");
-
-                //Toast.MakeText(Android.App.Application.Context, "¡Los datos no se han guardado, intente mas tarde!", ToastLength.Long).Show();
-
-
+                toastConfigClass.MostrarNotificacion($"Los datos no se han guardado, intente mas tarde.", ToastPosition.Top, 3, "#c82333");
             }
 
             //IndicadorCargando.IsRunning = false;
@@ -649,7 +655,7 @@ namespace Kapicua25.Pantallas
 
         void Btninstagram_Clicked(System.Object sender, System.EventArgs e)
         {
-            Device.OpenUri(new Uri("instagram://user?username=marcosbremont"));
+            Device.OpenUri(new Uri("instagram://user?username=kapicua25app"));
         }
 
         void radioEquipo_CheckedChanged(System.Object sender, Xamarin.Forms.CheckedChangedEventArgs e)

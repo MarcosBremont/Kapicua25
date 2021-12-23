@@ -350,6 +350,13 @@
                                         </StackLayout>
                                     </Frame>
 
+                                      <Frame BorderColor="White" BackgroundColor="Transparent" >
+                                        <StackLayout>
+                                            <Label FontAttributes="Bold" Text="¿Que significa 500 + Premio?" FontSize="16" TextColor="White" HorizontalOptions="Center"></Label>
+                                            <Label Text="El modo de juego llamado 500 + Premio, se trata de que en las primeras 4 rondas de la partida, los jugadores que las ganen recibiran un premio aparte de los tantos obtenidos. Es decir que en la primera ronda el equipo que gane esa ronda sera bonificado con 100 puntos, en la segunda con 75, tercera con 50 y la cuarta ronda con 25 punz" TextColor="White" HorizontalOptions="Center"></Label>
+                                        </StackLayout>
+                                    </Frame>
+
                                     <Frame BorderColor="White" BackgroundColor="Transparent" >
                                         <StackLayout>
                                             <Label FontAttributes="Bold" Text="¿Como editar los nombres de los jugadores?" FontSize="16" TextColor="White" HorizontalOptions="Center"></Label>
