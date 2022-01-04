@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using Xamarin.Essentials;
 
 namespace Kapicua25.Pantallas
 {
@@ -653,6 +654,7 @@ namespace Kapicua25.Pantallas
 
         }
 
+        [Obsolete]
         void Btninstagram_Clicked(System.Object sender, System.EventArgs e)
         {
             Device.OpenUri(new Uri("instagram://user?username=kapicua25app"));
@@ -671,6 +673,15 @@ namespace Kapicua25.Pantallas
             Framelbljugador2Equipo2Editar.IsVisible = false;
             equipoOno = "No";
 
+        }
+
+        async void BtnCompartirApp_Clicked(System.Object sender, System.EventArgs e)
+        {
+            await Share.RequestAsync(new ShareTextRequest
+            {
+                Text = "Prueba esta aplicación para anotar los puntos en el domino, está genial.",
+                Title = "Share!"
+            });
         }
     }
 }

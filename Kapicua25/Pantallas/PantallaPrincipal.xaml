@@ -175,9 +175,10 @@
                         <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
 
-                    <StackLayout Orientation="Horizontal" BackgroundColor="White" Margin="0,0,0,0" >
-                        <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
-                            <Label Text="Acerca de la App" VerticalOptions="CenterAndExpand" TextColor="#e63946" FontSize="22" FontAttributes="Bold"/>
+                    <StackLayout Orientation="Horizontal" BackgroundColor="White" >
+                        <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                            <Label Text="Acerca de la App" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" TextColor="#e63946" FontSize="22" FontAttributes="Bold"/>
+                            <!--<Image HorizontalOptions="End" Source="share" Margin="0,0,5,0" HeightRequest="20"></Image>-->
                         </StackLayout>
                     </StackLayout>
 
@@ -185,11 +186,11 @@
                         <ScrollView VerticalOptions="FillAndExpand">
                             <StackLayout Padding="30,10,30,30" Spacing="0" VerticalOptions="FillAndExpand">
 
-                                <Image Source="Logophoto.png" BackgroundColor="Transparent" WidthRequest="100"></Image>
+                                <Image Source="Logophoto.png" BackgroundColor="Transparent" WidthRequest="80"></Image>
                                 <StackLayout>
                                     <Label TextColor="White"
                                    Text="..."
-                                   FontSize="15"
+                                   FontSize="14"
                                    Opacity="0.8"
                                    FontAttributes="Bold"
                                    VerticalOptions="Start"
@@ -199,7 +200,7 @@
 
                                     <Label TextColor="White"
                                    Text="Kapicúa 25 es una aplicación diseñada para poder anotar los puntos de una partida de dominos, esta aplicación trata de ofrecer la interfaz mas sencilla y practica para que el usuario pueda llevar los tantos anotados."
-                                   FontSize="16"
+                                   FontSize="14"
                                    Opacity="1"
                                    Margin="0,0,0,10"
                                    HorizontalTextAlignment="Center"
@@ -209,12 +210,10 @@
 
                                 </StackLayout>
 
-                                <Label TextColor="White" FontAttributes="Bold" Text="(Desarrollada por)" FontSize="16" Opacity="1" VerticalOptions="Start" HorizontalOptions="CenterAndExpand" Margin="0,0,0,0" />
-
-
+                                <Label TextColor="White" FontAttributes="Bold" Text="(Desarrollada por)" FontSize="14" Opacity="1" VerticalOptions="Start" HorizontalOptions="CenterAndExpand" Margin="0,0,0,0" />
 
                                 <StackLayout Spacing="10" VerticalOptions="FillAndExpand">
-                                    <Label TextColor="White" Text="Marcos Bremont" FontSize="16" Opacity="1" VerticalOptions="Start" HorizontalOptions="CenterAndExpand" />
+                                    <Label TextColor="White" Text="Marcos Bremont" FontSize="14" Opacity="1" VerticalOptions="Start" HorizontalOptions="CenterAndExpand" />
                                     <StackLayout>
 
                                         <!--<Label TextColor="White" Text="C/ 16 de Agosto #12, Jarabacoa, Rep, Dom." FontSize="13" Opacity="0.8" HorizontalTextAlignment="Center" VerticalOptions="Start" HorizontalOptions="CenterAndExpand" />
@@ -238,19 +237,23 @@
                                             <Label >
                                                 <Label.FormattedText>
                                                     <FormattedString>
-                                                        <Span Text="v1.0.0" x:Name="lblVersion" TextColor="White" FontSize="16" ></Span>
+                                                        <Span Text="v1.0.0" x:Name="lblVersion" TextColor="White" FontSize="14" ></Span>
                                                     </FormattedString>
                                                 </Label.FormattedText>
                                             </Label>
                                         </StackLayout>
 
                                         <StackLayout Opacity="1" Spacing="0">
-                                            <Label TextColor="White" Text="Online" VerticalOptions="Start" HorizontalOptions="CenterAndExpand" FontSize="16" x:Name="txtConectionType" />
+                                            <Label TextColor="White" Text="Online" VerticalOptions="Start" HorizontalOptions="CenterAndExpand" FontSize="14" x:Name="txtConectionType" />
+                                        </StackLayout>
+
+                                        <StackLayout Margin="5">
+                                            <Button Text="COMPARTIR APP" x:Name="BtnCompartirApp" Clicked="BtnCompartirApp_Clicked" TextColor="#e63946" FontAttributes="Bold" FontSize="14" BackgroundColor="White"/>
                                         </StackLayout>
 
                                         <Frame BorderColor="White" Margin="0,10,0,0" BackgroundColor="Transparent" >
                                             <StackLayout Orientation="Vertical" HorizontalOptions="Center">
-                                                <Label Text="¿Tienes alguna sugerencia?" FontSize="16" TextColor="White" HorizontalOptions="Center"></Label>
+                                                <Label Text="¿Tienes alguna sugerencia?" FontSize="14" TextColor="White" HorizontalOptions="Center"></Label>
 
                                                 <Label Text="Enviame un correo a" TextColor="White" HorizontalOptions="Center"></Label>
                                                 <Label x:Name="lblemail" Text="MarcosBremont00@gmail.com" HorizontalOptions="Center" TextColor="#59C2FF"></Label>
