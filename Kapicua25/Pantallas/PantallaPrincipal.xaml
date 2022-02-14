@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Kapicua25.Pantallas.PantallaPrincipal"
              NavigationPage.HasNavigationBar="False"
+             xmlns:controls="clr-namespace:MarcTron.Plugin.Controls;assembly=Plugin.MtAdmob"
              xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core" xmlns:renderer="clr-namespace:Kapicua25.Renderer"
              ios:Page.UseSafeArea="true">
 
@@ -30,8 +31,17 @@
                     <StackLayout Orientation="Horizontal" BackgroundColor="White" Margin="0,0,0,0" >
                         <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
                             <Label Text="Kapicúa 25" VerticalOptions="CenterAndExpand" TextColor="#e63946" FontSize="22" FontAttributes="Bold"/>
+                            <Image HorizontalOptions="End" Source="PaseRedondo" Margin="0,0,5,0" HeightRequest="20"></Image>
+
                         </StackLayout>
                     </StackLayout>
+
+
+                    <controls:MTAdView 
+                Grid.Row="1"
+                AdsId="ca-app-pub-3940256099942544/6300978111"/>
+
+
 
 
                     <StackLayout Grid.Row="1">
@@ -41,7 +51,8 @@
                             <Label x:Name="LblTantos" FontAttributes="Bold" TextColor="#e63946" FontSize="15" HorizontalOptions="Center"></Label>
                         </StackLayout>
 
-
+                    
+                        
                         <StackLayout  HorizontalOptions="CenterAndExpand" Margin="0,0,0,0" Orientation="Horizontal" >
                             <Label TextColor="#e63946" FontSize="15" Text="VS" FontAttributes="Bold"></Label>
                         </StackLayout>
@@ -233,6 +244,7 @@
                                     <Label TextColor="Black" Text="2.0.5" VerticalOptions="Start" HorizontalOptions="CenterAndExpand" FontSize="15" />
                                 </StackLayout>-->
 
+                                        
                                         <StackLayout HorizontalOptions="CenterAndExpand"  Opacity="1" Margin="0,5,0,0" Padding="0,0,0,0">
                                             <Label >
                                                 <Label.FormattedText>
