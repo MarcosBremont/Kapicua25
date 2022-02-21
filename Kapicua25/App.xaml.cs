@@ -14,6 +14,8 @@ namespace Kapicua25
         public static string Jugador1Equipo2 { get; set; }
         public static string Jugador2Equipo2 { get; set; }
         public static string EsConPremio { get; set; }
+        public static int PaseRedondoPuntos1 { get; set; }
+        public static int PaseRedondoPuntos2 { get; set; }
         public App()
         {
             InitializeComponent();

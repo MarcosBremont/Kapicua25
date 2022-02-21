@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<popup:PopupPage CloseWhenBackgroundIsClicked="False"
+             xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:popup="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+             x:Class="Kapicua25.Pantallas.ModalPaseRedondo">
+
+    <ContentPage.Content>
+        <StackLayout x:Name="modalControlVersiones" BackgroundColor="White" Margin="50,80,50,280" >
+            <StackLayout AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <BoxView HeightRequest="40" Color="#E63946" HorizontalOptions="FillAndExpand"/>
+                    <Label Text="¡AVISO!" Grid.Row="0" HorizontalTextAlignment="Center" TextColor="White" FontAttributes="Bold" Padding="5"  FontSize="Medium"/>
+                </Grid>
+            </StackLayout>
+
+            <StackLayout Orientation="Vertical" Padding="15,0,15,0" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                <Label HorizontalOptions="CenterAndExpand" FontAttributes="Bold" HorizontalTextAlignment="Center" Text="Por favor toque al equipo que le corresponde el paso redondo y presione el boton aceptar."></Label>
+            </StackLayout>
+
+
+            <StackLayout Grid.Row="2">
+                <Frame  HasShadow="False" BackgroundColor="#F0F0F0" Margin="30,0,30,10"  CornerRadius="10">
+
+                    <StackLayout VerticalOptions="Center" Orientation="Horizontal" HorizontalOptions="CenterAndExpand" >
+                        <RadioButton  IsChecked="False" CheckedChanged="radioEquipo1_CheckedChanged" BackgroundColor="Transparent" x:Name="radioEquipo1" ></RadioButton>
+                        <Label x:Name="lblradioequipo1" FontAttributes="Bold" VerticalOptions="CenterAndExpand" Text="Equipo 1"></Label>
+                        <RadioButton IsChecked="False" CheckedChanged="radioEquipo2_CheckedChanged" BackgroundColor="Transparent" x:Name="radioEquipo2" ></RadioButton>
+                        <Label x:Name="lblradioequipo2" FontAttributes="Bold" VerticalOptions="CenterAndExpand" Text="Equipo 2"></Label>
+                    </StackLayout>
+                </Frame>
+
+            </StackLayout>
+            
+            <!--<StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                <Button x:Name="BtnEquipo1" TextColor="White" Clicked="BtnEquipo1_Clicked" Text="Equipo 1" BackgroundColor="#1D3557"/>
+                <Button x:Name="BtnEquipo2" TextColor="White" Clicked="BtnEquipo2_Clicked" Text="Equipo 2" BackgroundColor="#1D3557"/>
+
+            </StackLayout>-->
+
+            <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                <Button x:Name="BtnAceptar"  Clicked="BtnAceptar_Clicked" Text="Aceptar" />
+                <Button x:Name="BtnCancelar"  Clicked="BtnCancelar_Clicked" Text="Cancelar"/>
+            </StackLayout>
+
+        </StackLayout>
+    </ContentPage.Content>
+</popup:PopupPage>

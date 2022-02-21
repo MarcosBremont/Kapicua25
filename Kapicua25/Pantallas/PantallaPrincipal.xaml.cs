@@ -5,9 +5,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Xamarin.Essentials;
+using Rg.Plugins.Popup.Services;
 
 namespace Kapicua25.Pantallas
 {
@@ -15,6 +17,8 @@ namespace Kapicua25.Pantallas
     public partial class PantallaPrincipal : ContentPage
     {
         EGlobal eGlobal = new EGlobal();
+        ModalPaseRedondo modalpaseredondo = new ModalPaseRedondo();
+
         public Puntos Puntos { get; set; }
         Ganador ganador = new Ganador();
         public List<EPuntos> ListPuntos { get; set; } = new List<EPuntos>();
@@ -22,7 +26,6 @@ namespace Kapicua25.Pantallas
         public event EventHandler<SwipedEventArgs> Swipe;
         string equipoOno = "";
         string conPremioOno = "";
-
         ToastConfigClass toastConfigClass = new ToastConfigClass();
 
 
@@ -35,6 +38,7 @@ namespace Kapicua25.Pantallas
         int PuntosPremio1 = 0;
         int PuntosPremio2 = 0;
 
+        [Obsolete]
         public PantallaPrincipal()
         {
             InitializeComponent();
@@ -43,6 +47,12 @@ namespace Kapicua25.Pantallas
             //GestureRecognizers.Add(GetSwipeGestureRecognizer(SwipeDirection.Right));
             //GestureRecognizers.Add(GetSwipeGestureRecognizer(SwipeDirection.Up));
             //GestureRecognizers.Add(GetSwipeGestureRecognizer(SwipeDirection.Down));
+
+            //frm.ID
+            modalpaseredondo.Disappearing += Frm_Disappearing;
+
+
+
             btnImgInicio.Source = "homeRojo";
             #region gridconfig
             PickerTantos.Items.Add("100");
@@ -102,6 +112,18 @@ namespace Kapicua25.Pantallas
             //    NumberOfTapsRequired = 1
             //});
 
+            LayoutPaseR.GestureRecognizers.Add(new TapGestureRecognizer
+            {
+                Command = new Command(async () =>
+                {
+                    await PopupNavigation.PushAsync(modalpaseredondo);
+
+                    //lytBackNav1.IsVisible = true;
+                }),
+                NumberOfTapsRequired = 1
+            });
+
+
             gridInicio.GestureRecognizers.Add(new TapGestureRecognizer
             {
                 Command = new Command(async () =>
@@ -131,6 +153,7 @@ namespace Kapicua25.Pantallas
                     StackLayoutConfig.IsVisible = false;
                     //lytBackNav.IsVisible = true;
                     StackLayoutComoUsarLaApp.IsVisible = false;
+
 
                     StackLayoutHistorialPartidas.IsVisible = false;
                     gridHistorialPartidas.BackgroundColor = Color.White;
@@ -168,7 +191,6 @@ namespace Kapicua25.Pantallas
                     StackLayoutConfig.IsVisible = false;
                     StackLayoutHistorialPartidas.IsVisible = true;
                     StackLayoutComoUsarLaApp.IsVisible = false;
-
                     //lytBackNav.IsVisible = false;
                     gridHistorialPartidas.BackgroundColor = Color.WhiteSmoke;
                     this.ListGanador = ganador.ObtenerGanadores();
@@ -196,6 +218,7 @@ namespace Kapicua25.Pantallas
                     StackLayoutConfig.IsVisible = false;
                     StackLayoutHistorialPartidas.IsVisible = false;
                     StackLayoutComoUsarLaApp.IsVisible = true;
+
                     //lytBackNav.IsVisible = false;
                     this.ListGanador = ganador.ObtenerGanadores();
                     this.Lsv_HistorialPartidas.ItemsSource = this.ListGanador;
@@ -207,7 +230,6 @@ namespace Kapicua25.Pantallas
                 }),
                 NumberOfTapsRequired = 1
             });
-
 
             gridInfo.GestureRecognizers.Add(new TapGestureRecognizer
             {
@@ -222,6 +244,7 @@ namespace Kapicua25.Pantallas
                     gridconfig.BackgroundColor = Color.White;
                     StackLayoutPaginaPrincipal.IsVisible = false;
                     StackLayoutAcercaDe.IsVisible = true;
+
                     StackLayoutComoUsarLaApp.IsVisible = false;
 
                     StackLayoutConfig.IsVisible = false;
@@ -291,6 +314,38 @@ namespace Kapicua25.Pantallas
             });
         }
 
+        private void Frm_Disappearing(object sender, EventArgs e)
+        {
+            if (App.PaseRedondoPuntos1 > 0)
+            {
+                int totalpase1 = 0;
+                totalpase1 = Convert.ToInt32(lblPuntosEquipo1.Text) + App.PaseRedondoPuntos1;
+                lblPuntosEquipo1.Text = totalpase1.ToString();
+
+                this.ListPuntos.Add(new EPuntos() { Punto1 = Puntos2 + PuntosPremio1 + App.PaseRedondoPuntos1, Punto2 = Puntos4 });
+                Puntos.GrabarPuntos(this.ListPuntos);
+                this.lsv_puntos.ItemsSource = null;
+                this.lsv_puntos.ItemsSource = this.ListPuntos;
+            }
+            else if (App.PaseRedondoPuntos2 > 0)
+            {
+                int totalpase2 = 0;
+                totalpase2 = Convert.ToInt32(lblPuntosEquipo2.Text) + App.PaseRedondoPuntos2;
+                lblPuntosEquipo2.Text = totalpase2.ToString();
+
+                this.ListPuntos.Add(new EPuntos() { Punto1 = Puntos2 + PuntosPremio1, Punto2 = Puntos4 + PuntosPremio2 + App.PaseRedondoPuntos2 });
+                Puntos.GrabarPuntos(this.ListPuntos);
+                this.lsv_puntos.ItemsSource = null;
+                this.lsv_puntos.ItemsSource = this.ListPuntos;
+            }
+            else
+            {
+                    
+            }
+
+            
+        }
+
         async private void lsv_puntos_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
             var result = await DisplayAlert("Aviso", "¿Desea quitar la jugada?", "SI", "NO");
@@ -334,12 +389,11 @@ namespace Kapicua25.Pantallas
             }
         }
 
-
-
         protected override void OnAppearing()
         {
 
             base.OnAppearing();
+            
             var result = Configuraciones.ObtenerDatosSesion();
 
             if (result.conPremioOno == "Si")
