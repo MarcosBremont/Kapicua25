@@ -105,16 +105,14 @@
                             <renderer:BorderlessEntryWithDoneButton TextColor="#333" FontAttributes="Bold" FontSize="16" Keyboard="Numeric" Placeholder="0" HorizontalTextAlignment="Center" WidthRequest="115" x:Name="TxtPuntosEquipo1" ></renderer:BorderlessEntryWithDoneButton>
                         </Frame>
                         
-                        <StackLayout Orientation="Vertical" x:Name="LayoutPaseR"  HorizontalOptions="CenterAndExpand" Margin="0,0,0,0" >
-                            <Image Margin="0,0,0,0" Source="PaseRedondoBlanco"></Image>
-                            <Label HorizontalTextAlignment="Center" TextColor="White" Text="Pase Redondo" FontSize="11"></Label>
-                        </StackLayout>
+                      
                         
                         <Frame Grid.Column="1" Padding="5" Margin="20,0,20,0" >
                             <renderer:BorderlessEntryWithDoneButton TextColor="#333" FontAttributes="Bold" Placeholder="0" FontSize="16"  Keyboard="Numeric" HorizontalTextAlignment="Center" x:Name="TxtPuntosEquipo2" WidthRequest="115"></renderer:BorderlessEntryWithDoneButton>
                         </Frame>
 
                     </StackLayout>
+
 
 
                     <!--<Frame Grid.Row="3" HasShadow="True" HorizontalOptions="CenterAndExpand" BackgroundColor="#1d3557" Margin="0,0,0,0">-->
@@ -160,8 +158,14 @@
 
                 </Grid>
 
-                <Button Grid.Row="3" Scale="0.8" BackgroundColor="White"  FontSize="20" x:Name="BtnAgregarRonda" TextTransform="None" Clicked="BtnAgregarRonda_Clicked" TextColor="#333"  CornerRadius="4" Text="Agregar Ronda" Margin="0,30,0,0"/>
 
+            
+
+                <Button Grid.Row="3" Scale="0.8" BackgroundColor="White"  FontSize="20" x:Name="BtnAgregarRonda" TextTransform="None" Clicked="BtnAgregarRonda_Clicked" TextColor="#333"  CornerRadius="4" Text="Agregar Ronda" Margin="0,30,0,0"/>
+               
+                <Button Grid.Row="3" Scale="0.8" BackgroundColor="#e63946" TextColor="White" FontSize="20" x:Name="BtnPaseRedondo" TextTransform="None" Clicked="BtnPaseRedondo_Clicked"  CornerRadius="4" 
+                  Text="Pase Redondo" Margin="0,0,0,0"/>
+                
                 <Button Grid.Row="3" Scale="0.8" BackgroundColor="#e63946" TextColor="White" FontSize="20" x:Name="BtnNuevaPartida" TextTransform="None" Clicked="BtnNuevaPartida_Clicked"  CornerRadius="4" 
                   Text="Nueva Partida" Margin="0,0,0,0"/>
             </StackLayout>

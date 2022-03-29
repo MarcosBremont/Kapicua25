@@ -112,17 +112,6 @@ namespace Kapicua25.Pantallas
             //    NumberOfTapsRequired = 1
             //});
 
-            LayoutPaseR.GestureRecognizers.Add(new TapGestureRecognizer
-            {
-                Command = new Command(async () =>
-                {
-                    await PopupNavigation.PushAsync(modalpaseredondo);
-
-                    //lytBackNav1.IsVisible = true;
-                }),
-                NumberOfTapsRequired = 1
-            });
-
 
             gridInicio.GestureRecognizers.Add(new TapGestureRecognizer
             {
@@ -735,6 +724,11 @@ namespace Kapicua25.Pantallas
                 Text = "Prueba esta aplicación para anotar los puntos en el domino, está genial.",
                 Title = "Share!"
             });
+        }
+
+        private async void BtnPaseRedondo_Clicked(object sender, EventArgs e)
+        {
+            await PopupNavigation.PushAsync(modalpaseredondo);
         }
     }
 }

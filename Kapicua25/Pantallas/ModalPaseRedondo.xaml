@@ -23,13 +23,13 @@
 
 
             <StackLayout Grid.Row="2">
-                <Frame  HasShadow="False" BackgroundColor="#F0F0F0" Margin="30,0,30,10"  CornerRadius="10">
+                <Frame  HasShadow="False" BackgroundColor="#F0F0F0" Margin="20,0,20,10"  CornerRadius="10">
 
                     <StackLayout VerticalOptions="Center" Orientation="Horizontal" HorizontalOptions="CenterAndExpand" >
-                        <RadioButton  IsChecked="False" CheckedChanged="radioEquipo1_CheckedChanged" BackgroundColor="Transparent" x:Name="radioEquipo1" ></RadioButton>
-                        <Label x:Name="lblradioequipo1" FontAttributes="Bold" VerticalOptions="CenterAndExpand" Text="Equipo 1"></Label>
-                        <RadioButton IsChecked="False" CheckedChanged="radioEquipo2_CheckedChanged" BackgroundColor="Transparent" x:Name="radioEquipo2" ></RadioButton>
-                        <Label x:Name="lblradioequipo2" FontAttributes="Bold" VerticalOptions="CenterAndExpand" Text="Equipo 2"></Label>
+                        <RadioButton  IsChecked="False" FontSize="10" CheckedChanged="radioEquipo1_CheckedChanged" BackgroundColor="Transparent" x:Name="radioEquipo1" ></RadioButton>
+                        <Label x:Name="lblradioequipo1" FontSize="10" FontAttributes="Bold" VerticalOptions="CenterAndExpand" Text="Equipo 1"></Label>
+                        <RadioButton IsChecked="False" FontSize="10" CheckedChanged="radioEquipo2_CheckedChanged" BackgroundColor="Transparent" x:Name="radioEquipo2" ></RadioButton>
+                        <Label x:Name="lblradioequipo2" FontSize="10" FontAttributes="Bold" VerticalOptions="CenterAndExpand" Text="Equipo 2"></Label>
                     </StackLayout>
                 </Frame>
 
