@@ -25,6 +25,7 @@ namespace Kapicua25.iOS
             global::Xamarin.Forms.Forms.Init();
             Rg.Plugins.Popup.Popup.Init();
             LoadApplication(new App());
+
             return base.FinishedLaunching(app, options);
         }
     }
