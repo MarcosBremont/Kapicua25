@@ -726,9 +726,16 @@ namespace Kapicua25.Pantallas
             });
         }
 
+        [Obsolete]
         private async void BtnPaseRedondo_Clicked(object sender, EventArgs e)
         {
-            await PopupNavigation.PushAsync(modalpaseredondo);
+            try
+            {
+                await PopupNavigation.PushAsync(modalpaseredondo);
+            }
+            catch (Exception ex)
+            {
+            }
         }
     }
 }
