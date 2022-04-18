@@ -23,13 +23,13 @@
 
 
             <StackLayout Grid.Row="2">
-                <Frame  HasShadow="False" BackgroundColor="#F0F0F0" Margin="20,0,20,10"  CornerRadius="10">
+                <Frame  HasShadow="False" BackgroundColor="#F0F0F0" Margin="10,0,10,10"  CornerRadius="10">
 
                     <StackLayout VerticalOptions="Center" Orientation="Horizontal" HorizontalOptions="CenterAndExpand" >
-                        <RadioButton  IsChecked="False" FontSize="10" CheckedChanged="radioEquipo1_CheckedChanged" BackgroundColor="Transparent" x:Name="radioEquipo1" ></RadioButton>
-                        <Label x:Name="lblradioequipo1" FontSize="10" FontAttributes="Bold" VerticalOptions="CenterAndExpand" Text="Equipo 1"></Label>
-                        <RadioButton IsChecked="False" FontSize="10" CheckedChanged="radioEquipo2_CheckedChanged" BackgroundColor="Transparent" x:Name="radioEquipo2" ></RadioButton>
-                        <Label x:Name="lblradioequipo2" FontSize="10" FontAttributes="Bold" VerticalOptions="CenterAndExpand" Text="Equipo 2"></Label>
+                        <RadioButton  IsChecked="False" FontSize="12" CheckedChanged="radioEquipo1_CheckedChanged" BackgroundColor="Transparent" x:Name="radioEquipo1" ></RadioButton>
+                        <Label x:Name="lblradioequipo1" FontSize="12" FontAttributes="Bold" VerticalOptions="CenterAndExpand" Text="Equipo 1"></Label>
+                        <RadioButton IsChecked="False" FontSize="12" CheckedChanged="radioEquipo2_CheckedChanged" BackgroundColor="Transparent" x:Name="radioEquipo2" ></RadioButton>
+                        <Label x:Name="lblradioequipo2" FontSize="12" FontAttributes="Bold" VerticalOptions="CenterAndExpand" Text="Equipo 2"></Label>
                     </StackLayout>
                 </Frame>
 
@@ -42,8 +42,8 @@
             </StackLayout>-->
 
             <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
-                <Button x:Name="BtnAceptar"  Clicked="BtnAceptar_Clicked" Text="Aceptar" />
-                <Button x:Name="BtnCancelar"  Clicked="BtnCancelar_Clicked" Text="Cancelar"/>
+                <Button BackgroundColor="#e63946" TextColor="White" Padding="10" x:Name="BtnAceptar"  Clicked="BtnAceptar_Clicked" Text="Aceptar" />
+                <Button BackgroundColor="DarkGray" TextColor="White" Padding="10" x:Name="BtnCancelar"  Clicked="BtnCancelar_Clicked" Text="Cancelar"/>
             </StackLayout>
 
         </StackLayout>
