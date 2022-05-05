@@ -329,10 +329,10 @@ namespace Kapicua25.Pantallas
             }
             else
             {
-                    
+
             }
 
-            
+
         }
 
         async private void lsv_puntos_ItemSelected(object sender, SelectedItemChangedEventArgs e)
@@ -382,7 +382,7 @@ namespace Kapicua25.Pantallas
         {
 
             base.OnAppearing();
-            
+
             var result = Configuraciones.ObtenerDatosSesion();
 
             if (result.conPremioOno == "Si")
@@ -499,7 +499,7 @@ namespace Kapicua25.Pantallas
                     {
 
                     }
-                   
+
                 }
 
                 if (!string.IsNullOrEmpty(TxtPuntosEquipo2.Text))
@@ -545,7 +545,7 @@ namespace Kapicua25.Pantallas
                     {
 
                     }
-                   
+
                 }
 
                 this.ListPuntos.Add(new EPuntos() { Punto1 = Puntos2 + PuntosPremio1, Punto2 = Puntos4 + PuntosPremio2 });

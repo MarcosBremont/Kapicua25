@@ -608,7 +608,7 @@
 
 
             <!--Apartado del menu de abajo-->
-            <StackLayout  Spacing="0" VerticalOptions="End" HorizontalOptions="CenterAndExpand" HeightRequest="60"  Margin="0,0,0,0" BackgroundColor="White">
+            <StackLayout  Spacing="0" VerticalOptions="End" HorizontalOptions="FillAndExpand" HeightRequest="60"  Margin="0,0,0,0" BackgroundColor="White">
 
                 <!--<StackLayout Orientation="Horizontal">
                     <Label  TextColor="#333"  Margin="15,0,0,0" Text="Inicio"/>
