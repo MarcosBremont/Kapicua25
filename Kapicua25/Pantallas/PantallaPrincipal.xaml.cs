@@ -81,7 +81,7 @@ namespace Kapicua25.Pantallas
 
             if (Convert.ToInt32(result2.Tantos) == 0)
             {
-                Configuraciones.Grabar("", LblJugador1.Text, LblJugador2.Text, "", LblJugador1Equipo2.Text, LblJugador2Equipo2.Text, "100", "", result2.equipoOno);
+                Configuraciones.Grabar("", LblJugador1.Text, LblJugador2.Text, "", LblJugador1Equipo2.Text, LblJugador2Equipo2.Text, "100", "", result2.equipoOno, result2.PaseRedondo);
                 LblTantos.Text = result2.Tantos;
             }
 
@@ -263,7 +263,7 @@ namespace Kapicua25.Pantallas
                 Command = new Command(async () =>
                 {
                     var result = Configuraciones.ObtenerDatosSesion();
-
+                    txtPuntosPaseRedondo.Text = result.PaseRedondo; 
                     if (App.TantosParaGanar == 500 && result.conPremioOno == "Si")
                     {
                         PickerTantos.SelectedItem = "500 + Premio";
@@ -305,24 +305,26 @@ namespace Kapicua25.Pantallas
 
         private void Frm_Disappearing(object sender, EventArgs e)
         {
-            if (App.PaseRedondoPuntos1 > 0)
+            var result = Configuraciones.ObtenerDatosSesion();
+
+            if (App.PaseRedondoPuntos1 == "S")
             {
                 int totalpase1 = 0;
-                totalpase1 = Convert.ToInt32(lblPuntosEquipo1.Text) + App.PaseRedondoPuntos1;
+                totalpase1 = Convert.ToInt32(lblPuntosEquipo1.Text) + Convert.ToInt32(result.PaseRedondo);
                 lblPuntosEquipo1.Text = totalpase1.ToString();
 
-                this.ListPuntos.Add(new EPuntos() { Punto1 = Puntos2 + PuntosPremio1 + App.PaseRedondoPuntos1, Punto2 = Puntos4 });
+                this.ListPuntos.Add(new EPuntos() { Punto1 = Puntos2 + PuntosPremio1 + Convert.ToInt32(result.PaseRedondo), Punto2 = Puntos4 });
                 Puntos.GrabarPuntos(this.ListPuntos);
                 this.lsv_puntos.ItemsSource = null;
                 this.lsv_puntos.ItemsSource = this.ListPuntos;
             }
-            else if (App.PaseRedondoPuntos2 > 0)
+            else if (App.PaseRedondoPuntos2 == "S")
             {
                 int totalpase2 = 0;
-                totalpase2 = Convert.ToInt32(lblPuntosEquipo2.Text) + App.PaseRedondoPuntos2;
+                totalpase2 = Convert.ToInt32(lblPuntosEquipo2.Text) + Convert.ToInt32(result.PaseRedondo);
                 lblPuntosEquipo2.Text = totalpase2.ToString();
 
-                this.ListPuntos.Add(new EPuntos() { Punto1 = Puntos2 + PuntosPremio1, Punto2 = Puntos4 + PuntosPremio2 + App.PaseRedondoPuntos2 });
+                this.ListPuntos.Add(new EPuntos() { Punto1 = Puntos2 + PuntosPremio1, Punto2 = Puntos4 + PuntosPremio2 + Convert.ToInt32(result.PaseRedondo) });
                 Puntos.GrabarPuntos(this.ListPuntos);
                 this.lsv_puntos.ItemsSource = null;
                 this.lsv_puntos.ItemsSource = this.ListPuntos;
@@ -415,7 +417,7 @@ namespace Kapicua25.Pantallas
                 LblJugador2Equipo2.Text = "Jugador 2";
                 LblTantos.Text = "100";
 
-                Configuraciones.Grabar("", LblJugador1.Text, LblJugador2.Text, "", LblJugador1Equipo2.Text, LblJugador2Equipo2.Text, LblTantos.Text, "", result.equipoOno);
+                Configuraciones.Grabar("", LblJugador1.Text, LblJugador2.Text, "", LblJugador1Equipo2.Text, LblJugador2Equipo2.Text, LblTantos.Text, "", result.equipoOno, result.PaseRedondo);
             }
             else
             {
@@ -610,7 +612,7 @@ namespace Kapicua25.Pantallas
             if (await DisplayAlert("Información", "¿Desea terminar la partida?", "SI", "NO"))
             {
                 var result = Configuraciones.ObtenerDatosSesion();
-                Configuraciones.Grabar("", "", "", "", "", "", "0", "", result.equipoOno);
+                Configuraciones.Grabar("", "", "", "", "", "", "0", "", result.equipoOno, result.PaseRedondo);
                 MainPage mainpage = new MainPage();
                 await Navigation.PushModalAsync(mainpage);
                 Configuraciones.Eliminar();
@@ -673,7 +675,7 @@ namespace Kapicua25.Pantallas
                 }
 
 
-                Configuraciones.Grabar("", lbljugador1Editar.Text, lbljugador2Editar.Text, "", lbljugador1Equipo2Editar.Text, lbljugador2Equipo2Editar.Text, App.TantosParaGanar.ToString(), result.Ganador, equipoOno);
+                Configuraciones.Grabar("", lbljugador1Editar.Text, lbljugador2Editar.Text, "", lbljugador1Equipo2Editar.Text, lbljugador2Equipo2Editar.Text, App.TantosParaGanar.ToString(), result.Ganador, equipoOno, txtPuntosPaseRedondo.Text);
                 toastConfigClass.MostrarNotificacion($"¡Los datos se han guardado exitosamente!", ToastPosition.Top, 3, "#51C560");
 
             }

@@ -14,7 +14,7 @@ namespace Kapicua25.Objetos
         public static string Telefono { get; set; }
 
 
-        public static void Grabar(string Equipo1, string Equipo1Jugador1, string Equipo1Jugador2, string Equipo2, string Equipo2Jugador1, string Equipo2Jugador2, string tantosParaGanar, string ganador, string equipoOno)
+        public static void Grabar(string Equipo1, string Equipo1Jugador1, string Equipo1Jugador2, string Equipo2, string Equipo2Jugador1, string Equipo2Jugador2, string tantosParaGanar, string ganador, string equipoOno, string PaseRedondo)
         {
             string fileEquipo1 = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Equipo1");
             string fileEquipo1Jugador1 = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Equipo1Jugador1");
@@ -25,6 +25,7 @@ namespace Kapicua25.Objetos
             string TantosParaGanar = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "tantosParaGanar");
             string fileGanador = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "ganador");
             string fileequipoOno = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "equipoOno");
+            string filePaseRedondo = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "PaseRedondo");
 
             File.WriteAllText(fileEquipo1, Equipo1);
             File.WriteAllText(fileEquipo1Jugador1, Equipo1Jugador1);
@@ -35,6 +36,7 @@ namespace Kapicua25.Objetos
             File.WriteAllText(TantosParaGanar, tantosParaGanar);
             File.WriteAllText(fileGanador, ganador);
             File.WriteAllText(fileequipoOno, equipoOno);
+            File.WriteAllText(filePaseRedondo, PaseRedondo);
         }
 
         public static void GrabarRondas(string primeraRonda, string segundaRonda, string terceraRonda, string cuartaRonda)
@@ -66,6 +68,7 @@ namespace Kapicua25.Objetos
                 string TantosParaGanar = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "tantosParaGanar");
                 string fileGanador = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "ganador");
                 string fileequipoOno = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "equipoOno");
+                string filePaseRedondo = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "PaseRedondo");
                 string fileconPremioOno = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "conPremioOno");
                 string filePrimeraRonda = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "primeraRonda");
                 string fileSegundaRonda = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "segundaRonda");
@@ -80,6 +83,7 @@ namespace Kapicua25.Objetos
                 eGlobal.Tantos = File.ReadAllText(TantosParaGanar);
                 eGlobal.Ganador = File.ReadAllText(fileGanador);
                 eGlobal.equipoOno = File.ReadAllText(fileequipoOno);
+                eGlobal.PaseRedondo = File.ReadAllText(filePaseRedondo);
                 eGlobal.conPremioOno = File.ReadAllText(fileconPremioOno);
                 eGlobal.primeraRonda = File.ReadAllText(filePrimeraRonda);
                 eGlobal.segundaRonda = File.ReadAllText(fileSegundaRonda);

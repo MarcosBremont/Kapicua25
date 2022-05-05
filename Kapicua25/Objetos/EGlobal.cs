@@ -15,6 +15,7 @@ namespace Kapicua25.Objetos
         public string Tantos { get; set; }
         public string Ganador { get; set; }
         public string equipoOno { get; set; }
+        public string PaseRedondo { get; set; }
         public string conPremioOno { get; set; }
         public string primeraRonda { get; set; }
         public string segundaRonda { get; set; }

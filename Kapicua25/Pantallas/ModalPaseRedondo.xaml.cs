@@ -1,4 +1,5 @@
-﻿using Rg.Plugins.Popup.Services;
+﻿using Kapicua25.Objetos;
+using Rg.Plugins.Popup.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,11 +15,13 @@ namespace Kapicua25.Pantallas
     public partial class ModalPaseRedondo : Rg.Plugins.Popup.Pages.PopupPage
     {
         public int ID { get; set; }
+        public int PuntosPaseRedondo { get; set; }
         public bool SeEstaCerrando { get; set; }
         public ModalPaseRedondo()
         {
             InitializeComponent();
-
+            var result = Configuraciones.ObtenerDatosSesion();
+            PuntosPaseRedondo = Convert.ToInt32(result.PaseRedondo);
         }
 
         [Obsolete]
@@ -31,40 +34,21 @@ namespace Kapicua25.Pantallas
         [Obsolete]
         private async void BtnCancelar_Clicked(object sender, EventArgs e)
         {
-            App.PaseRedondoPuntos1 = 0;
-            App.PaseRedondoPuntos2 = 0;
+            App.PaseRedondoPuntos1 = "N";
+            App.PaseRedondoPuntos2 = "N";
             await PopupNavigation.PopAsync();
         }
 
         private void radioEquipo1_CheckedChanged(object sender, CheckedChangedEventArgs e)
         {
-            if (App.TantosParaGanar == 500)
-            {
-                App.PaseRedondoPuntos1 = 75;
-            }
-            else
-            {
-                App.PaseRedondoPuntos1 = 50;
-            }
-
-            App.PaseRedondoPuntos2 = 0;
-
+            App.PaseRedondoPuntos1 = "S";
+            App.PaseRedondoPuntos2 = "N";
         }
 
         private void radioEquipo2_CheckedChanged(object sender, CheckedChangedEventArgs e)
         {
-            if (App.TantosParaGanar == 500)
-            {
-                App.PaseRedondoPuntos2 = 75;
-            }
-            else
-            {
-                App.PaseRedondoPuntos2 = 50;
-            }
-
-            App.PaseRedondoPuntos1 = 0;
-
-
+            App.PaseRedondoPuntos2 = "S";
+            App.PaseRedondoPuntos1 = "N";
         }
     }
 }
