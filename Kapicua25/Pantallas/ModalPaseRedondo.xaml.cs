@@ -21,7 +21,6 @@ namespace Kapicua25.Pantallas
         {
             InitializeComponent();
             var result = Configuraciones.ObtenerDatosSesion();
-            PuntosPaseRedondo = Convert.ToInt32(result.PaseRedondo);
         }
 
         [Obsolete]

@@ -195,7 +195,7 @@
                         <ScrollView VerticalOptions="FillAndExpand">
                             <StackLayout Padding="30,10,30,30" Spacing="0" VerticalOptions="FillAndExpand">
 
-                                <Image Source="KapicuaRound.png" BackgroundColor="Transparent" WidthRequest="80"></Image>
+                                <Image Source="NuevoLogoKapicua.png" BackgroundColor="Transparent" WidthRequest="80"></Image>
                                 <StackLayout>
                                     <Label TextColor="White"
                                    Text="..."
@@ -246,7 +246,7 @@
                                             <Label >
                                                 <Label.FormattedText>
                                                     <FormattedString>
-                                                        <Span Text="v1.0.0" x:Name="lblVersion" TextColor="White" FontSize="14" ></Span>
+                                                        <Span Text="v1.1" x:Name="lblVersion" TextColor="White" FontSize="14" ></Span>
                                                     </FormattedString>
                                                 </Label.FormattedText>
                                             </Label>

@@ -139,6 +139,7 @@
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json">
       <Visible>false</Visible>
     </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\iTunesArtwork%402x-1.png" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
