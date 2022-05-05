@@ -217,4 +217,13 @@
     <BundleResource Include="Resources\Logophoto.png" />
     <BundleResource Include="Resources\Splash.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\NuevoLogoKapicua.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Kapicua250New.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\KapicuaRound.png" />
+  </ItemGroup>
 </Project>
