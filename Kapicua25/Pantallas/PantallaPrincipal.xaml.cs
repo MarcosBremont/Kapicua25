@@ -739,5 +739,11 @@ namespace Kapicua25.Pantallas
             {
             }
         }
+
+        private void Btninstagram2_Clicked(object sender, EventArgs e)
+        {
+            Device.OpenUri(new Uri("instagram://user?username=marcosbremont"));
+
+        }
     }
 }
