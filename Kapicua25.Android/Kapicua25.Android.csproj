@@ -70,6 +70,9 @@
     <PackageReference Include="Acr.UserDialogs">
       <Version>7.2.0.561</Version>
     </PackageReference>
+    <PackageReference Include="MarcTron.Admob">
+      <Version>1.6.9</Version>
+    </PackageReference>
     <PackageReference Include="Newtonsoft.Json">
       <Version>13.0.1</Version>
     </PackageReference>

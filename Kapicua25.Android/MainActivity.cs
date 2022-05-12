@@ -5,6 +5,7 @@ using Android.Runtime;
 using Android.OS;
 using Acr.UserDialogs;
 using AndroidX.AppCompat.App;
+using Android.Gms.Ads;
 
 namespace Kapicua25.Droid
 {
@@ -18,6 +19,7 @@ namespace Kapicua25.Droid
             TabLayoutResource = Resource.Layout.Tabbar;
             ToolbarResource = Resource.Layout.Toolbar;
             Rg.Plugins.Popup.Popup.Init(this);
+            MobileAds.Initialize(ApplicationContext);
 
             base.OnCreate(savedInstanceState);
             UserDialogs.Init(this);

@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Kapicua25.Pantallas.PantallaPrincipal"
              NavigationPage.HasNavigationBar="False"
-             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core" xmlns:renderer="clr-namespace:Kapicua25.Renderer"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core" xmlns:renderer="clr-namespace:Kapicua25.Renderer" xmlns:controls="clr-namespace:MarcTron.Plugin.Controls;assembly=Plugin.MtAdmob"
              ios:Page.UseSafeArea="true">
 
     <ContentPage.Content>
@@ -602,6 +602,10 @@
                         <Entry BackgroundColor="White" Placeholder="0" PlaceholderColor="Black" x:Name="txtPuntosPaseRedondo" FontAttributes="Bold" FontSize="16" HorizontalTextAlignment="Center"/>
                     </StackLayout>
 
+                    <StackLayout Grid.Row="5" Margin="10,30,10,0" HorizontalOptions="CenterAndExpand" Orientation="Vertical" >
+                        <controls:MTAdView Grid.Row="5" x:Name="myAds" AdsId="{OnPlatform Android='ca-app-pub-5203771291617755/3399894233', 
+                                   iOS='ca-app-pub-5203771291617755/4071255108'}"/>
+                    </StackLayout>
 
                     <StackLayout Grid.Row="5" Margin="10,30,10,0" HorizontalOptions="CenterAndExpand" Orientation="Vertical" >
                         <Button WidthRequest="300" BackgroundColor="#e63946" TextColor="#f1faee" VerticalOptions="EndAndExpand" FontSize="16" x:Name="BtnGuardarCambios" TextTransform="None" Clicked="BtnGuardarCambios_Clicked"  CornerRadius="4" Text="Guardar Cambios" Margin="0,0,0,0"/>
@@ -609,7 +613,11 @@
 
 
 
+
                 </Grid>
+
+
+
 
             </StackLayout>
 

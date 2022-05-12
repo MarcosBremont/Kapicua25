@@ -339,7 +339,7 @@ namespace Kapicua25.Pantallas
 
         async private void lsv_puntos_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
-            var result = await DisplayAlert("Aviso", "¿Desea quitar la jugada?", "SI", "NO");
+            var result = await DisplayAlert("Aviso", "¿Desea eliminar esta jugada?", "SI", "NO");
             if (result)
             {
                 this.ListPuntos.Remove((EPuntos)lsv_puntos.SelectedItem);
