@@ -50,7 +50,7 @@
                     </StackLayout>
 
 
-                    <StackLayout Grid.Row="1" Grid.Column="0" Orientation="Horizontal" Margin="0,40,0,0">
+                    <StackLayout Grid.Row="1" Grid.Column="0" Orientation="Horizontal" Margin="0,30,0,0">
 
                         <StackLayout x:Name="StackEquipo1"  Orientation="Vertical" HorizontalOptions="CenterAndExpand">
 
@@ -246,7 +246,7 @@
                                             <Label >
                                                 <Label.FormattedText>
                                                     <FormattedString>
-                                                        <Span Text="v1.2" x:Name="lblVersion" TextColor="White" FontSize="14" ></Span>
+                                                        <Span Text="v1.3" x:Name="lblVersion" TextColor="White" FontSize="14" ></Span>
                                                     </FormattedString>
                                                 </Label.FormattedText>
                                             </Label>
