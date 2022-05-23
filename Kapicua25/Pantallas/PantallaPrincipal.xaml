@@ -116,7 +116,7 @@
 
                     <!--<Frame Grid.Row="3" HasShadow="True" HorizontalOptions="CenterAndExpand" BackgroundColor="#1d3557" Margin="0,0,0,0">-->
 
-                    <ListView Margin="20" BackgroundColor="Transparent" x:Name="lsv_puntos" Grid.Row="3" ItemSelected="lsv_puntos_ItemSelected" HorizontalOptions="CenterAndExpand" SeparatorVisibility="Default"  SeparatorColor="White" HasUnevenRows="True" >
+                    <ListView Margin="20,2,20,0" BackgroundColor="Transparent" x:Name="lsv_puntos" Grid.Row="3" ItemSelected="lsv_puntos_ItemSelected" HorizontalOptions="CenterAndExpand" SeparatorVisibility="Default"  SeparatorColor="White" HasUnevenRows="True" >
                         <ListView.ItemTemplate>
 
                             <DataTemplate>
@@ -160,7 +160,7 @@
 
 
 
-                <Button Grid.Row="3" Scale="0.8" BackgroundColor="White"  FontSize="20" x:Name="BtnAgregarRonda" TextTransform="None" Clicked="BtnAgregarRonda_Clicked" TextColor="#333"  CornerRadius="4" Text="Agregar Ronda" Margin="0,30,0,0"/>
+                <Button Grid.Row="3" Scale="0.8" BackgroundColor="White"  FontSize="20" x:Name="BtnAgregarRonda" TextTransform="None" Clicked="BtnAgregarRonda_Clicked" TextColor="#333"  CornerRadius="4" Text="Agregar Ronda" Margin="0,0,0,0"/>
 
                 <Button Grid.Row="3" Scale="0.8" BackgroundColor="#e63946" TextColor="White" FontSize="20" x:Name="BtnPaseRedondo" TextTransform="None" Clicked="BtnPaseRedondo_Clicked"  CornerRadius="4" 
                   Text="Pase Redondo" Margin="0,0,0,0"/>
@@ -246,7 +246,7 @@
                                             <Label >
                                                 <Label.FormattedText>
                                                     <FormattedString>
-                                                        <Span Text="v1.3" x:Name="lblVersion" TextColor="White" FontSize="14" ></Span>
+                                                        <Span Text="v1.4" x:Name="lblVersion" TextColor="White" FontSize="14" ></Span>
                                                     </FormattedString>
                                                 </Label.FormattedText>
                                             </Label>
@@ -323,7 +323,7 @@
                         <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
 
-                    <StackLayout Orientation="Horizontal" BackgroundColor="White" Margin="0,0,0,0" HeightRequest="60">
+                    <StackLayout Orientation="Horizontal" BackgroundColor="White" Margin="0,0,0,0" HeightRequest="40">
                         <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
                             <Label Text="¿Como usar la App?" VerticalOptions="CenterAndExpand" TextColor="#e63946" FontSize="22" FontAttributes="Bold"/>
                         </StackLayout>
@@ -433,7 +433,7 @@
                         <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
 
-                    <StackLayout Orientation="Horizontal" BackgroundColor="White" Margin="0,0,0,0" HeightRequest="60">
+                    <StackLayout Orientation="Horizontal" BackgroundColor="White" Margin="0,0,0,0" HeightRequest="40">
                         <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
                             <Label Text="Historial Partidas" VerticalOptions="CenterAndExpand" TextColor="#e63946" FontSize="22" FontAttributes="Bold"/>
                         </StackLayout>
@@ -503,122 +503,123 @@
 
             <!--Layout Editar-->
             <StackLayout IsVisible="false" VerticalOptions="StartAndExpand" x:Name="StackLayoutConfig" BackgroundColor="#1d3557">
-
-                <Grid RowSpacing="0" BackgroundColor="#1d3557">
-
-                    <Grid.RowDefinitions>
-                        <RowDefinition>
-                            <RowDefinition.Height>
-                                <OnPlatform x:TypeArguments="GridLength" iOS="40" Android="60" />
-                            </RowDefinition.Height>
-                        </RowDefinition>
-
-                        <RowDefinition Height="auto" />
-                        <RowDefinition Height="auto" />
-                        <RowDefinition Height="100" />
-                        <RowDefinition Height="auto" />
-                        <RowDefinition Height="auto" />
-                    </Grid.RowDefinitions>
-
-
-                    <StackLayout Orientation="Horizontal" BackgroundColor="White" Margin="0,0,0,0" HeightRequest="60">
-                        <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
-                            <Label Text="Configuración" VerticalOptions="CenterAndExpand" TextColor="#e63946" FontSize="22" FontAttributes="Bold"/>
-                        </StackLayout>
+                <StackLayout Orientation="Horizontal" BackgroundColor="White" Margin="0,0,0,0" HeightRequest="40">
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                        <Label Text="Configuración" VerticalOptions="CenterAndExpand" TextColor="#e63946" FontSize="22" FontAttributes="Bold"/>
                     </StackLayout>
+                </StackLayout>
 
-                    <StackLayout  Margin="20,10,20,0"  BackgroundColor="#1d3557" Grid.Row="1"  Orientation="Horizontal" >
+                <ScrollView>
 
-                        <StackLayout HorizontalOptions="StartAndExpand" Orientation="Vertical" >
-                            <Label Text="Editar Equipo 1" HorizontalOptions="Center" TextColor="White"  FontAttributes="Bold" FontSize="16"></Label>
-                            <!--<Entry x:Name="lblequipo" Text="Equipo1" FontAttributes="Bold" HorizontalOptions="Center" TextColor="White"></Entry>-->
+                    <Grid RowSpacing="0" BackgroundColor="#1d3557">
 
-                            <Frame  BackgroundColor="White" HorizontalOptions="CenterAndExpand" Padding="2" CornerRadius="4" Margin="0,20,0,0">
-                                <!--<Image WidthRequest="20" Source="add.png"></Image>-->
-                                <!--<Image Source="Icon2.png" Margin="0,0,0,0"></Image>-->
-                                <Entry x:Name="lbljugador1Editar" MaxLength="9" TextColor="#333" WidthRequest="150" Text="Jugador 1" VerticalOptions="Center"></Entry>
-                            </Frame>
+                        <Grid.RowDefinitions>
+                            <RowDefinition>
+                                <RowDefinition.Height>
+                                    <OnPlatform x:TypeArguments="GridLength" iOS="40" Android="60" />
+                                </RowDefinition.Height>
+                            </RowDefinition>
 
-                            <Frame x:Name="Framelbljugador2Editar" BackgroundColor="White" HorizontalOptions="CenterAndExpand" Padding="2" CornerRadius="4" Margin="0,20,0,0">
-                                <!--<Image WidthRequest="20" Source="add.png"></Image>-->
-                                <!--<Image Source="Icon2.png" Margin="0,0,0,0"></Image>-->
-                                <Entry x:Name="lbljugador2Editar" MaxLength="9" TextColor="#333" WidthRequest="150" Text="Jugador 2" VerticalOptions="Center"></Entry>
-                            </Frame>
-
-
-                        </StackLayout>
-
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="100" />
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="auto" />
+                        </Grid.RowDefinitions>
 
 
 
-                        <StackLayout   HorizontalOptions="Center" Orientation="Vertical" >
-                            <Label Text="Editar Equipo 2" HorizontalOptions="Center" TextColor="White"  FontAttributes="Bold" FontSize="16"></Label>
-                            <!--<Entry x:Name="lblequipo2" Text="Equipo1" FontAttributes="Bold" HorizontalOptions="Center" TextColor="White"></Entry>-->
+                        <StackLayout  Margin="20,0,20,0" BackgroundColor="#1d3557"  Orientation="Horizontal" >
 
-                            <Frame x:Name="Framelbljugador1Equipo2Editar" BackgroundColor="White" HorizontalOptions="CenterAndExpand" Padding="2" CornerRadius="4" Margin="0,20,0,0">
-                                <!--<Image WidthRequest="20" Source="add.png"></Image>-->
-                                <!--<Image Source="Icon2.png" Margin="0,0,0,0"></Image>-->
-                                <Entry x:Name="lbljugador1Equipo2Editar" MaxLength="9" TextColor="#333" WidthRequest="150" Text="Jugador 1" VerticalOptions="Center"></Entry>
-                            </Frame>
+                            <StackLayout Grid.Row="0"  HorizontalOptions="StartAndExpand" Orientation="Vertical" >
+                                <Label Text="Editar Equipo 1" HorizontalOptions="Center" TextColor="White"  FontAttributes="Bold" FontSize="16"></Label>
+                                <!--<Entry x:Name="lblequipo" Text="Equipo1" FontAttributes="Bold" HorizontalOptions="Center" TextColor="White"></Entry>-->
 
-                            <Frame x:Name="Framelbljugador2Equipo2Editar" BackgroundColor="White" HorizontalOptions="CenterAndExpand" Padding="2" CornerRadius="4" Margin="0,20,0,0">
-                                <!--<Image WidthRequest="20" Source="add.png"></Image>-->
-                                <!--<Image Source="Icon2.png" Margin="0,0,0,0"></Image>-->
-                                <Entry x:Name="lbljugador2Equipo2Editar" MaxLength="9" TextColor="#333" WidthRequest="150" Text="Jugador 2" VerticalOptions="Center"></Entry>
-                            </Frame>
+                                <Frame  BackgroundColor="White" HorizontalOptions="CenterAndExpand" Padding="2" CornerRadius="4" Margin="0,0,0,0">
+                                    <!--<Image WidthRequest="20" Source="add.png"></Image>-->
+                                    <!--<Image Source="Icon2.png" Margin="0,0,0,0"></Image>-->
+                                    <Entry x:Name="lbljugador1Editar" MaxLength="9" TextColor="#333" WidthRequest="150" Text="Jugador 1" VerticalOptions="Center"></Entry>
+                                </Frame>
 
-
-
-                        </StackLayout>
+                                <Frame x:Name="Framelbljugador2Editar" BackgroundColor="White" HorizontalOptions="CenterAndExpand" Padding="2" CornerRadius="4" Margin="0,5,0,0">
+                                    <!--<Image WidthRequest="20" Source="add.png"></Image>-->
+                                    <!--<Image Source="Icon2.png" Margin="0,0,0,0"></Image>-->
+                                    <Entry x:Name="lbljugador2Editar" MaxLength="9" TextColor="#333" WidthRequest="150" Text="Jugador 2" VerticalOptions="Center"></Entry>
+                                </Frame>
 
 
-
-
-                    </StackLayout>
-
-
-                    <StackLayout Grid.Row="2" Padding="20">
-                        <Frame Grid.Row="2"  HasShadow="False" BackgroundColor="#F0F0F0"  CornerRadius="10">
-
-                            <StackLayout VerticalOptions="Center" Orientation="Horizontal" HorizontalOptions="CenterAndExpand" >
-                                <RadioButton  IsChecked="False" CheckedChanged="radioEquipo_CheckedChanged" BackgroundColor="Transparent" x:Name="radioEquipo" ></RadioButton>
-                                <Label x:Name="lblradioconequipo" FontAttributes="Bold" VerticalOptions="CenterAndExpand" Text="Con Equipos"></Label>
-                                <RadioButton IsChecked="False" CheckedChanged="radioSinEquipo_CheckedChanged" BackgroundColor="Transparent" x:Name="radioSinEquipo" ></RadioButton>
-                                <Label x:Name="lblradiosinequipo" FontAttributes="Bold" VerticalOptions="CenterAndExpand" Text="Sin Equipos"></Label>
                             </StackLayout>
-                        </Frame>
 
-                    </StackLayout>
 
-                    <StackLayout Grid.Row="3" Margin="10,0,20,0" HorizontalOptions="Center" Orientation="Vertical" >
-                        <Label Text="Tantos Para Ganar" HorizontalOptions="Center" TextColor="White"  FontAttributes="Bold" FontSize="16"></Label>
-                        <Frame HorizontalOptions="CenterAndExpand" Padding="2" CornerRadius="4" Margin="0,0,0,0">
-                            <Picker SelectedIndexChanged="OnPickerSelectedIndexChanged" WidthRequest="200" x:Name="PickerTantos" TitleColor="#333" FontAttributes="Bold" FontSize="16" HorizontalTextAlignment="Center"/>
-                        </Frame>
-                    </StackLayout>
 
-                    <StackLayout Grid.Row="4" Margin="10,0,20,0" HorizontalOptions="Center" Orientation="Vertical" >
-                        <Label Text="Puntos Pase Redondo" HorizontalOptions="Center" TextColor="White"  FontAttributes="Bold" FontSize="16"></Label>
-                        <Entry BackgroundColor="White" Placeholder="0" PlaceholderColor="Black" x:Name="txtPuntosPaseRedondo" FontAttributes="Bold" FontSize="16" HorizontalTextAlignment="Center"/>
-                    </StackLayout>
 
-                    <StackLayout Grid.Row="5" Margin="10,30,10,0" HorizontalOptions="CenterAndExpand" Orientation="Vertical" >
-                        <controls:MTAdView Grid.Row="5" x:Name="myAds" AdsId="{OnPlatform Android='ca-app-pub-5203771291617755/3399894233', 
+                            <StackLayout Grid.Row="0"  HorizontalOptions="Center" Orientation="Vertical" >
+                                <Label Text="Editar Equipo 2" HorizontalOptions="Center" TextColor="White"  FontAttributes="Bold" FontSize="16"></Label>
+                                <!--<Entry x:Name="lblequipo2" Text="Equipo1" FontAttributes="Bold" HorizontalOptions="Center" TextColor="White"></Entry>-->
+
+                                <Frame x:Name="Framelbljugador1Equipo2Editar" BackgroundColor="White" HorizontalOptions="CenterAndExpand" Padding="2" CornerRadius="4" Margin="0,0,0,0">
+                                    <!--<Image WidthRequest="20" Source="add.png"></Image>-->
+                                    <!--<Image Source="Icon2.png" Margin="0,0,0,0"></Image>-->
+                                    <Entry x:Name="lbljugador1Equipo2Editar" MaxLength="9" TextColor="#333" WidthRequest="150" Text="Jugador 1" VerticalOptions="Center"></Entry>
+                                </Frame>
+
+                                <Frame x:Name="Framelbljugador2Equipo2Editar" BackgroundColor="White" HorizontalOptions="CenterAndExpand" Padding="2" CornerRadius="4" Margin="0,5,0,0">
+                                    <!--<Image WidthRequest="20" Source="add.png"></Image>-->
+                                    <!--<Image Source="Icon2.png" Margin="0,0,0,0"></Image>-->
+                                    <Entry x:Name="lbljugador2Equipo2Editar" MaxLength="9" TextColor="#333" WidthRequest="150" Text="Jugador 2" VerticalOptions="Center"></Entry>
+                                </Frame>
+
+
+
+                            </StackLayout>
+
+
+
+
+                        </StackLayout>
+
+
+                        <StackLayout Grid.Row="4" Margin="20,0,20,10">
+                            <Frame Grid.Row="4"  HasShadow="False" BackgroundColor="#F0F0F0"  CornerRadius="10">
+
+                                <StackLayout Grid.Row="4"  VerticalOptions="Center" Orientation="Horizontal" HorizontalOptions="CenterAndExpand" >
+                                    <RadioButton Grid.Row="4"  IsChecked="False" CheckedChanged="radioEquipo_CheckedChanged" BackgroundColor="Transparent" x:Name="radioEquipo" ></RadioButton>
+                                    <Label Grid.Row="4" x:Name="lblradioconequipo" FontAttributes="Bold" VerticalOptions="CenterAndExpand" Text="Con Equipos"></Label>
+                                    <RadioButton Grid.Row="4" IsChecked="False" CheckedChanged="radioSinEquipo_CheckedChanged" BackgroundColor="Transparent" x:Name="radioSinEquipo" ></RadioButton>
+                                    <Label Grid.Row="4" x:Name="lblradiosinequipo" FontAttributes="Bold" VerticalOptions="CenterAndExpand" Text="Sin Equipos"></Label>
+                                </StackLayout>
+                            </Frame>
+
+                        </StackLayout>
+
+                        <StackLayout Grid.Row="5" Margin="10,0,20,0" HorizontalOptions="Center" Orientation="Vertical" >
+                            <Label Text="Tantos Para Ganar" HorizontalOptions="Center" TextColor="White"  FontAttributes="Bold" FontSize="16"></Label>
+                            <Frame HorizontalOptions="CenterAndExpand" Padding="2" CornerRadius="4" Margin="0,0,0,0">
+                                <Picker SelectedIndexChanged="OnPickerSelectedIndexChanged" WidthRequest="200" x:Name="PickerTantos" TitleColor="#333" FontAttributes="Bold" FontSize="16" HorizontalTextAlignment="Center"/>
+                            </Frame>
+                        </StackLayout>
+
+                        <StackLayout Grid.Row="6" Margin="10,10,20,0" HorizontalOptions="Center" Orientation="Vertical" >
+                            <Label Text="Puntos Pase Redondo" HorizontalOptions="Center" TextColor="White"  FontAttributes="Bold" FontSize="16"></Label>
+                            <Entry BackgroundColor="White" Placeholder="0" PlaceholderColor="Black" x:Name="txtPuntosPaseRedondo" FontAttributes="Bold" FontSize="16" HorizontalTextAlignment="Center"/>
+                        </StackLayout>
+
+
+
+                        <StackLayout Grid.Row="7" Margin="10,30,10,0" HorizontalOptions="CenterAndExpand" Orientation="Vertical" >
+                            <Button WidthRequest="300" BackgroundColor="#e63946" TextColor="#f1faee" VerticalOptions="EndAndExpand" FontSize="16" x:Name="BtnGuardarCambios" TextTransform="None" Clicked="BtnGuardarCambios_Clicked"  CornerRadius="4" Text="Guardar Cambios" Margin="0,0,0,0"/>
+                        </StackLayout>
+
+
+                    </Grid>
+                </ScrollView>
+
+            </StackLayout>
+
+            <StackLayout Grid.Row="8" Margin="0,0,0,0" BackgroundColor="White"  HorizontalOptions="FillAndExpand" Orientation="Vertical" >
+                <controls:MTAdView Grid.Row="5" x:Name="myAds" BackgroundColor="White"  HeightRequest="50" AdsId="{OnPlatform Android='ca-app-pub-5203771291617755/3399894233', 
                                    iOS='ca-app-pub-5203771291617755/4071255108'}"/>
-                    </StackLayout>
-
-                    <StackLayout Grid.Row="5" Margin="10,30,10,0" HorizontalOptions="CenterAndExpand" Orientation="Vertical" >
-                        <Button WidthRequest="300" BackgroundColor="#e63946" TextColor="#f1faee" VerticalOptions="EndAndExpand" FontSize="16" x:Name="BtnGuardarCambios" TextTransform="None" Clicked="BtnGuardarCambios_Clicked"  CornerRadius="4" Text="Guardar Cambios" Margin="0,0,0,0"/>
-                    </StackLayout>
-
-
-
-
-                </Grid>
-
-
-
-
             </StackLayout>
 
             <!--Apartado del menu de abajo-->
@@ -707,6 +708,7 @@
                 </StackLayout>-->
 
             </StackLayout>
+
 
         </StackLayout>
     </ContentPage.Content>
