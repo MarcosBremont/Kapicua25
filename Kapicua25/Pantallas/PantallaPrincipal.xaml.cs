@@ -25,6 +25,7 @@ namespace Kapicua25.Pantallas
         public List<EGanador> ListGanador { get; set; } = new List<EGanador>();
         public event EventHandler<SwipedEventArgs> Swipe;
         string equipoOno = "";
+        string KeepScreenOn = "";
         string conPremioOno = "";
         ToastConfigClass toastConfigClass = new ToastConfigClass();
 
@@ -81,7 +82,7 @@ namespace Kapicua25.Pantallas
 
             if (Convert.ToInt32(result2.Tantos) == 0)
             {
-                Configuraciones.Grabar("", LblJugador1.Text, LblJugador2.Text, "", LblJugador1Equipo2.Text, LblJugador2Equipo2.Text, "100", "", result2.equipoOno, result2.PaseRedondo);
+                Configuraciones.Grabar("", LblJugador1.Text, LblJugador2.Text, "", LblJugador1Equipo2.Text, LblJugador2Equipo2.Text, "100", "", result2.equipoOno, result2.PaseRedondo, result2.KeepScreenOn);
                 LblTantos.Text = result2.Tantos;
             }
 
@@ -279,6 +280,15 @@ namespace Kapicua25.Pantallas
                         radioEquipo.IsChecked = true;
                     }
 
+                    if (result.KeepScreenOn == "Si")
+                    {
+                        radioKeepScreenOn.IsChecked = true;
+                    }
+                    else
+                    {
+                        radioKeepScreenOn.IsChecked = false;
+                    }
+
                     btnImgConfiguracion.Source = "settingsRojo.png";
 
                     gridComoUsarLaApp.BackgroundColor = Color.White;
@@ -417,7 +427,7 @@ namespace Kapicua25.Pantallas
                 LblJugador2Equipo2.Text = "Jugador 2";
                 LblTantos.Text = "100";
 
-                Configuraciones.Grabar("", LblJugador1.Text, LblJugador2.Text, "", LblJugador1Equipo2.Text, LblJugador2Equipo2.Text, LblTantos.Text, "", result.equipoOno, result.PaseRedondo);
+                Configuraciones.Grabar("", LblJugador1.Text, LblJugador2.Text, "", LblJugador1Equipo2.Text, LblJugador2Equipo2.Text, LblTantos.Text, "", result.equipoOno, result.PaseRedondo, result.KeepScreenOn);
             }
             else
             {
@@ -612,7 +622,7 @@ namespace Kapicua25.Pantallas
             if (await DisplayAlert("Información", "¿Desea terminar la partida?", "SI", "NO"))
             {
                 var result = Configuraciones.ObtenerDatosSesion();
-                Configuraciones.Grabar("", "", "", "", "", "", "0", "", result.equipoOno, result.PaseRedondo);
+                Configuraciones.Grabar("", "", "", "", "", "", "0", "", result.equipoOno, result.PaseRedondo, result.KeepScreenOn);
                 MainPage mainpage = new MainPage();
                 await Navigation.PushModalAsync(mainpage);
                 Configuraciones.Eliminar();
@@ -674,8 +684,17 @@ namespace Kapicua25.Pantallas
                     equipoOno = "No";
                 }
 
+                if (radioKeepScreenOn.IsChecked == true)
+                {
+                    KeepScreenOn = "Si";
+                }
+                else
+                {
+                    KeepScreenOn = "No";
+                }
 
-                Configuraciones.Grabar("", lbljugador1Editar.Text, lbljugador2Editar.Text, "", lbljugador1Equipo2Editar.Text, lbljugador2Equipo2Editar.Text, App.TantosParaGanar.ToString(), result.Ganador, equipoOno, txtPuntosPaseRedondo.Text);
+
+                Configuraciones.Grabar("", lbljugador1Editar.Text, lbljugador2Editar.Text, "", lbljugador1Equipo2Editar.Text, lbljugador2Equipo2Editar.Text, App.TantosParaGanar.ToString(), result.Ganador, equipoOno, txtPuntosPaseRedondo.Text, KeepScreenOn);
                 toastConfigClass.MostrarNotificacion($"¡Los datos se han guardado exitosamente!", ToastPosition.Top, 3, "#51C560");
 
             }
@@ -770,6 +789,15 @@ namespace Kapicua25.Pantallas
                 radioEquipo.IsChecked = true;
             }
 
+            if (result.KeepScreenOn == "Si")
+            {
+                radioKeepScreenOn.IsChecked = true;
+            }
+            else
+            {
+                radioKeepScreenOn.IsChecked = false;
+            }
+
             btnImgConfiguracion.Source = "settingsRojo.png";
 
             gridComoUsarLaApp.BackgroundColor = Color.White;
@@ -795,6 +823,16 @@ namespace Kapicua25.Pantallas
         {
             Device.OpenUri(new Uri("instagram://user?username=marcosbremont"));
 
+        }
+
+        private void radioKeepScreenOn_CheckedChanged(object sender, CheckedChangedEventArgs e)
+        {
+            DeviceDisplay.KeepScreenOn = true;
+        }
+
+        private void radioKeepScreenOf_CheckedChanged(object sender, CheckedChangedEventArgs e)
+        {
+            DeviceDisplay.KeepScreenOn = false;
         }
     }
 }

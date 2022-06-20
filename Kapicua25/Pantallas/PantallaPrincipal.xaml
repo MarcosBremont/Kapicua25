@@ -593,21 +593,29 @@
 
                         </StackLayout>
 
-                        <StackLayout Grid.Row="5" Margin="10,0,20,0" HorizontalOptions="Center" Orientation="Vertical" >
+                        <StackLayout Grid.Row="5"  VerticalOptions="Center" Orientation="Horizontal" HorizontalOptions="CenterAndExpand" >
+                            <Label Grid.Row="5" TextColor="White" FontAttributes="Bold" VerticalOptions="CenterAndExpand" Text="Mantener pantalla activa"></Label>
+                            <RadioButton Grid.Row="5" BorderColor="White" IsChecked="False" CheckedChanged="radioKeepScreenOn_CheckedChanged" BackgroundColor="Transparent" x:Name="radioKeepScreenOn" ></RadioButton>
+                            <Label Grid.Row="5" TextColor="White" FontAttributes="Bold" VerticalOptions="CenterAndExpand" Text="Si"></Label>
+                            <RadioButton Grid.Row="5" BorderColor="White" BackgroundColor="Transparent"  IsChecked="False" CheckedChanged="radioKeepScreenOf_CheckedChanged" x:Name="radioKeepScreenOf" ></RadioButton>
+                            <Label Grid.Row="5" TextColor="White" FontAttributes="Bold" VerticalOptions="CenterAndExpand" Text="No"></Label>
+                        </StackLayout>
+
+                        <StackLayout Grid.Row="6" Margin="10,0,20,0" HorizontalOptions="Center" Orientation="Vertical" >
                             <Label Text="Tantos Para Ganar" HorizontalOptions="Center" TextColor="White"  FontAttributes="Bold" FontSize="16"></Label>
                             <Frame HorizontalOptions="CenterAndExpand" Padding="2" CornerRadius="4" Margin="0,0,0,0">
                                 <Picker SelectedIndexChanged="OnPickerSelectedIndexChanged" WidthRequest="200" x:Name="PickerTantos" TitleColor="#333" FontAttributes="Bold" FontSize="16" HorizontalTextAlignment="Center"/>
                             </Frame>
                         </StackLayout>
 
-                        <StackLayout Grid.Row="6" Margin="10,10,20,0" HorizontalOptions="Center" Orientation="Vertical" >
+                        <StackLayout Grid.Row="7" Margin="10,10,20,0" HorizontalOptions="Center" Orientation="Vertical" >
                             <Label Text="Puntos Pase Redondo" HorizontalOptions="Center" TextColor="White"  FontAttributes="Bold" FontSize="16"></Label>
                             <Entry BackgroundColor="White" Placeholder="0" PlaceholderColor="Black" x:Name="txtPuntosPaseRedondo" FontAttributes="Bold" FontSize="16" HorizontalTextAlignment="Center"/>
                         </StackLayout>
 
 
 
-                        <StackLayout Grid.Row="7" Margin="10,30,10,0" HorizontalOptions="CenterAndExpand" Orientation="Vertical" >
+                        <StackLayout Grid.Row="8" Margin="10,30,10,0" HorizontalOptions="CenterAndExpand" Orientation="Vertical" >
                             <Button WidthRequest="300" BackgroundColor="#e63946" TextColor="#f1faee" VerticalOptions="EndAndExpand" FontSize="16" x:Name="BtnGuardarCambios" TextTransform="None" Clicked="BtnGuardarCambios_Clicked"  CornerRadius="4" Text="Guardar Cambios" Margin="0,0,0,0"/>
                         </StackLayout>
 

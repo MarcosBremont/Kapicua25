@@ -14,7 +14,7 @@ namespace Kapicua25.Objetos
         public static string Telefono { get; set; }
 
 
-        public static void Grabar(string Equipo1, string Equipo1Jugador1, string Equipo1Jugador2, string Equipo2, string Equipo2Jugador1, string Equipo2Jugador2, string tantosParaGanar, string ganador, string equipoOno, string PaseRedondo)
+        public static void Grabar(string Equipo1, string Equipo1Jugador1, string Equipo1Jugador2, string Equipo2, string Equipo2Jugador1, string Equipo2Jugador2, string tantosParaGanar, string ganador, string equipoOno, string PaseRedondo, string keepScreenOn)
         {
             string fileEquipo1 = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Equipo1");
             string fileEquipo1Jugador1 = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Equipo1Jugador1");
@@ -26,6 +26,7 @@ namespace Kapicua25.Objetos
             string fileGanador = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "ganador");
             string fileequipoOno = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "equipoOno");
             string filePaseRedondo = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "PaseRedondo");
+            string fileKeepScreenOn = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "keepScreenOn");
 
             File.WriteAllText(fileEquipo1, Equipo1);
             File.WriteAllText(fileEquipo1Jugador1, Equipo1Jugador1);
@@ -37,6 +38,7 @@ namespace Kapicua25.Objetos
             File.WriteAllText(fileGanador, ganador);
             File.WriteAllText(fileequipoOno, equipoOno);
             File.WriteAllText(filePaseRedondo, PaseRedondo);
+            File.WriteAllText(fileKeepScreenOn, keepScreenOn);
         }
 
         public static void GrabarRondas(string primeraRonda, string segundaRonda, string terceraRonda, string cuartaRonda)
@@ -74,9 +76,11 @@ namespace Kapicua25.Objetos
                 string fileSegundaRonda = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "segundaRonda");
                 string fileTerceraRonda = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "terceraRonda");
                 string fileCuartaRonda = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "cuartaRonda");
+                string fileKeepScreenOn = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "keepScreenOn");
                 eGlobal.Equipo1 = File.ReadAllText(fileEquipo1);
                 eGlobal.Equipo1Jugador1 = File.ReadAllText(fileEquipo1Jugador1);
                 eGlobal.Equipo1Jugador2 = File.ReadAllText(fileEquipo1Jugador2);
+                eGlobal.KeepScreenOn = File.ReadAllText(fileKeepScreenOn);
                 eGlobal.Equipo2 = File.ReadAllText(fileEquipo2);
                 eGlobal.Equipo2Jugador1 = File.ReadAllText(fileEquipo2Jugador1);
                 eGlobal.Equipo2Jugador2 = File.ReadAllText(fileEquipo2Jugador2);
@@ -90,7 +94,7 @@ namespace Kapicua25.Objetos
                 eGlobal.terceraRonda = File.ReadAllText(fileTerceraRonda);
                 eGlobal.cuartaRonda = File.ReadAllText(fileCuartaRonda);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
             }

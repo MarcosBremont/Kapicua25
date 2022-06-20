@@ -21,6 +21,7 @@ namespace Kapicua25.Objetos
         public string segundaRonda { get; set; }
         public string terceraRonda { get; set; }
         public string cuartaRonda { get; set; }
+        public string KeepScreenOn { get; set; }
 
     }
 }
