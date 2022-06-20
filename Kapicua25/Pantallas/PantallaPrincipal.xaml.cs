@@ -263,7 +263,7 @@ namespace Kapicua25.Pantallas
                 Command = new Command(async () =>
                 {
                     var result = Configuraciones.ObtenerDatosSesion();
-                    txtPuntosPaseRedondo.Text = result.PaseRedondo; 
+                    txtPuntosPaseRedondo.Text = result.PaseRedondo;
                     if (App.TantosParaGanar == 500 && result.conPremioOno == "Si")
                     {
                         PickerTantos.SelectedItem = "500 + Premio";
@@ -733,11 +733,62 @@ namespace Kapicua25.Pantallas
         {
             try
             {
-                await PopupNavigation.PushAsync(modalpaseredondo);
+                var result2 = Configuraciones.ObtenerDatosSesion();
+                if (result2.PaseRedondo == "")
+                {
+
+                    toastConfigClass.MostrarNotificacion($"Primero configura cuantos puntos vale el pase redondo.", ToastPosition.Top, 4, "#c82333");
+                    MostrarConfiguracion();
+                }
+                else
+                {
+                    await PopupNavigation.PushAsync(modalpaseredondo);
+                }
+
             }
             catch (Exception ex)
             {
             }
+        }
+
+        public void MostrarConfiguracion()
+        {
+            var result = Configuraciones.ObtenerDatosSesion();
+            txtPuntosPaseRedondo.Text = result.PaseRedondo;
+            if (App.TantosParaGanar == 500 && result.conPremioOno == "Si")
+            {
+                PickerTantos.SelectedItem = "500 + Premio";
+            }
+            if (result.equipoOno == "No")
+            {
+                Framelbljugador2Editar.IsVisible = false;
+                Framelbljugador2Equipo2Editar.IsVisible = false;
+                radioSinEquipo.IsChecked = true;
+            }
+            else
+            {
+                radioEquipo.IsChecked = true;
+            }
+
+            btnImgConfiguracion.Source = "settingsRojo.png";
+
+            gridComoUsarLaApp.BackgroundColor = Color.White;
+            gridInicio.BackgroundColor = Color.White;
+            gridInfo.BackgroundColor = Color.White;
+            gridHistorialPartidas.BackgroundColor = Color.White;
+            StackLayoutComoUsarLaApp.IsVisible = false;
+
+            StackLayoutHistorialPartidas.IsVisible = false;
+
+            StackLayoutPaginaPrincipal.IsVisible = false;
+            StackLayoutAcercaDe.IsVisible = false;
+            StackLayoutConfig.IsVisible = true;
+            //lytBackNav.IsVisible = false;
+            gridconfig.BackgroundColor = Color.WhiteSmoke;
+            btnImgInfo.Source = "exclamacion";
+            btnImgInicio.Source = "home2";
+            btnImgHistorial.Source = "Document";
+            btnImgComoUsarLaApp.Source = "interrogacion";
         }
 
         private void Btninstagram2_Clicked(object sender, EventArgs e)

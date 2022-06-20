@@ -37,7 +37,7 @@
                     <StackLayout Grid.Row="1">
 
                         <StackLayout Margin="0,5,0,0"  Orientation="Horizontal" HorizontalOptions="Center">
-                            <Label TextColor="#e63946" FontAttributes="Bold" FontSize="15" HorizontalOptions="Center" Text="Tantos para ganar:"></Label>
+                            <Label TextColor="White" FontSize="15" HorizontalOptions="Center" Text="Tantos para ganar:"></Label>
                             <Label x:Name="LblTantos" FontAttributes="Bold" TextColor="#e63946" FontSize="15" HorizontalOptions="Center"></Label>
                         </StackLayout>
 
@@ -62,7 +62,7 @@
 
 
                             <StackLayout x:Name="PartedelStackEquipo1" HorizontalOptions="CenterAndExpand" Margin="0,0,0,0" Orientation="Horizontal" >
-                                <Label FontSize="15" Text="Total" TextColor="White" VerticalOptions="Center" FontAttributes="Bold" ></Label>
+                                <Label FontSize="15" Text="Total" TextColor="White" VerticalOptions="Center" ></Label>
                                 <Label FontSize="15" VerticalOptions="Center" x:Name="lblPuntosEquipo1" TextColor="#e63946" FontAttributes="Bold"  Text="0"></Label>
                             </StackLayout>
 
@@ -85,7 +85,7 @@
 
 
                             <StackLayout x:Name="PartedelStackEquipo2" HorizontalOptions="CenterAndExpand"  Margin="0,0,0,0" Orientation="Horizontal" >
-                                <Label FontSize="15" Text="Total" TextColor="White" VerticalOptions="Center" FontAttributes="Bold" ></Label>
+                                <Label FontSize="15" Text="Total" TextColor="White" VerticalOptions="Center" ></Label>
                                 <Label FontSize="15" x:Name="lblPuntosEquipo2" VerticalOptions="Center" TextColor="#e63946" FontAttributes="Bold"  Text="0"></Label>
                             </StackLayout>
 
@@ -246,7 +246,7 @@
                                             <Label >
                                                 <Label.FormattedText>
                                                     <FormattedString>
-                                                        <Span Text="v1.4" x:Name="lblVersion" TextColor="White" FontSize="14" ></Span>
+                                                        <Span Text="v1.5" x:Name="lblVersion" TextColor="White" FontSize="14" ></Span>
                                                     </FormattedString>
                                                 </Label.FormattedText>
                                             </Label>
