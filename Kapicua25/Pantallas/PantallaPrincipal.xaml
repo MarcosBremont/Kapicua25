@@ -595,7 +595,7 @@
 
                         <StackLayout Grid.Row="5"  VerticalOptions="Center" Orientation="Horizontal" HorizontalOptions="CenterAndExpand" >
                             <Label Grid.Row="5" TextColor="White" FontAttributes="Bold" VerticalOptions="CenterAndExpand" Text="Mantener pantalla activa"></Label>
-                            <RadioButton Grid.Row="5" BorderColor="White" IsChecked="False" CheckedChanged="radioKeepScreenOn_CheckedChanged" BackgroundColor="Transparent" x:Name="radioKeepScreenOn" ></RadioButton>
+                            <RadioButton Grid.Row="5" BorderColor="White" IsChecked="True" CheckedChanged="radioKeepScreenOn_CheckedChanged" BackgroundColor="Transparent" x:Name="radioKeepScreenOn" ></RadioButton>
                             <Label Grid.Row="5" TextColor="White" FontAttributes="Bold" VerticalOptions="CenterAndExpand" Text="Si"></Label>
                             <RadioButton Grid.Row="5" BorderColor="White" BackgroundColor="Transparent"  IsChecked="False" CheckedChanged="radioKeepScreenOf_CheckedChanged" x:Name="radioKeepScreenOf" ></RadioButton>
                             <Label Grid.Row="5" TextColor="White" FontAttributes="Bold" VerticalOptions="CenterAndExpand" Text="No"></Label>
@@ -610,7 +610,7 @@
 
                         <StackLayout Grid.Row="7" Margin="10,10,20,0" HorizontalOptions="Center" Orientation="Vertical" >
                             <Label Text="Puntos Pase Redondo" HorizontalOptions="Center" TextColor="White"  FontAttributes="Bold" FontSize="16"></Label>
-                            <Entry BackgroundColor="White" Placeholder="0" PlaceholderColor="Black" x:Name="txtPuntosPaseRedondo" FontAttributes="Bold" FontSize="16" HorizontalTextAlignment="Center"/>
+                            <Entry BackgroundColor="White" Keyboard="Numeric" Placeholder="0" PlaceholderColor="Black" x:Name="txtPuntosPaseRedondo" FontAttributes="Bold" FontSize="16" HorizontalTextAlignment="Center"/>
                         </StackLayout>
 
 
